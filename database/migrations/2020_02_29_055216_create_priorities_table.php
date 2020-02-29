@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePriorityTable extends Migration
+class CreatePrioritiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreatePriorityTable extends Migration
      */
     public function up()
     {
-        Schema::create('priority', function (Blueprint $table) {
+        Schema::create('priorities', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name',100);
-            $table->enum('type',['Custom','Timebased']);
+            $table->string('name', 100);
+            $table->enum('type', ['Custom','Timebased']);
             $table->integer('time');
-            $table->enum('status',['Active', 'Inactive']);
-            $table->softDeletes();  // This will add a deleted_at field
+            $table->enum('status', ['Active', 'Inactive']);
+            $table->softDeletes(); 
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreatePriorityTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('priority');
+        Schema::dropIfExists('priorities');
     }
 }

@@ -11,7 +11,7 @@ class Category extends Model
     use Sortable;
     use SoftDeletes;
 
-    protected $table = 'category';
+    protected $table = 'categories';
     protected $softDelete = true;
     protected $fillable = ['name','status'];
 }

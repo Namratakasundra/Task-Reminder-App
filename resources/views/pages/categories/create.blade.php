@@ -3,7 +3,7 @@
 @section('content')
   
 
-    <form  action="{{ isset($category) ? route('category.update', ['id' => $category->id]) : route('category.store') }}" method="POST" enctype="multipart/form-data">
+    <form  action="{{ isset($category) ? route('categories.update', ['id' => $category->id]) : route('categories.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
         <div class="card">
         <div class="card-body">
@@ -38,7 +38,7 @@
      
                 <div class="form-group text-right">
                 <div class="button">
-                    <a href="/category" class="btn btn-warning mg-r-1">Cancel</a>
+                    <a href="/categories" class="btn btn-warning mg-r-1">Cancel</a>
                     <button type="submit" class="btn btn-success">@if (isset($category->name))       
                         Update
                         @else 

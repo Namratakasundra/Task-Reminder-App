@@ -237,7 +237,7 @@ return [
         //For toastr
         'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
         //For Image intervation
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

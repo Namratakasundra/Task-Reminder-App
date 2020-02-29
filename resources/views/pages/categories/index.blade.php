@@ -2,29 +2,23 @@
 @section('title','Category Index')
 @section('content')
 
-        <br>
-
-        <div class="row">
-            {{-- For creating new records --}}
-            <div class="col-sm-4 form-group pull-left">
-            <div class="pull-left">
-              <a class="btn btn-success" href="{{ route('category.create') }}" > <i class="icon ion-md-add"></i></a>     
-            </div>
-            </div>
-
+        <div class="row">         
             {{-- For searching --}}
-            {{-- <div class="col-sm-4 form-group pull-right" >
-            <form action="/search_student" method="get">
-                <div class="input-group">
-                <input class="form-control" id="search" value placeholder="Search Name" name="search" type="search">
-                <div class="input-group-btn">
-                    <button type="submit" class="btn btn-warning"><i class="fa fa-search" aria-hidden="true"></i></button>
-                </div>
-                </div>
-            </form>
-            </div> --}}
+            <div class="col-sm-4 form-group pull-left" >
+                <form action="/search_categories" method="get">
+                    <div class="input-group">
+                    <input class="form-control" id="search" value placeholder="Search Name" name="search" type="search">
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-warning"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </div>
+                    </div>
+                </form>
+            </div>
 
-            
+            {{-- For creating new records --}}
+            <div class="col-sm-8 form-group pull-right">
+              <a class="btn btn-success" href="{{ route('categories.create') }}" > <i class="icon ion-md-add"></i></a>     
+            </div> 
         </div>
     
         <div class="card">
@@ -46,13 +40,13 @@
                     <td>{{ $category->name }}</td>
                     <td>{{ $category->status }}</td> 
                     <td>
-                      {{-- <a class = "btn" href="{{route('category.show',['id'=>$category->id])}}" >
+                      {{-- <a class = "btn" href="{{route('categories.show',['id'=>$category->id])}}" >
                         <i class="fa fa-th-list xlarge"  style="color:RoyalBlue;" aria-hidden="true"></i>
                       </a> --}}
-                      <a class = "btn" href="{{route('category.edit',['id'=>$category->id])}}" >
+                      <a class = "btn" href="{{route('categories.edit',['id'=>$category->id])}}" >
                         <i class="far fa-edit" style="color:Green;" aria-hidden="true"></i>
                       </a>
-                      <a class = "btn" href="{{route('category.destroy',['id'=>$category->id])}}" >
+                      <a class = "btn" href="{{route('categories.destroy',['id'=>$category->id])}}" >
                         <i class="fa fa-trash" style="color:Red;" aria-hidden="true"></i>
                       </a>
                     </td> 

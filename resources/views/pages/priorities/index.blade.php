@@ -2,28 +2,23 @@
 @section('title','Priority Index')
 @section('content')
 
-<br>
         <div class="row">
-            {{-- For creating new records --}}
-            <div class="col-sm-4 form-group pull-left">
-            <div class="pull-left">
-            <a class="btn btn-success" href="{{ route('priority.create') }}" > <i class="icon ion-md-add"></i></a>     
-            </div>
-            </div>
-
             {{-- For searching --}}
-            {{-- <div class="col-sm-4 form-group pull-right" >
-            <form action="/search_student" method="get">
-                <div class="input-group">
-                <input class="form-control" id="search" value placeholder="Search Name" name="search" type="search">
-                <div class="input-group-btn">
-                    <button type="submit" class="btn btn-warning"><i class="fa fa-search" aria-hidden="true"></i></button>
-                </div>
-                </div>
-            </form>
-            </div> --}}
+            <div class="col-sm-4 form-group pull-left" >
+              <form action="/search_student" method="get">
+                  <div class="input-group">
+                  <input class="form-control" id="search" value placeholder="Search Name" name="search" type="search">
+                  <div class="input-group-btn">
+                      <button type="submit" class="btn btn-warning"><i class="fa fa-search" aria-hidden="true"></i></button>
+                  </div>
+                  </div>
+              </form>
+            </div>
 
-            
+            {{-- For creating new records --}}
+            <div class="col-sm-8 form-group pull-right">
+                <a class="btn btn-success" href="{{ route('priorities.create') }}" > <i class="icon ion-md-add"></i></a>     
+            </div>
         </div>
     
         <div class="card">
@@ -49,13 +44,13 @@
                     <td>{{ $priority->time }}</td> 
                     <td>{{ $priority->status }}</td>
                     <td>
-                      {{-- <a class = "btn" href="{{route('priority.show',['id'=>$priority->id])}}" >
+                      {{-- <a class = "btn" href="{{route('priorities.show',['id'=>$priority->id])}}" >
                         <i class="fa fa-th-list xlarge"  style="color:RoyalBlue;" aria-hidden="true"></i>
                       </a> --}}
-                      <a class = "btn" href="{{route('priority.edit',['id'=>$priority->id])}}" >
+                      <a class = "btn" href="{{route('priorities.edit',['id'=>$priority->id])}}" >
                         <i class="far fa-edit" style="color:Green;" aria-hidden="true"></i>
                       </a>
-                      <a class = "btn" href="{{route('priority.destroy',['id'=>$priority->id])}}" >
+                      <a class = "btn" href="{{route('priorities.destroy',['id'=>$priority->id])}}" >
                         <i class="fa fa-trash" style="color:Red;" aria-hidden="true"></i>
                       </a>
                     </td> 

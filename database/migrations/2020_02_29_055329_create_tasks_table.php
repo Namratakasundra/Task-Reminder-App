@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTaskTable extends Migration
+class CreateTasksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,21 @@ class CreateTaskTable extends Migration
      */
     public function up()
     {
-        Schema::create('task', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('details',500);
+            $table->text('details', 500);
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('priority_id');
-            $table->enum('status',['Pending', 'Completed', 'On Hold', 'Canceled']);
-            $table->softDeletes();  // This will add a deleted_at field
+            $table->enum('status', ['Pending', 'Completed', 'On Hold', 'Canceled']);
+            $table->softDeletes(); 
             $table->timestamps();
 
             $table->foreign('category_id')
-                ->references('id')->on('category')
+                ->references('id')->on('categories')
                 ->onDelete('cascade');
 
             $table->foreign('priority_id')
-                ->references('id')->on('priority')
+                ->references('id')->on('priorities')
                 ->onDelete('cascade');
         });
     }
@@ -39,6 +39,6 @@ class CreateTaskTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('task');
+        Schema::dropIfExists('tasks');
     }
 }

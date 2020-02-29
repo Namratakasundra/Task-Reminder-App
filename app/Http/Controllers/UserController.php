@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Image;
+use Intervention\Image\Facades\Image;
 use App\User;
 
 class UserController extends Controller
@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         //Show all users from the database and return to view
         $users = User::sortable()->paginate(5);
-        return view('user.index',['users'=>$users]);
+        return view('pages.users.index',['users'=>$users]);
     }
 
     /**
@@ -28,14 +28,14 @@ class UserController extends Controller
     public function create()
     {
         $statuses = ['Pending', 'Active', 'Inactive', 'Rejected', 'Blocked'];
-        return view('user.create',compact('statuses'));
+        return view('pages.users.create',compact('statuses'));
     }
 
     public function search_user(Request $request)
     {
         $search = $request->get('search');
         $users = User::where('name','like','%'.$search.'%')->paginate(5);
-        return view('user.index',['users'=>$users]);
+        return view('pages.users.index',['users'=>$users]);
     }
 
     /**
@@ -63,39 +63,33 @@ class UserController extends Controller
             {
                 //To save original image
                 $file = $request->file('profile_picture');
+                $ImageUpload = \Image::make($file);
                 $extension = $file->getClientOriginalExtension();
                 $filename = time().'.' .$extension;
                 $user->profile_picture = $filename;
                 $public_storage_path = 'app/public/';
                 $path = 'users/' . $user->id . '/' .'profile_picture'. '/';
-                $app_path = storage_path($public_storage_path . $path);                
+                $app_path = storage_path($public_storage_path . $path);
                 $file->move($app_path, $filename);
-
-               /*  $sizes = [64, 128, 256, 512];
-
+                
+                $sizes = [64, 128, 256, 512];
                 foreach($sizes as $size)
                 {
                     // for save thumbnail image
-                    $thumbnailPath = public_path('users/' . $user->id . '/' .'profile_picture'. '/' .'thumbnail'. '/' .$size.'/');
+                    $public_storage_path = 'app/public/';
+                    $thumbnailPath = 'users/' . $user->id . '/' .'profile_picture'. '/' .'thumbnail'. '/' .$size.'/'; 
+                    $app_path = storage_path($public_storage_path . $thumbnailPath);                   
 
-                    if (!file_exists($thumbnailPath)) {
-                        \File::makeDirectory($thumbnailPath, 0777, true, true);
+                    if (!file_exists($app_path)) {
+                        \File::makeDirectory($app_path, 0777, true);
                     }
-                    
-                    $file->path($app_path, $filename);
-                    $image= $request->file($file);
-                    //dd($filename,$thumbnailPath);
-                    //dd($request->files);
-                    $file->resize(null, $size, function ($constraint) {
+                    $ImageUpload->resize(null,$size, function ($constraint) {
                         $constraint->aspectRatio();
-                    });
-                    dd('done');
-                    $file = $file->save($thumbnailPath.$filename.$files->getClientOriginalName());
-                } */
+                    });    
+                    $ImageUpload = $ImageUpload->save($app_path.$filename);
+                }      
             }
-            else
-            {
-            }
+           
             $user->update(); //persist the data 
             \Toastr::success('User created successfully', 'Create', ["positionClass" => "toast-top-center"]);
         } 
@@ -103,7 +97,7 @@ class UserController extends Controller
         {
             dd($e);
         } 
-        return redirect()->route('user.index');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -115,7 +109,7 @@ class UserController extends Controller
     public function show(Request $request, $id)
     {
         $user = User::find($id);
-        return view('user.show',compact('user'));
+        return view('pages.users.show',compact('user'));
     }
 
     /**
@@ -129,7 +123,7 @@ class UserController extends Controller
         //Find the user
         $user = User::find($id);
         $statuses  = ['Pending', 'Active', 'Inactive', 'Rejected', 'Blocked'];
-        return view('user.create',['user'=> $user], ['statuses'=> $statuses]);
+        return view('pages.users.create',['user'=> $user], ['statuses'=> $statuses]);
     }
 
     /**
@@ -164,7 +158,7 @@ class UserController extends Controller
         }
         $user->update(); //persist the data
         \Toastr::success('User updated successfully', 'Update', ["positionClass" => "toast-top-center"]);       
-        return redirect()->route('user.index');
+        return redirect()->route('users.index');
     }
 
     /**`
@@ -179,7 +173,7 @@ class UserController extends Controller
         $user = User::find($id);
         //delete
         $user->delete();
-        \Toastr::error('User Deleted successfully', 'Delete', ["positionClass" => "toast-top-center"], ["background-color" => "red"]);
-        return redirect()->route('user.index');
+        \Toastr::success('User Deleted successfully', 'Delete', ["positionClass" => "toast-top-center"], ["background-color" => "red"]);
+        return redirect()->route('users.index');
     }
 }

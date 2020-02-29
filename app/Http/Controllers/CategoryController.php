@@ -16,7 +16,7 @@ class CategoryController extends Controller
     {
         //Show all categories from the database and return to view
         $categories = Category::sortable()->paginate(5);
-        return view('category.index',['categories'=>$categories]);
+        return view('pages.categories.index',['categories'=>$categories]);
     }
 
     /**
@@ -27,7 +27,7 @@ class CategoryController extends Controller
     public function create()
     {
         $statuses = ['Active', 'Inactive'];
-        return view('category.create',compact('statuses'));
+        return view('pages.categories.create',compact('statuses'));
     }
 
     /**
@@ -45,7 +45,7 @@ class CategoryController extends Controller
         $category->status = $request->input('status');
         $category->save(); //persist the data 
         \Toastr::success('Category Created successfully', 'Create', ["positionClass" => "toast-top-center"]);       
-        return redirect()->route('category.index');
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -57,7 +57,7 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = Category::find($id);
-        return view('category.show',compact('category'));
+        return view('pages.categories.show',compact('category'));
     }
 
     /**
@@ -71,7 +71,7 @@ class CategoryController extends Controller
         //Find the category
         $category = Category::find($id);
         $statuses  = ['Active', 'Inactive'];
-        return view('category.create',['category'=> $category], ['statuses'=> $statuses]);
+        return view('pages.categories.create',['category'=> $category], ['statuses'=> $statuses]);
     }
 
     /**
@@ -89,7 +89,7 @@ class CategoryController extends Controller
         $category->status = $request->input('status');
         $category->save(); //persist the data 
         \Toastr::success('Category updated successfully', 'Update', ["positionClass" => "toast-top-center"]);       
-        return redirect()->route('category.index');
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -105,6 +105,6 @@ class CategoryController extends Controller
         //delete
         $category->delete();
         \Toastr::success('Category Deleted successfully', 'Delete', ["positionClass" => "toast-top-center"], ["background-color" => "red"]);
-        return redirect()->route('category.index');
+        return redirect()->route('categories.index');
     }
 }

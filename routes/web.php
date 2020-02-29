@@ -16,44 +16,46 @@ Route::get('/', function () {
 });
 
 //For searching in User
-Route::get('/search_user','UserController@search_user');
+Route::get('/users','UserController@search_user');
 //User CRUD
-Route::get('/user', 'UserController@index')->name('user.index');
-Route::get('user/show/id={id}', 'UserController@show')->name('user.show');
-Route::get('user/create','UserController@create')->name('user.create');
-Route::post('user/create','UserController@store')->name('user.store');
-Route::get('/user/id={id}/edit','UserController@edit')->name('user.edit');
-Route::post('/user/id={id}/update','UserController@update')->name('user.update');
-Route::get('/user/id={id}/delete','UserController@destroy')->name('user.destroy');
+Route::get('/user', 'UserController@index')->name('users.index');
+Route::get('users/show/id={id}', 'UserController@show')->name('users.show');
+Route::get('users/create','UserController@create')->name('users.create');
+Route::post('users/create','UserController@store')->name('users.store');
+Route::get('/users/id={id}/edit','UserController@edit')->name('users.edit');
+Route::post('/users/id={id}/update','UserController@update')->name('users.update');
+Route::get('/users/id={id}/delete','UserController@destroy')->name('users.destroy');
 
-//Category CRUD
-Route::get('/category', 'CategoryController@index')->name('category.index');
-Route::get('category/show/id={id}', 'CategoryController@show')->name('category.show');
-Route::get('category/create','CategoryController@create')->name('category.create');
-Route::post('category/create','CategoryController@store')->name('category.store');
-Route::get('/category/id={id}/edit','CategoryController@edit')->name('category.edit');
-Route::post('/category/id={id}/update','CategoryController@update')->name('category.update');
-Route::get('/category/id={id}/delete','CategoryController@destroy')->name('category.destroy');
+//Categories CRUD
+Route::get('/categories', 'CategoryController@index')->name('categories.index');
+Route::get('categories/show/id={id}', 'CategoryController@show')->name('categories.show');
+Route::get('categories/create','CategoryController@create')->name('categories.create');
+Route::post('categories/create','CategoryController@store')->name('categories.store');
+Route::get('/categories/id={id}/edit','CategoryController@edit')->name('categories.edit');
+Route::post('/categories/id={id}/update','CategoryController@update')->name('categories.update');
+Route::get('/categories/id={id}/delete','CategoryController@destroy')->name('categories.destroy');
 
 //Priority CRUD
-Route::get('/priority', 'PriorityController@index')->name('priority.index');
-Route::get('priority/show/id={id}', 'PriorityController@show')->name('priority.show');
-Route::get('priority/create','PriorityController@create')->name('priority.create');
-Route::post('priority/create','PriorityController@store')->name('priority.store');
-Route::get('/priority/id={id}/edit','PriorityController@edit')->name('priority.edit');
-Route::post('/priority/id={id}/update','PriorityController@update')->name('priority.update');
-Route::get('/priority/id={id}/delete','PriorityController@destroy')->name('priority.destroy');
+Route::get('/priorities', 'PriorityController@index')->name('priorities.index');
+Route::get('priorities/show/id={id}', 'PriorityController@show')->name('priorities.show');
+Route::get('priorities/create','PriorityController@create')->name('priorities.create');
+Route::post('priorities/create','PriorityController@store')->name('priorities.store');
+Route::get('/priorities/id={id}/edit','PriorityController@edit')->name('priorities.edit');
+Route::post('/priorities/id={id}/update','PriorityController@update')->name('priorities.update');
+Route::get('/priorities/id={id}/delete','PriorityController@destroy')->name('priorities.destroy');
 
 //For searching in User
-Route::get('/search_task','TaskController@search_task');
+Route::get('/tasks','TaskController@search_task');
 //Task CRUD
-Route::get('/task', 'TaskController@index')->name('task.index');
-Route::get('task/show/id={id}', 'TaskController@show')->name('task.show');
-Route::get('task/create','TaskController@create')->name('task.create');
-Route::post('task/create','TaskController@store')->name('task.store');
-Route::get('/task/id={id}/edit','TaskController@edit')->name('task.edit');
-Route::post('/task/id={id}/update','TaskController@update')->name('task.update');
-Route::get('/task/id={id}/delete','TaskController@destroy')->name('task.destroy');
+Route::get('/tasks', 'TaskController@index')->name('tasks.index');
+Route::get('tasks/show/{id}', 'TaskController@show')->name('tasks.show');
+Route::get('tasks/create','TaskController@create')->name('tasks.create');
+Route::post('tasks/create','TaskController@store')->name('tasks.store');
+Route::get('/tasks/{id}/edit','TaskController@edit')->name('tasks.edit');
+Route::post('/tasks/{id}/update','TaskController@update')->name('tasks.update');
+Route::get('/tasks/{id}/delete','TaskController@destroy')->name('tasks.destroy');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

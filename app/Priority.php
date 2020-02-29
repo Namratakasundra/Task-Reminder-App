@@ -11,7 +11,7 @@ class Priority extends Model
     use Sortable;
     use SoftDeletes;
     
-    protected $table = 'priority';
+    protected $table = 'priorities';
     protected $softDelete = true;
     protected $fillable = ['name','status'];
 }

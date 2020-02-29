@@ -3,7 +3,7 @@
 @section('content')
   
 
-    <form  action="{{ isset($task) ? route('task.update', ['id' => $task->id]) : route('task.store') }}" method="POST" enctype="multipart/form-data">
+    <form  action="{{ isset($task) ? route('tasks.update', ['id' => $task->id]) : route('tasks.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
         <div class="card">
         <div class="card-body">
@@ -23,7 +23,8 @@
                     <select class="form-control task-category-select" id="category_id" name="category_id" required>
                         <option disabled selected value>Select category</option>
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}" @if(isset($task) && $task->category_id == $category->id) selected @endif>{{ $category->name }}</option>
+                            <option value="{{ $category->id }}" @if(isset($task) && $task->category_id == $category->id) selected @endif>{{ $category->name }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -37,8 +38,7 @@
                         @foreach($priorities as $priority)
                             <option value="{{ $priority->id }}" @if(isset($task) && $task->priority_id == $priority->id) selected @endif>{{ $priority->name }}
                             </option>
-                        @endforeach
-                     
+                        @endforeach 
                     </select>
                 </div>
                 </div>
@@ -50,7 +50,7 @@
                             <option disabled selected value>Select Status</option>
                             @foreach($statuses  as $status)
                                 <option value="{{ $status }}" @if(isset($task) && $task->status == $status) selected @elseif(!isset($task) && $status == 'Active') selected @else @endif>{{ $status }}
-                            </option>
+                                </option>
                             @endforeach
                         </select>
                         @if ($errors->has('status'))
@@ -63,7 +63,7 @@
                         
                 <div class="form-group text-right">
                 <div class="button">
-                    <a href="/task" class="btn btn-warning mg-r-1">Cancel</a>
+                    <a href="/tasks" class="btn btn-warning mg-r-1">Cancel</a>
                     <button type="submit" class="btn btn-success">@if (isset($user->name))       
                         Update
                         @else 

@@ -11,7 +11,7 @@ class Task extends Model
     use Sortable;
     use SoftDeletes;
 
-    protected $table = 'task';
+    protected $table = 'tasks';
     protected $softDelete = true;
-    protected $fillable = ['details', 'category', 'priority', 'status'];
+    protected $fillable = ['details', 'category_id', 'priority_id', 'status'];
 }

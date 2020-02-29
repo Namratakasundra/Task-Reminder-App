@@ -3,7 +3,7 @@
 @section('content')
   
 
-    <form  action="{{ isset($user) ? route('user.update', ['id' => $user->id]) : route('user.store') }}" method="POST" enctype="multipart/form-data">
+    <form  action="{{ isset($user) ? route('users.update', ['id' => $user->id]) : route('users.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
         <div class="card">
         <div class="card-body">

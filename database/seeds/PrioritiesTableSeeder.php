@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class PriorityTableSeeder extends Seeder
+class PrioritiesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,6 @@ class PriorityTableSeeder extends Seeder
      */
     public function run()
     {
-
         $priority = Priority::create([
         	'name' => 'Urgent', 
             'type' => 'Custom',
@@ -35,6 +34,5 @@ class PriorityTableSeeder extends Seeder
             'type' => 'Timebased',
             'status' => 'Inactive',
         ]);
-
     }
 }

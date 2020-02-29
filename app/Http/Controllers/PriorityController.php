@@ -16,7 +16,7 @@ class PriorityController extends Controller
     {
         //Show all priorities from the database and return to view
         $priorities = Priority::sortable()->paginate(5);
-        return view('priority.index',['priorities'=>$priorities]);
+        return view('pages.priorities.index',['priorities'=>$priorities]);
     }
 
     /**
@@ -28,7 +28,7 @@ class PriorityController extends Controller
     {
         $types = ['Custom','Timebased'];
         $statuses = ['Active', 'Inactive'];
-        return view('priority.create', ['types'=>$types], ['statuses'=>$statuses]);
+        return view('pages.priorities.create', ['types'=>$types], ['statuses'=>$statuses]);
     }
 
     /**
@@ -48,7 +48,7 @@ class PriorityController extends Controller
         $priority->status = $request->input('status');
         $priority->save(); //persist the data 
         \Toastr::success('Priority created successfully', 'Create', ["positionClass" => "toast-top-center"]);
-        return redirect()->route('priority.index');
+        return redirect()->route('priorities.index');
     }
 
     /**
@@ -60,7 +60,7 @@ class PriorityController extends Controller
     public function show($id)
     {
         $priority = Priority::find($id);
-        return view('priority.show',compact('priority'));
+        return view('pages.priorities.show',compact('priority'));
     }
 
     /**
@@ -75,7 +75,7 @@ class PriorityController extends Controller
         $priority = Priority::find($id);
         $types = ['Custom','Timebased'];
         $statuses = ['Active', 'Inactive'];
-        return view('priority.create',compact('priority', 'types', 'statuses'));
+        return view('pages.priorities.create',compact('priority', 'types', 'statuses'));
     }
 
     /**
@@ -95,7 +95,7 @@ class PriorityController extends Controller
         $priority->status = $request->input('status');
         $priority->save(); //persist the data 
         \Toastr::success('Priority updated successfully', 'Update', ["positionClass" => "toast-top-center"]);       
-        return redirect()->route('priority.index');
+        return redirect()->route('priorities.index');
     }
 
     /**
@@ -111,6 +111,6 @@ class PriorityController extends Controller
         //delete
         $priority->delete();
         \Toastr::success('Priority Deleted successfully', 'Delete', ["positionClass" => "toast-top-center"], ["background-color" => "red"]);
-        return redirect()->route('priority.index');
+        return redirect()->route('priorities.index');
     }
 }

@@ -18,7 +18,7 @@ class TaskController extends Controller
     {
         //Show all tasks from the database and return to view
         $tasks = Task::sortable()->paginate(5);
-        return view('task.index',['tasks'=>$tasks]);
+        return view('pages.tasks.index',['tasks'=>$tasks]);
     }
 
     /**
@@ -28,18 +28,17 @@ class TaskController extends Controller
      */
     public function create()
     {
-        
         $categories = Category::all();
         $priorities = Priority::all();
         $statuses = ['Pending', 'Completed', 'On Hold', 'Canceled'];
-        return view('task.create', compact('categories', 'statuses', 'priorities'));
+        return view('pages.tasks.create', compact('categories', 'priorities', 'statuses'));
     }
 
     public function search_task(Request $request)
     {
         $search = $request->get('search');
         $tasks = Task::where('details','like','%'.$search.'%')->paginate(5);
-        return view('task.index',['tasks'=>$tasks]);
+        return view('pages.tasks.index',['tasks'=>$tasks]);
     }
 
     /**
@@ -51,15 +50,13 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $task = new Task();
-        //input method is used to get the value of input with its
-        //name specified
         $task->details = $request->input('details');
         $task->category_id = $request->input('category_id');
         $task->priority_id = $request->input('priority_id');
         $task->status = $request->input('status');
-        $task->save(); //persist the data 
+        $task->save(); 
         \Toastr::success('Task created successfully', 'Create', ["positionClass" => "toast-top-center"]);
-        return redirect()->route('task.index');
+        return redirect()->route('tasks.index');
     }
 
     /**
@@ -71,7 +68,7 @@ class TaskController extends Controller
     public function show($id)
     {
         $task = Task::find($id);
-        return view('task.show',compact('task'));
+        return view('pages.tasks.show',compact('task'));
     }
 
     /**
@@ -82,10 +79,11 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        //Find the Priority
-        $priority = Priority::find($id);
+        $task = Task::find($id);
+        $categories = Category::all();
+        $priorities = Priority::all();
         $statuses = ['Pending', 'Completed', 'On Hold', 'Canceled'];
-        return view('priority.create',compact('priority', 'statuses'));
+        return view('pages.tasks.create',compact('task', 'priorities', 'categories', 'statuses'));
     }
 
     /**
@@ -105,7 +103,7 @@ class TaskController extends Controller
         $task->status = $request->input('status');
         $task->save(); //persist the data 
         \Toastr::success('Task updated successfully', 'Update', ["positionClass" => "toast-top-center"]);       
-        return redirect()->route('task.index');
+        return redirect()->route('tasks.index');
     }
 
     /**
@@ -121,6 +119,6 @@ class TaskController extends Controller
         //delete
         $task->delete();
         \Toastr::success('Task Deleted successfully', 'Delete', ["positionClass" => "toast-top-center"], ["background-color" => "red"]);
-        return redirect()->route('task.index');
+        return redirect()->route('tasks.index');
     }
 }
