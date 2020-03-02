@@ -158,9 +158,14 @@ class UserController extends Controller
             $filename = time().'.' .$extension;
             $user->profile_picture = $filename;
             $public_storage_path = 'app/public/';
-            $path = 'users/' . $user->id . '/' .'profile_picture'. '/';
+            $path = 'users/' . $user->id . '/';
             $app_path = storage_path($public_storage_path . $path);
-            File::delete(app_path($filename));
+            
+            if (!file_exists($app_path)) {
+                \File::makeDirectory($app_path, 0777, true);
+            }
+            File::deleteDirectory($app_path);
+            
 
             //To save original image
             $file = $request->file('profile_picture');
@@ -177,7 +182,7 @@ class UserController extends Controller
             foreach($sizes as $size)
             {
                 // for save thumbnail image
-                $public_storage_path = 'app/public/';
+                $public_storage_path = 'app/public/';   
                 $thumbnailPath = 'users/' . $user->id . '/' .'profile_picture'. '/' .'thumbnail'. '/' .$size.'/'; 
                 $app_path = storage_path($public_storage_path . $thumbnailPath);                   
 
