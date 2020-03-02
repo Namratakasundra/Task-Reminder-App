@@ -17,7 +17,7 @@ class CreatePrioritiesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name', 100);
             $table->enum('type', ['Custom','Timebased']);
-            $table->integer('time');
+            $table->integer('time')->nullable();
             $table->enum('status', ['Active', 'Inactive']);
             $table->softDeletes(); 
             $table->timestamps();

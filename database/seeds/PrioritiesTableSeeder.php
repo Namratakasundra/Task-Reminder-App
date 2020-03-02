@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+Use App\Priority;
 
 class PrioritiesTableSeeder extends Seeder
 {
