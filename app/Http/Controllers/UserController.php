@@ -52,7 +52,7 @@ class UserController extends Controller
             'name' => 'required|max:100',
             'email' => 'required|email|unique:users,email',
             'password' =>'required|min:6',
-            'profile_picture' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            //'profile_picture' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
         // if ($this->fails())
         // {
@@ -71,7 +71,6 @@ class UserController extends Controller
             {
                 //To save original image
                 $file = $request->file('profile_picture');
-                $ImageUpload = \Image::make($file);
                 $extension = $file->getClientOriginalExtension();
                 $filename = time().'.' .$extension;
                 $user->profile_picture = $filename;
@@ -86,15 +85,14 @@ class UserController extends Controller
                     // for save thumbnail image
                     $public_storage_path = 'app/public/';
                     $thumbnailPath = 'users/' . $user->id . '/' .'profile_picture'. '/' .'thumbnail'. '/' .$size.'/'; 
-                    $app_path = storage_path($public_storage_path . $thumbnailPath);                   
+                    $thumbnailPath = storage_path($public_storage_path . $thumbnailPath);                   
 
-                    if (!file_exists($app_path)) {
-                        \File::makeDirectory($app_path, 0777, true);
+                    if (!file_exists($thumbnailPath)) {
+                        \File::makeDirectory($thumbnailPath, 0777, true);
                     }
-                    $ImageUpload->resize(null,$size, function ($constraint) {
+                    \Image::make($app_path . '/' . $filename)->resize(null,$size, function ($constraint) {
                         $constraint->aspectRatio();
-                    });    
-                    $ImageUpload = $ImageUpload->save($app_path.$filename);
+                    })->save($thumbnailPath.$filename);
                 }      
             }
            

@@ -81,7 +81,6 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    {{-- <a href="{{ route('tasks.index') }}">Task Remainder</a>  --}}
                     <h6><a href="{{ route('tasks.index') }}" style="color:grey;font:italic;">TaskReminder</a></h6>
                 </div>
 
