@@ -14,5 +14,17 @@
           <li class="nav-item active"><a href="{{ route('priorities.index') }}" class="nav-link"><i data-feather="box"></i> Priorities</a></li>
           <li class="nav-item active"><a href="{{ route('tasks.index') }}" class="nav-link"><i data-feather="archive"></i> Task Table</a></li>
         </ul>
+
+        {{-- For login User --}}
+        <ul class="nav navbar">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+          </li>
+          @if (Route::has('register'))
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+          </li>
+          @endif
+        </ul>
       </div><!-- nav-wrapper -->
      

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
 use App\User;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Validator;
+use File;
 
 class UserController extends Controller
 {
@@ -47,13 +49,19 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'profile_picture' => 'image|mimes:jpeg,png,jpg,gif,svg'
+            'name' => 'required|max:100',
+            'email' => 'required|email|unique:users,email',
+            'password' =>'required|min:6',
+            'profile_picture' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
+        // if ($this->fails())
+        // {
+        //     return redirect()->back()->withErrors($this->errors());
+        // }
 
         try {
             $user = new User();
-            //input method is used to get the value of input with its
-            //name specified
+            //input method is used to get the value of input with its name specified
             $user->name = $request->input('name');
             $user->email = $request->input('email');
             $user->password = $request->input('password');
@@ -144,18 +152,45 @@ class UserController extends Controller
         $user->save(); //persist the data
         if($request->hasfile('profile_picture'))
         {
+            //To delete existing image folder 
             $file = $request->file('profile_picture');
-                $extension = $file->getClientOriginalExtension();
-                $filename = time().'.' .$extension;
-                $user->profile_picture = $filename;
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.' .$extension;
+            $user->profile_picture = $filename;
+            $public_storage_path = 'app/public/';
+            $path = 'users/' . $user->id . '/' .'profile_picture'. '/';
+            $app_path = storage_path($public_storage_path . $path);
+            File::delete(app_path($filename));
+
+            //To save original image
+            $file = $request->file('profile_picture');
+            $ImageUpload = \Image::make($file);
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.' .$extension;
+            $user->profile_picture = $filename;
+            $public_storage_path = 'app/public/';
+            $path = 'users/' . $user->id . '/' .'profile_picture'. '/';
+            $app_path = storage_path($public_storage_path . $path);
+            $file->move($app_path, $filename);
+            
+            $sizes = [64, 128, 256, 512];
+            foreach($sizes as $size)
+            {
+                // for save thumbnail image
                 $public_storage_path = 'app/public/';
-                $path = 'users/' . $user->id . '/' .'profile_picture'. '/';
-                $app_path = storage_path($public_storage_path . $path);                
-                $file->move($app_path, $filename);
+                $thumbnailPath = 'users/' . $user->id . '/' .'profile_picture'. '/' .'thumbnail'. '/' .$size.'/'; 
+                $app_path = storage_path($public_storage_path . $thumbnailPath);                   
+
+                if (!file_exists($app_path)) {
+                    \File::makeDirectory($app_path, 0777, true);
+                }
+                $ImageUpload->resize(null,$size, function ($constraint) {
+                    $constraint->aspectRatio();
+                });    
+                $ImageUpload = $ImageUpload->save($app_path.$filename);
+            }
         }
-        else
-        {
-        }
+        
         $user->update(); //persist the data
         \Toastr::success('User updated successfully', 'Update', ["positionClass" => "toast-top-center"]);       
         return redirect()->route('users.index');

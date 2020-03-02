@@ -23,10 +23,22 @@ class TaskReminder extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|max:100',
-            'email' => 'required',
-            'password' =>'required|min:6',
+        $messages = [
+            'email.required' => 'Please enter valid email address!',
+            'password.required' => 'How will you log in?',
+            'password.confirmed' => 'Password is must be in 6 characters.',
         ];
+        $rules = [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => [
+                'required',
+                'string',
+                'min:6',
+                'confirmed',
+                'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/'
+            ]
+        ];
+        return Validator::make($data, $rules, $messages);
     }
 }

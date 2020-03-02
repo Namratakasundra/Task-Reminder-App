@@ -10,6 +10,7 @@
         <div class="table-responsive">
         <div class="container-fluid">
 
+            <div class="row">
                 <div class="col-md-6">
                 <div class="form-group">
                     <label for="name"><strong>Name : <span class="tx-danger">*</span></strong></label>
@@ -24,8 +25,10 @@
 
                 </div>
                 </div>
+            </div>
 
-                <div class="form-group col-md-6">
+            <div class="row">
+                <div class="form-group col-md-3">
                     <label for="type"><strong>Type : <span class="tx-danger">*</span></strong></label>
                     <select class="form-control priority-type-select{{ $errors->has('type') ? ' is-invalid' : '' }}" id="type" name="type" required>
                         <option disabled selected value>Select Type</option>
@@ -41,13 +44,15 @@
                     @endif
                 </div>
                 
-                <div class="col-md-6">
+                <div class="col-md-3">
                 <div class="form-group">
                     <label for="time"><strong>Time : <span class="tx-danger">*</span></strong></label>
                     <input type="number" name = "time" id = "time" class="form-control" required placeholder="How long it will take?" value="{{isset($priority) ? $priority->time : old('time') }}" >
                 </div>
                 </div>
+            </div>
                 
+            <div class="row">
                 <div class="form-group col-md-6">
                     <label for="status"><strong>Status : <span class="tx-danger">*</span></strong></label>
                     <select class="form-control priority-status-select{{ $errors->has('status') ? ' is-invalid' : '' }}" id="status" name="status" required>
@@ -63,6 +68,7 @@
                     </span>
                     @endif
                 </div>
+            </div>
                        
                 <div class="form-group text-right">
                 <div class="button">
