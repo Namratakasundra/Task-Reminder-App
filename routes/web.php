@@ -15,8 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//For searching in User
-Route::get('/users','UserController@search_user');
+
 //User CRUD
 Route::get('/user', 'UserController@index')->name('users.index');
 Route::get('users/show/id={id}', 'UserController@show')->name('users.show');
@@ -35,6 +34,7 @@ Route::get('/categories/id={id}/edit','CategoryController@edit')->name('categori
 Route::post('/categories/id={id}/update','CategoryController@update')->name('categories.update');
 Route::get('/categories/id={id}/delete','CategoryController@destroy')->name('categories.destroy');
 
+
 //Priority CRUD
 Route::get('/priorities', 'PriorityController@index')->name('priorities.index');
 Route::get('priorities/show/id={id}', 'PriorityController@show')->name('priorities.show');
@@ -44,8 +44,7 @@ Route::get('/priorities/id={id}/edit','PriorityController@edit')->name('prioriti
 Route::post('/priorities/id={id}/update','PriorityController@update')->name('priorities.update');
 Route::get('/priorities/id={id}/delete','PriorityController@destroy')->name('priorities.destroy');
 
-//For searching in User
-Route::get('/tasks','TaskController@search_task');
+
 //Task CRUD
 Route::get('/tasks', 'TaskController@index')->name('tasks.index');
 Route::get('tasks/show/{id}', 'TaskController@show')->name('tasks.show');

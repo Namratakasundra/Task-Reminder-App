@@ -25,6 +25,7 @@
                 <option value="Low">Low</option>
               </select>
             </div>
+            
 
             {{-- For creating new records --}}
             <div class="form-group pull-right">

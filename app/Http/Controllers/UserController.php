@@ -16,10 +16,16 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //Show all users from the database and return to view
-        $users = User::sortable()->paginate(5);
+        $users = User::sortable();
+        $search = $request->query('search');
+        if($request->search!= null)
+        {
+            $users = $users->where('name','like','%'.$search.'%');
+        }
+        $users = $users->paginate(\Config::get('constants.pagination_size'));
         return view('pages.users.index',['users'=>$users]);
     }
 
@@ -32,13 +38,6 @@ class UserController extends Controller
     {
         $statuses = ['Pending', 'Active', 'Inactive', 'Rejected', 'Blocked'];
         return view('pages.users.create',compact('statuses'));
-    }
-
-    public function search_user(Request $request)
-    {
-        $search = $request->get('search');
-        $users = User::where('name','like','%'.$search.'%')->paginate(5);
-        return view('pages.users.index',['users'=>$users]);
     }
 
     /**

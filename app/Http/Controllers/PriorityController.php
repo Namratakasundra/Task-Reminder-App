@@ -12,10 +12,16 @@ class PriorityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //Show all priorities from the database and return to view
-        $priorities = Priority::sortable()->paginate(5);
+        $priorities = Priority::sortable();
+        $search = $request->query('search');
+        if($request->search!= null)
+        {
+            $priorities = $priorities->where('name','like','%'.$search.'%');
+        }
+        $priorities = $priorities->paginate(\Config::get('constants.pagination_size'));
         return view('pages.priorities.index',['priorities'=>$priorities]);
     }
 

@@ -57,22 +57,28 @@
             
             <div class="row">
             
-                <div class="col-md-4" style="padding-top:30px;">
+                <div class="col-md-4" style="padding-top:20px;">
                 <div class="form-group">
                     <label for="profile_picture"><strong>Upload your profile : </strong></label>
                     <input type="file" name="profile_picture" id ="profile_picture" class="form-control" >
-                        <br> 
-                        @if (isset($user->profile_picture))
-                        <img src="/storage/users/{{ $user->id }}/profile_picture/{{ $user->profile_picture}}" height="120px" width="120px">
-                        @else
-                            <p>No image found</p>
-                        @endif 
-                        <input type="hidden" id="profile_picture_data64" name="profile_picture_data64">                                 
+                    <br> 
+                    @if (isset($user->profile_picture))
+                    {{-- <img src="/storage/users/{{ $user->id }}/profile_picture/{{ $user->profile_picture}}" height="120px" width="120px"> --}}
+                    @else
+                        <p>No image found</p>
+                    @endif 
+                    <input type="hidden" id="profile_picture_data64" name="profile_picture_data64"> 
+                    <span>{{ $user->profile_picture }}</span>                                
                 </div>
                 </div>
 
-                <div class="col-md-4 text-center">
-                    <div id="profile_picture-demo" style="width:350px"></div>
+                <div class="col-md-4" style="padding-top:20px;">
+                <div class="form-group">
+                    <label for="profile_picture"><strong>Your Profile preview : </strong></label>
+                    <div id="profile_picture-demo" style="width:350px" class="croppie-container">
+                        <img crossorigin="anonymous" id="profile_picture-demo" src="/storage/users/{{ $user->id }}/profile_picture/{{ $user->profile_picture}}">
+                    </div>
+                </div>
                 </div>
 
             </div>

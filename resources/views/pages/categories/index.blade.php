@@ -5,7 +5,7 @@
         <div class="row">         
             {{-- For searching --}}
             <div class="col-sm-4 form-group pull-left" >
-                <form action="/search_categories" method="get">
+                <form action="/categories" method="GET">
                     <div class="input-group">
                     <input class="form-control" id="search" value placeholder="Search Name" name="search" type="search">
                     <div class="input-group-btn">

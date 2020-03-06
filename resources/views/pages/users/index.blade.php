@@ -4,8 +4,8 @@
 
         <div class="row">
             {{-- For searching --}}
-            <div class="col-sm-4 form-group pull-left" >
-            <form action="/search_user" method="get">
+            <div class="col-sm-4 form-group " >
+            <form action="/user" method="get">
                 <div class="input-group">
                 <input class="form-control" id="search" value placeholder="Search Name" name="search" type="search">
                 <div class="input-group-btn">
@@ -16,14 +16,14 @@
             </div>
 
             {{-- For creating new records --}}
-            <div class="col-sm-8 form-group pull-right">
+            <div class="col-sm-8 form-group pull-right" style= "float : right;">
               <a class="btn btn-success" href="{{ route('users.create') }}" > <i class="icon ion-md-add"></i></a>     
             </div>
         </div>
     
         <div class="card">
-        <div class="card-body">
-            <div class="bs-example container-fluid" data-example-id="striped-table">
+        <div class="card-body" style="background-color:#f9f9f9">
+          <div class="bs-example container-fluid" data-example-id="striped-table">
           <table class="table table-striped table-bordered table-hover">
               <thead>
                 <tr>

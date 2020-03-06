@@ -12,10 +12,16 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //Show all categories from the database and return to view
-        $categories = Category::sortable()->paginate(5);
+        $categories = Category::sortable();
+        $search = $request->query('search');
+        if($request->search!= null)
+        {
+            $categories = $categories->where('name','like','%'.$search.'%');
+        }
+        $categories = $categories->paginate(\Config::get('constants.pagination_size'));
         return view('pages.categories.index',['categories'=>$categories]);
     }
 

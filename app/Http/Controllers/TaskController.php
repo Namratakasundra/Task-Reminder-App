@@ -14,10 +14,16 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //Show all tasks from the database and return to view
-        $tasks = Task::sortable()->paginate(5);
+        $tasks = Task::sortable();
+        $search = $request->query('search');
+        if($request->search!= null)
+        {
+            $tasks = $tasks->where('details','like','%'.$search.'%');
+        }
+        $tasks = $tasks->paginate(\Config::get('constants.pagination_size'));
         return view('pages.tasks.index',['tasks'=>$tasks]);
     }
 
@@ -32,13 +38,6 @@ class TaskController extends Controller
         $priorities = Priority::all();
         $statuses = ['Pending', 'Completed', 'On Hold', 'Canceled'];
         return view('pages.tasks.create', compact('categories', 'priorities', 'statuses'));
-    }
-
-    public function search_task(Request $request)
-    {
-        $search = $request->get('search');
-        $tasks = Task::where('details','like','%'.$search.'%')->paginate(5);
-        return view('pages.tasks.index',['tasks'=>$tasks]);
     }
 
     /**
