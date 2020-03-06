@@ -60,7 +60,8 @@ class UserController extends Controller
             return $validator->errors();            
         }
 
-        try {
+        try 
+        {
             $user = new User();
             //input method is used to get the value of input with its name specified
             $user->name = $request->input('name');
@@ -156,6 +157,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        try
+        {
         //Retrieve the user and update
         $user = User::find($id);
         $user->name = $request->input('name');
@@ -217,7 +220,12 @@ class UserController extends Controller
         }
         
         $user->update(); //persist the data
-        \Toastr::success('User updated successfully', 'Update', ["positionClass" => "toast-top-center"]);       
+        \Toastr::success('User updated successfully', 'Update', ["positionClass" => "toast-top-center"]);  
+    }  
+    catch (\Exception $e) 
+    {
+        dd($e);
+    }   
         return redirect()->route('users.index');
     }
 

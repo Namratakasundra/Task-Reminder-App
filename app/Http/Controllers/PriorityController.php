@@ -39,15 +39,22 @@ class PriorityController extends Controller
      */
     public function store(Request $request)
     {
-        $priority = new Priority();
-        //input method is used to get the value of input with its
-        //name specified
-        $priority->name = $request->input('name');
-        $priority->type = $request->input('type');
-        $priority->time = $request->input('time');
-        $priority->status = $request->input('status');
-        $priority->save(); //persist the data 
-        \Toastr::success('Priority created successfully', 'Create', ["positionClass" => "toast-top-center"]);
+        try 
+        {
+            $priority = new Priority();
+            //input method is used to get the value of input with its
+            //name specified
+            $priority->name = $request->input('name');
+            $priority->type = $request->input('type');
+            $priority->time = $request->input('time');
+            $priority->status = $request->input('status');
+            $priority->save(); //persist the data 
+            \Toastr::success('Priority created successfully', 'Create', ["positionClass" => "toast-top-center"]);
+        }
+        catch (\Exception $e) 
+        {
+            dd($e);
+        }
         return redirect()->route('priorities.index');
     }
 
@@ -87,14 +94,21 @@ class PriorityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //Retrieve the priority and update
-        $priority = Priority::find($id);
-        $priority->name = $request->input('name');
-        $priority->type = $request->input('type');
-        $priority->time = $request->input('time');
-        $priority->status = $request->input('status');
-        $priority->save(); //persist the data 
-        \Toastr::success('Priority updated successfully', 'Update', ["positionClass" => "toast-top-center"]);       
+        try 
+        {
+           //Retrieve the priority and update
+            $priority = Priority::find($id);
+            $priority->name = $request->input('name');
+            $priority->type = $request->input('type');
+            $priority->time = $request->input('time');
+            $priority->status = $request->input('status');
+            $priority->save(); //persist the data 
+            \Toastr::success('Priority updated successfully', 'Update', ["positionClass" => "toast-top-center"]);       
+        } 
+        catch (\Exception $e) 
+        {
+            dd($e);
+        }
         return redirect()->route('priorities.index');
     }
 

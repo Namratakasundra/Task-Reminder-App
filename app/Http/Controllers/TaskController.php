@@ -49,13 +49,20 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $task = new Task();
-        $task->details = $request->input('details');
-        $task->category_id = $request->input('category_id');
-        $task->priority_id = $request->input('priority_id');
-        $task->status = $request->input('status');
-        $task->save(); 
-        \Toastr::success('Task created successfully', 'Create', ["positionClass" => "toast-top-center"]);
+        try 
+        {
+            $task = new Task();
+            $task->details = $request->input('details');
+            $task->category_id = $request->input('category_id');
+            $task->priority_id = $request->input('priority_id');
+            $task->status = $request->input('status');
+            $task->save(); 
+            \Toastr::success('Task created successfully', 'Create', ["positionClass" => "toast-top-center"]); 
+        } 
+        catch (\Exception $e) 
+        {
+            dd($e);
+        }
         return redirect()->route('tasks.index');
     }
 
@@ -95,14 +102,21 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //Retrieve the Task and update
-        $task = Task::find($id);
-        $task->details = $request->input('details');
-        $task->category_id = $request->input('category_id');
-        $task->priority_id = $request->input('priority_id');
-        $task->status = $request->input('status');
-        $task->save(); //persist the data 
-        \Toastr::success('Task updated successfully', 'Update', ["positionClass" => "toast-top-center"]);       
+        try 
+        {
+            //Retrieve the Task and update
+            $task = Task::find($id);
+            $task->details = $request->input('details');
+            $task->category_id = $request->input('category_id');
+            $task->priority_id = $request->input('priority_id');
+            $task->status = $request->input('status');
+            $task->save(); //persist the data 
+            \Toastr::success('Task updated successfully', 'Update', ["positionClass" => "toast-top-center"]);       
+        } 
+        catch (\Exception $e) 
+        {
+            dd($e);
+        }
         return redirect()->route('tasks.index');
     }
 

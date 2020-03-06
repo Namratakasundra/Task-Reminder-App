@@ -38,13 +38,20 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = new Category();
-        //input method is used to get the value of input with its
-        //name specified
-        $category->name = $request->input('name');
-        $category->status = $request->input('status');
-        $category->save(); //persist the data 
-        \Toastr::success('Category Created successfully', 'Create', ["positionClass" => "toast-top-center"]);       
+        try 
+        {
+            $category = new Category();
+            //input method is used to get the value of input with its
+            //name specified
+            $category->name = $request->input('name');
+            $category->status = $request->input('status');
+            $category->save(); //persist the data 
+            \Toastr::success('Category Created successfully', 'Create', ["positionClass" => "toast-top-center"]);       
+        } 
+        catch (\Exception $e) 
+        {
+            dd($e);
+        }
         return redirect()->route('categories.index');
     }
 
@@ -83,12 +90,19 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //Retrieve the category and update
-        $category = Category::find($id);
-        $category->name = $request->input('name');
-        $category->status = $request->input('status');
-        $category->save(); //persist the data 
-        \Toastr::success('Category updated successfully', 'Update', ["positionClass" => "toast-top-center"]);       
+        try 
+        {
+            //Retrieve the category and update
+            $category = Category::find($id);
+            $category->name = $request->input('name');
+            $category->status = $request->input('status');
+            $category->save(); //persist the data 
+            \Toastr::success('Category updated successfully', 'Update', ["positionClass" => "toast-top-center"]);          
+        } 
+        catch (\Exception $e) 
+        {
+            dd($e);
+        }
         return redirect()->route('categories.index');
     }
 
