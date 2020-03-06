@@ -17,4 +17,3 @@
 {{-- For coppie Library --}}
 <script src="http://demo.itsolutionstuff.com/plugin/croppie.js"></script>
 
-<h1>Here i am!!!</h1>
