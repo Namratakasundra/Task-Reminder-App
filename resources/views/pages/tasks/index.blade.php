@@ -15,8 +15,19 @@
             </form>
             </div>
 
+            {{-- For filtering with yajra --}}
+            <div class="col-sm-4 form-group pull-center">  
+              <select class="form-control" onchange="form.submit()" name="priority">
+                <option disabled selected value >Select Priority</option>
+                <option value="Urgent">Urgent</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+
             {{-- For creating new records --}}
-            <div class="col-sm-8 form-group pull-right">
+            <div class="form-group pull-right">
               <a class="btn btn-success" href="{{ route('tasks.create') }}" > <i class="icon ion-md-add"></i></a>     
             </div>
         </div>

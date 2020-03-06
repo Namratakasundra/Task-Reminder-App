@@ -21,12 +21,12 @@
     <meta property="og:image:height" content="600">
     
     <!-- Meta -->
-    <meta name="description" content="Responsive Bootstrap 4 Dashboard Template">
+    <meta name="description" content="Task Reminder App">
     <meta name="author" content="ThemePixels">
     
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
-    <title>DashForge Responsive Bootstrap 4 Dashboard Template</title>
+    <title>Task Reminder App</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     
     <!-- vendor css -->
@@ -38,5 +38,8 @@
     <link rel="stylesheet" href="/assets/css/dashforge.demo.css">
     <link rel='stylesheet' href='/custom.css' />
     
-    <!-- toaster -->
+    <!-- Toaster -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+    {{-- Croppie --}}
+    <link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/croppie.css">

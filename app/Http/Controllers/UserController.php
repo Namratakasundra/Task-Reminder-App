@@ -7,6 +7,7 @@ use App\User;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
 use File;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -48,16 +49,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'name' => 'required|max:100',
             'email' => 'required|email|unique:users,email',
             'password' =>'required|min:6',
-            //'profile_picture' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'profile_picture' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
-        // if ($this->fails())
-        // {
-        //     return redirect()->back()->withErrors($this->errors());
-        // }
+        if ($validator->fails()) 
+        {
+            return $validator->errors();            
+        }
 
         try {
             $user = new User();
@@ -74,11 +75,25 @@ class UserController extends Controller
                 $extension = $file->getClientOriginalExtension();
                 $filename = time().'.' .$extension;
                 $user->profile_picture = $filename;
+
+                $data = $request->profile_picture_data64;
+                list($type, $data) = explode(';', $data);
+                list(, $data)      = explode(',', $data);
+                $data = base64_decode($data);
+                
                 $public_storage_path = 'app/public/';
                 $path = 'users/' . $user->id . '/' .'profile_picture'. '/';
                 $app_path = storage_path($public_storage_path . $path);
-                $file->move($app_path, $filename);
-                
+
+                if (!file_exists($app_path)) {
+                    \File::makeDirectory($app_path, 0777, true);
+                } else {
+                    if ($delete_directory) {
+                        \File::deleteDirectory($app_path, true);
+                    }
+                }
+                file_put_contents($app_path .$filename, $data);
+
                 $sizes = [64, 128, 256, 512];
                 foreach($sizes as $size)
                 {
@@ -158,39 +173,46 @@ class UserController extends Controller
             $public_storage_path = 'app/public/';
             $path = 'users/' . $user->id . '/';
             $app_path = storage_path($public_storage_path . $path);
-            
             if (!file_exists($app_path)) {
                 \File::makeDirectory($app_path, 0777, true);
             }
             File::deleteDirectory($app_path);
             
-
             //To save original image
             $file = $request->file('profile_picture');
-            $ImageUpload = \Image::make($file);
             $extension = $file->getClientOriginalExtension();
             $filename = time().'.' .$extension;
             $user->profile_picture = $filename;
+            $data = $request->profile_picture_data64;
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+            $data = base64_decode($data);
             $public_storage_path = 'app/public/';
             $path = 'users/' . $user->id . '/' .'profile_picture'. '/';
             $app_path = storage_path($public_storage_path . $path);
-            $file->move($app_path, $filename);
+            if (!file_exists($app_path)) {
+                \File::makeDirectory($app_path, 0777, true);
+            } else {
+                if ($delete_directory) {
+                    \File::deleteDirectory($app_path, true);
+                }
+            }
+            file_put_contents($app_path .$filename, $data);
             
             $sizes = [64, 128, 256, 512];
             foreach($sizes as $size)
             {
                 // for save thumbnail image
-                $public_storage_path = 'app/public/';   
+                $public_storage_path = 'app/public/';
                 $thumbnailPath = 'users/' . $user->id . '/' .'profile_picture'. '/' .'thumbnail'. '/' .$size.'/'; 
-                $app_path = storage_path($public_storage_path . $thumbnailPath);                   
+                $thumbnailPath = storage_path($public_storage_path . $thumbnailPath);                   
 
-                if (!file_exists($app_path)) {
-                    \File::makeDirectory($app_path, 0777, true);
+                if (!file_exists($thumbnailPath)) {
+                    \File::makeDirectory($thumbnailPath, 0777, true);
                 }
-                $ImageUpload->resize(null,$size, function ($constraint) {
+                \Image::make($app_path . '/' . $filename)->resize(null,$size, function ($constraint) {
                     $constraint->aspectRatio();
-                });    
-                $ImageUpload = $ImageUpload->save($app_path.$filename);
+                })->save($thumbnailPath.$filename);
             }
         }
         
@@ -211,7 +233,7 @@ class UserController extends Controller
         $user = User::find($id);
         //delete
         $user->delete();
-        \Toastr::success('User Deleted successfully', 'Delete', ["positionClass" => "toast-top-center"], ["background-color" => "red"]);
+        \Toastr::success('User Deleted successfully', 'Delete', ["positionClass" => "toast-top-center"]);
         return redirect()->route('users.index');
     }
 }
