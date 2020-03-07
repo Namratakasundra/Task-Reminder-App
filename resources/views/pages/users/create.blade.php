@@ -76,10 +76,10 @@
                 <div class="form-group">
                     <label for="profile_picture"><strong>Your Profile preview : </strong></label>
                     <div id="profile_picture-demo" style="width:350px" class="croppie-container">
-                        <img crossorigin="anonymous" id="profile_picture-demo" src="/storage/users/{{ $user->id }}/profile_picture/{{ $user->profile_picture}}">
                     </div>
                 </div>
                 </div>
+                <input id="upload-demo-image" type="hidden" value="/storage/users/{{ $user->id }}/profile_picture/{{ $user->profile_picture}}">
 
             </div>
                         

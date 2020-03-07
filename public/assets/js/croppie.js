@@ -2,12 +2,14 @@
 $(document).ready(function (){
     //console.log("doc")
     $uploadCrop = $('#profile_picture-demo').croppie({
+        url : $('#upload-demo-image').val(),
         enableExif: true,
         viewport: 
         {
             width: 150,
             height: 150,
             type: 'square'
+            
         },
         boundary: 
         {
