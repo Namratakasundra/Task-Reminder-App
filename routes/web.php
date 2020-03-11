@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 //User CRUD
 Route::get('/user', 'UserController@index')->name('users.index');
@@ -55,6 +58,3 @@ Route::post('/tasks/{id}/update','TaskController@update')->name('tasks.update');
 Route::get('/tasks/{id}/delete','TaskController@destroy')->name('tasks.destroy');
 
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

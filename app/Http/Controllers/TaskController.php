@@ -18,13 +18,15 @@ class TaskController extends Controller
     {
         //Show all tasks from the database and return to view
         $tasks = Task::sortable();
+        $categories = Category::with(['category_name','Category','name']);
+        $priorities = Priority::with(['priority_name','Priority','name']);
         $search = $request->query('search');
         if($request->search!= null)
         {
             $tasks = $tasks->where('details','like','%'.$search.'%');
         }
         $tasks = $tasks->paginate(\Config::get('constants.pagination_size'));
-        return view('pages.tasks.index',['tasks'=>$tasks]);
+        return view('pages.tasks.index', compact('tasks', 'categories', 'priorities'));
     }
 
     /**

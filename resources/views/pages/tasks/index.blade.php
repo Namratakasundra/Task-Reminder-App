@@ -4,7 +4,8 @@
 
         <div class="row">
             {{-- For searching --}}
-            <div class="col-sm-4 form-group pull-left" >
+            <div class="search">
+            <div class="col-md-4 form-group" style= "float : left;">
             <form action="/tasks" method="get">
                 <div class="input-group">
                 <input class="form-control" id="search" value placeholder="Search your task here" name="search" type="search">
@@ -14,9 +15,11 @@
                 </div>
             </form>
             </div>
+            </div>
 
             {{-- For filtering with yajra --}}
-            <div class="col-sm-4 form-group pull-center">  
+            
+            {{-- <div class="col-sm-4 form-group pull-center">  
               <select class="form-control" onchange="form.submit()" name="priority">
                 <option disabled selected value >Select Priority</option>
                 <option value="Urgent">Urgent</option>
@@ -24,13 +27,15 @@
                 <option value="Medium">Medium</option>
                 <option value="Low">Low</option>
               </select>
-            </div>
+            </div> --}}
             
 
             {{-- For creating new records --}}
-            <div class="form-group pull-right">
+            <div class="button">
+            <div class="form-group" style= "float : right;">
               <a class="btn btn-success" href="{{ route('tasks.create') }}" > <i class="icon ion-md-add"></i></a>     
             </div>
+            </div> 
         </div>
     
         <div class="card">
@@ -52,8 +57,8 @@
                   <tr class = "text-center">
                     <td>{{ $task->id }}</td>
                     <td>{{ $task->details }}</td>
-                    <td>{{ $task->category_id }}</td>
-                    <td>{{ $task->priority_id }}</td> 
+                    <td>{{ $task->category_name->name }}</td>
+                    <td>{{ $task->priority_name->name }}</td> 
                     <td>{{ $task->status }}</td>
                     
                     <td>

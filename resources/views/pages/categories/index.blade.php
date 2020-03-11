@@ -4,7 +4,8 @@
 
         <div class="row">         
             {{-- For searching --}}
-            <div class="col-sm-4 form-group pull-left" >
+            <div class="search">
+            <div class="col-md-4 form-group" style= "float : left;">
                 <form action="/categories" method="GET">
                     <div class="input-group">
                     <input class="form-control" id="search" value placeholder="Search Name" name="search" type="search">
@@ -14,10 +15,13 @@
                     </div>
                 </form>
             </div>
+            </div>
 
             {{-- For creating new records --}}
-            <div class="col-sm-8 form-group pull-right">
-              <a class="btn btn-success" href="{{ route('categories.create') }}" > <i class="icon ion-md-add"></i></a>     
+            <div class="button">
+            <div class="form-group" style= "float : right;">
+                <a class="btn btn-success" href="{{ route('categories.create') }}" > <i class="icon ion-md-add"></i></a>     
+            </div>
             </div> 
         </div>
     

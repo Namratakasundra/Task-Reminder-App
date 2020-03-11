@@ -14,4 +14,14 @@ class Task extends Model
     protected $table = 'tasks';
     protected $softDelete = true;
     protected $fillable = ['details', 'category_id', 'priority_id', 'status'];
+
+    public function category_name()
+    {
+        return $this->belongsTo('App\Category','category_id');
+    }
+
+    public function priority_name()
+    {
+        return $this->belongsTo('App\Priority','priority_id');
+    }
 }

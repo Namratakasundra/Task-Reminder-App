@@ -3,6 +3,13 @@
 @section('content')
   
 <script src="/lib/jquery/jquery.min.js"></script>
+
+{{-- <ul>
+    @foreach ($errors->all() as $e)
+        <li> {{$e}} </li>
+    @endforeach
+</ul> --}}
+
     <form method="POST" id="user-form" action="{{ isset($user) ? route('users.update', ['id' => $user->id]) : route('users.store') }}" enctype="multipart/form-data">
     @csrf
         <div class="card">
@@ -14,7 +21,12 @@
                 <div class="col-md-6">
                 <div class="form-group">
                     <label for="name"><strong>Name : <span class="tx-danger">*</span></strong></label>
-                    <input type="text" name = "name" id = "name" class="form-control" required placeholder="Your name" value="{{isset($user) ? $user->name : old('name') }}" >
+                    <input type="text" name = "name" id = "name" class="form-control @error('name') is-invalid @enderror" required placeholder="Your name" value="{{isset($user) ? $user->name : old('name') }}" >
+                    @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
                 </div>
             </div>
@@ -23,7 +35,12 @@
                 <div class="col-md-6">
                 <div class="form-group">
                     <label for="email"><strong>Email : <span class="tx-danger">*</span></strong></label>
-                    <input type="text" name = "email" id = "email" class="form-control" required placeholder="Your email" value="{{isset($user) ? $user->email : old('email') }}" >
+                    <input type="text" name = "email" id = "email" class="form-control @error('email') is-invalid @enderror" required placeholder="Your email" value="{{isset($user) ? $user->email : old('email') }}" >
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
                 </div>
             </div>
@@ -32,7 +49,12 @@
                 <div class="col-md-6">
                 <div class="form-group">
                     <label for="password"><strong>Password : <span class="tx-danger">*</span></strong></label>
-                    <input type="password" name = "password" id = "password" class="form-control" required placeholder="Your password" value="{{isset($user) ? $user->password : old('password') }}" >
+                    <input type="password" name = "password" id = "password" class="form-control @error('password') is-invalid @enderror" required placeholder="Your password" value="" >
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
                 </div>
             </div>
@@ -68,7 +90,11 @@
                         <p>No image found</p>
                     @endif 
                     <input type="hidden" id="profile_picture_data64" name="profile_picture_data64"> 
-                    <span>{{ $user->profile_picture }}</span>                                
+                    @if (isset($user->profile_picture))
+                    <span>{{ $user->profile_picture }}</span> 
+                    @else 
+                        <p></p>
+                    @endif                              
                 </div>
                 </div>
 
@@ -79,7 +105,11 @@
                     </div>
                 </div>
                 </div>
+                @if (isset($user->profile_picture))
                 <input id="upload-demo-image" type="hidden" value="/storage/users/{{ $user->id }}/profile_picture/{{ $user->profile_picture}}">
+                @else
+                    <p></p>
+                @endif
 
             </div>
                         

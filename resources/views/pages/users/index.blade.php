@@ -2,27 +2,30 @@
 @section('title','User Index')
 @section('content')
 
-        <div class="row">
-            {{-- For searching --}}
-            <div class="col-sm-4 form-group " >
-            <form action="/user" method="get">
-                <div class="input-group">
-                <input class="form-control" id="search" value placeholder="Search Name" name="search" type="search">
-                <div class="input-group-btn">
-                    <button type="submit" class="btn btn-warning"><i class="fa fa-search" aria-hidden="true"></i></button>
-                </div>
-                </div>
-            </form>
-            </div>
 
-            {{-- For creating new records --}}
-            <div class="col-sm-8 form-group pull-right" style= "float : right;">
-              <a class="btn btn-success" href="{{ route('users.create') }}" > <i class="icon ion-md-add"></i></a>     
-            </div>
+<div class="row">       
+  {{-- For searching --}}
+  <div class="search" style= "float : left;">
+    <form action="/user" method="get">
+      <div class="input-group">
+        <input class="form-control" id="search" value placeholder="Search Name" name="search" type="search">
+        <div class="input-group-btn">
+          <button type="submit" class="btn btn-warning"><i class="fa fa-search" aria-hidden="true"></i></button>
         </div>
-    
+      </div>
+    </form>
+  </div>
+
+  {{-- For creating new records --}}
+  <div class="button">
+  <div class="form-group" style= "float : right;">
+    <a class="btn btn-success" href="{{ route('users.create') }}" > <i class="icon ion-md-add"></i></a>     
+  </div>
+  </div>
+</div>{{-- Row end --}}
+      
         <div class="card">
-        <div class="card-body" style="background-color:#f9f9f9">
+        <div class="card-body">
           <div class="bs-example container-fluid" data-example-id="striped-table">
           <table class="table table-striped table-bordered table-hover">
               <thead>
@@ -45,9 +48,9 @@
                     <td>
                       <img src="/storage/users/{{ $user->id }}/profile_picture/{{ $user->profile_picture}}" height="70px" width="70px" class="rounded-circle">
                     <td>
-                      {{-- <a class = "btn" href="{{route('users.show',['id'=>$user->id])}}" >
+                      <a class = "btn" href="{{route('users.show',['id'=>$user->id])}}" >
                         <i class="fa fa-th-list xlarge"  style="color:RoyalBlue;" aria-hidden="true"></i>
-                      </a> --}}
+                      </a>
                       <a class = "btn" href="{{route('users.edit',['id'=>$user->id])}}" >
                         <i class="far fa-edit" style="color:Green;" aria-hidden="true"></i>
                       </a>

@@ -48,16 +48,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        request()->validate([
             'name' => 'required|max:100',
             'email' => 'required|email|unique:users,email',
             'password' =>'required|min:6',
             'profile_picture' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
-        if ($validator->fails()) 
-        {
-            return $validator->errors();            
-        }
 
         try 
         {
@@ -156,6 +152,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        request()->validate([
+            'name' => 'required|max:100',
+            'email' => 'required|email',
+            'password' =>'required|min:6',
+            'profile_picture' => 'image|mimes:jpeg,png,jpg,gif,svg',
+        ]);
+
         try
         {
         //Retrieve the user and update
@@ -220,11 +223,11 @@ class UserController extends Controller
         
         $user->update(); //persist the data
         \Toastr::success('User updated successfully', 'Update', ["positionClass" => "toast-top-center"]);  
-    }  
-    catch (\Exception $e) 
-    {
-        dd($e);
-    }   
+        }  
+        catch (\Exception $e) 
+        {
+            dd($e);
+        }   
         return redirect()->route('users.index');
     }
 
