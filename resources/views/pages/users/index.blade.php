@@ -42,11 +42,11 @@
                 @foreach($users as $user)
                   <tr class = "text-center">
                     <td>{{ $user->id }}</td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
+                    <td style="text-align:left;">{{ $user->name }}</td>
+                    <td style="text-align:left;">{{ $user->email }}</td>
                     <td>{{ $user->status }}</td> 
                     <td>
-                      <img src="/storage/users/{{ $user->id }}/profile_picture/{{ $user->profile_picture}}" height="70px" width="70px" class="rounded-circle">
+                      <img src="/storage/users/{{ $user->id }}/profile_picture/{{ $user->profile_picture}}" height="60px" width="60px" class="rounded-circle">
                     <td>
                       <a class = "btn" href="{{route('users.show',['id'=>$user->id])}}" >
                         <i class="fa fa-th-list xlarge"  style="color:RoyalBlue;" aria-hidden="true"></i>

@@ -16,8 +16,7 @@
             </div>
 
             {{-- For filtering with yajra --}}
-            
-            {{-- <div class="col-sm-4 form-group pull-center">  
+            {{-- <div class="filter">  
               <select class="form-control" onchange="form.submit()" name="priority">
                 <option disabled selected value >Select Priority</option>
                 <option value="Urgent">Urgent</option>
@@ -26,7 +25,6 @@
                 <option value="Low">Low</option>
               </select>
             </div> --}}
-            
 
             {{-- For creating new records --}}
             <div class="button">
@@ -54,7 +52,7 @@
                 @foreach($tasks as $task)
                   <tr class = "text-center">
                     <td>{{ $task->id }}</td>
-                    <td>{{ $task->details }}</td>
+                    <td style="text-align:left;">{{ $task->details }}</td>
                     <td>{{ $task->category_name->name }}</td>
                     <td>{{ $task->priority_name->name }}</td> 
                     <td>{{ $task->status }}</td>

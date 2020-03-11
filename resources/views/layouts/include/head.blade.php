@@ -43,3 +43,8 @@
 
     {{-- Croppie --}}
     <link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/croppie.css">
+
+    {{-- Custom css --}}
+    <link rel="stylesheet" href="{{ ('/custom.css') }}">
+
+    

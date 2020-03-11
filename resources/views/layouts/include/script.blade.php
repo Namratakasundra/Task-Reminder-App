@@ -4,6 +4,7 @@
     <script src="/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="/assets/js/dashforge.js"></script>
     <script src="/assets/js/croppie.js"></script>
+    <script src="/js/app.js"></script>
     <script>
       $(function(){
         'use strict'

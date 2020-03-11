@@ -16,7 +16,7 @@
             <div class="container-fluid">
                 <div class="content">
                 </div>
-                <link rel="stylesheet" href="{{ ('/custom.css') }}">
+                
                 
                 <!-- breadcrumb-->
                 {{-- @include('layouts.include.breadcrumb') --}}

@@ -9,14 +9,14 @@
         </div><!-- navbar-menu-header -->
         <ul class="nav navbar-menu">
 
-          <li class="nav-item active"><a href="{{ route('users.index') }}" class="nav-link"><i data-feather="box"></i> Users Table</a></li>
-          <li class="nav-item active"><a href="{{ route('categories.index') }}" class="nav-link"><i data-feather="archive"></i> Categoires</a></li>
-          <li class="nav-item active"><a href="{{ route('priorities.index') }}" class="nav-link"><i data-feather="box"></i> Priorities</a></li>
-          <li class="nav-item active"><a href="{{ route('tasks.index') }}" class="nav-link"><i data-feather="archive"></i> Task Table</a></li>
+          <li class="nav-item active"><a href="{{ route('users.index') }}" class="nav-link"><i data-feather="box"></i>Users</a></li>
+          <li class="nav-item active"><a href="{{ route('categories.index') }}" class="nav-link"><i data-feather="archive"></i>Categoires</a></li>
+          <li class="nav-item active"><a href="{{ route('priorities.index') }}" class="nav-link"><i data-feather="box"></i>Priorities</a></li>
+          <li class="nav-item active"><a href="{{ route('tasks.index') }}" class="nav-link"><i data-feather="archive"></i>Tasks</a></li>
         </ul>
 
         {{-- For login User --}}
-        <ul class="nav navbar">
+        {{-- <ul class="nav navbar">
           <li class="nav-item">
             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
           </li>
@@ -25,6 +25,6 @@
             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
           </li>
           @endif
-        </ul>
+        </ul> --}}
       </div><!-- nav-wrapper -->
      
