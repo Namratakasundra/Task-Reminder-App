@@ -2,7 +2,7 @@
 @section('title','Priority Index')
 @section('content')
 
-        <div class="row">
+        <div class="row-index">
             {{-- For searching --}}
             <div class="search" style= "float : left;">
               <form action="/priorities" method="get">

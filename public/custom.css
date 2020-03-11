@@ -8,9 +8,10 @@
     margin-bottom: 20px;
 }
 
-.row{
+.row-index{
     display: flow-root;
     margin-right: 10px;
+    margin-left: -15px;
 }
 
 .search{

@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="row">       
+<div class="row-index">       
   {{-- For searching --}}
   <div class="search" style= "float : left;">
     <form action="/user" method="get">
@@ -22,7 +22,7 @@
     <a class="btn btn-success" href="{{ route('users.create') }}" > <i class="icon ion-md-add"></i></a>     
   </div>
   </div>
-</div>{{-- Row end --}}
+</div>{{-- row-index end --}}
       
         <div class="card">
         <div class="card-body">
