@@ -4,8 +4,8 @@
 
         <div class="row">
             {{-- For searching --}}
-            <div class="search">
-            <div class="col-md-4 form-group" style= "float : left;">
+            
+            <div class="search" style= "float : left;">
             <form action="/tasks" method="get">
                 <div class="input-group">
                 <input class="form-control" id="search" value placeholder="Search your task here" name="search" type="search">
@@ -15,7 +15,7 @@
                 </div>
             </form>
             </div>
-            </div>
+            
 
             {{-- For filtering with yajra --}}
             
