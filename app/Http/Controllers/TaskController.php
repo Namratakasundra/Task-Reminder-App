@@ -17,16 +17,17 @@ class TaskController extends Controller
     public function index(Request $request)
     {
         //Show all tasks from the database and return to view
-        $tasks = Task::sortable();
-        $categories = Category::with(['category_name','Category','name']);
-        $priorities = Priority::with(['priority_name','Priority','name']);
+        $tasks = Task::with(['category','priority']);
+        $categories = Category::all();
+        $priorities = Priority::all();
+        $statuses = ['Pending', 'Completed', 'On Hold', 'Canceled'];
         $search = $request->query('search');
         if($request->search!= null)
         {
             $tasks = $tasks->where('details','like','%'.$search.'%');
         }
         $tasks = $tasks->paginate(\Config::get('constants.pagination_size'));
-        return view('pages.tasks.index', compact('tasks', 'categories', 'priorities'));
+        return view('pages.tasks.index', compact('tasks', 'categories', 'priorities', 'statuses'));
     }
 
     /**
@@ -58,7 +59,7 @@ class TaskController extends Controller
             $task->priority_id = $request->input('priority_id');
             $task->status = $request->input('status');
             $task->save(); 
-            \Toastr::success('Task created successfully', 'Create', ["positionClass" => "toast-top-center"]); 
+            \Toastr::success('Task created successfully', 'Create', ["positionClass" => "toast-top-right"]); 
         } 
         catch (\Exception $e) 
         {
@@ -112,7 +113,7 @@ class TaskController extends Controller
             $task->priority_id = $request->input('priority_id');
             $task->status = $request->input('status');
             $task->save(); //persist the data 
-            \Toastr::success('Task updated successfully', 'Update', ["positionClass" => "toast-top-center"]);       
+            \Toastr::success('Task updated successfully', 'Update', ["positionClass" => "toast-top-right"]);       
         } 
         catch (\Exception $e) 
         {
@@ -133,7 +134,7 @@ class TaskController extends Controller
         $task = Task::find($id);
         //delete
         $task->delete();
-        \Toastr::success('Task Deleted successfully', 'Delete', ["positionClass" => "toast-top-center"], ["background-color" => "red"]);
+        \Toastr::success('Task Deleted successfully', 'Delete', ["positionClass" => "toast-top-right"]);
         return redirect()->route('tasks.index');
     }
 }

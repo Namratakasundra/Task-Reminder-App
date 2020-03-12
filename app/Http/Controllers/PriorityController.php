@@ -55,7 +55,7 @@ class PriorityController extends Controller
             $priority->time = $request->input('time');
             $priority->status = $request->input('status');
             $priority->save(); //persist the data 
-            \Toastr::success('Priority created successfully', 'Create', ["positionClass" => "toast-top-center"]);
+            \Toastr::success('Priority created successfully', 'Create', ["positionClass" => "toast-top-right"]);
         }
         catch (\Exception $e) 
         {
@@ -109,7 +109,7 @@ class PriorityController extends Controller
             $priority->time = $request->input('time');
             $priority->status = $request->input('status');
             $priority->save(); //persist the data 
-            \Toastr::success('Priority updated successfully', 'Update', ["positionClass" => "toast-top-center"]);       
+            \Toastr::success('Priority updated successfully', 'Update', ["positionClass" => "toast-top-right"]);       
         } 
         catch (\Exception $e) 
         {
@@ -130,7 +130,7 @@ class PriorityController extends Controller
         $priority = Priority::find($id);
         //delete
         $priority->delete();
-        \Toastr::success('Priority Deleted successfully', 'Delete', ["positionClass" => "toast-top-center"], ["background-color" => "red"]);
+        \Toastr::success('Priority Deleted successfully', 'Delete', ["positionClass" => "toast-top-right"]);
         return redirect()->route('priorities.index');
     }
 }

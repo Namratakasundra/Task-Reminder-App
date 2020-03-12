@@ -44,7 +44,8 @@
     {{-- Croppie --}}
     <link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/croppie.css">
 
+    {{-- For Select2 dropdown --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+
     {{-- Custom css --}}
     <link rel="stylesheet" href="{{ ('/custom.css') }}">
-
-    

@@ -14,10 +14,9 @@ class User extends Authenticatable
     use Sortable;
     use SoftDeletes;
     
-    
     protected $table = 'users';
     protected $softDelete = true;
-    protected $fillable = ['name','email', 'password', 'status', 'profile_picture'];
+    protected $fillable = ['name', 'email', 'password', 'status', 'profile_picture'];
    
     protected $hidden = [
         'password', 'remember_token',

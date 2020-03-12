@@ -52,7 +52,7 @@ class CategoryController extends Controller
             $category->name = $request->input('name');
             $category->status = $request->input('status');
             $category->save(); //persist the data 
-            \Toastr::success('Category Created successfully', 'Create', ["positionClass" => "toast-top-center"]);       
+            \Toastr::success('Category Created successfully', 'Create', ["positionClass" => "toast-top-right"]);       
         } 
         catch (\Exception $e) 
         {
@@ -103,7 +103,7 @@ class CategoryController extends Controller
             $category->name = $request->input('name');
             $category->status = $request->input('status');
             $category->save(); //persist the data 
-            \Toastr::success('Category updated successfully', 'Update', ["positionClass" => "toast-top-center"]);          
+            \Toastr::success('Category updated successfully', 'Update', ["positionClass" => "toast-top-right"]);          
         } 
         catch (\Exception $e) 
         {
@@ -124,7 +124,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         //delete
         $category->delete();
-        \Toastr::success('Category Deleted successfully', 'Delete', ["positionClass" => "toast-top-center"], ["background-color" => "red"]);
+        \Toastr::success('Category Deleted successfully', 'Delete', ["positionClass" => "toast-top-right"]);
         return redirect()->route('categories.index');
     }
 }

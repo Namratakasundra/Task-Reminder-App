@@ -108,7 +108,7 @@ class UserController extends Controller
             }
            
             $user->update(); //persist the data 
-            \Toastr::success('User created successfully', 'Create', ["positionClass" => "toast-top-center"]);
+            \Toastr::success('User created successfully', 'Create', ["positionClass" => "toast-top-right"]);
         } 
         catch (\Exception $e) 
         {
@@ -222,7 +222,7 @@ class UserController extends Controller
         }
         
         $user->update(); //persist the data
-        \Toastr::success('User updated successfully', 'Update', ["positionClass" => "toast-top-center"]);  
+        \Toastr::success('User updated successfully', 'Update', ["positionClass" => "toast-top-right"]);  
         }  
         catch (\Exception $e) 
         {
@@ -243,7 +243,7 @@ class UserController extends Controller
         $user = User::find($id);
         //delete
         $user->delete();
-        \Toastr::success('User Deleted successfully', 'Delete', ["positionClass" => "toast-top-center"]);
+        \Toastr::success('User Deleted successfully', 'Delete', ["positionClass" => "toast-top-right"]);
         return redirect()->route('users.index');
     }
 }
