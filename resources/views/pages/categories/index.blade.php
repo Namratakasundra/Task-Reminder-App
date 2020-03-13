@@ -31,7 +31,7 @@
     {{-- To show Filter icon --}}
     <div class="filter-icon">
     <div class="form-group">
-        <button class="btn btn-success" id="filter" name="filter" type="submit" style="float : left;"
+        <button class="btn btn-secondary" id="filter" name="filter" type="submit" style="float : left;"
             aria-hidden="true"><i class="fas fa-filter"></i>
         </button>
     </div>

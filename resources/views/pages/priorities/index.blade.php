@@ -22,8 +22,8 @@
             <select class="form-control" id="status" name="status">
                 <option disabled selected value>By Status</option>
                 @foreach($statuses as $status)
-                <option value="{{ $status }}" @if(isset($priority) && $priority->status == $status) selected
-                    @elseif(!isset($priority) && $status == 'Active') selected @else @endif>{{ $status }}
+                <option value="{{ $status }}" @if(isset($request_status) && $request_status == $status) selected
+                    @endif>{{ $status }}
                 </option>
                 @endforeach
             </select>
@@ -31,7 +31,7 @@
     {{-- To show Filter icon --}}
     <div class="filter-icon">
     <div class="form-group">
-        <button class="btn btn-success" id="filter" name="filter" type="submit" style="float : left;"
+        <button class="btn btn-secondary" id="filter" name="filter" type="submit" style="float : left;"
             aria-hidden="true"><i class="fas fa-filter"></i>
         </button>
     </div>

@@ -17,6 +17,7 @@ class PriorityController extends Controller
         //Show all priorities from the database and return to view
         $priorities = Priority::sortable();
         $statuses = ['Active', 'Inactive'];
+        $request_status = $request->query('status');
         $search = $request->query('search');
         if($request->search!= null)
         {
@@ -25,10 +26,10 @@ class PriorityController extends Controller
         //To filter status
         if($request->status != null)
         {
-            $priorities= $priorities->where('status', $request->status);
+            $priorities= $priorities->where('status', $request_status);
         }
         $priorities = $priorities->paginate(\Config::get('constants.pagination_size'));
-        return view('pages.priorities.index',['priorities'=>$priorities], ['statuses'=>$statuses]);
+        return view('pages.priorities.index',compact('priorities', 'statuses', 'request_status'));
     }
 
     /**

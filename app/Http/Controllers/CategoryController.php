@@ -29,7 +29,7 @@ class CategoryController extends Controller
             $categories= $categories->where('status', $request_status);
         }
         $categories = $categories->paginate(\Config::get('constants.pagination_size'));
-        return view('pages.categories.index',compact('categories', 'statuses', 'request_status'));
+        return view('pages.categories.index', compact('categories', 'statuses', 'request_status'));
     }
 
     /**
