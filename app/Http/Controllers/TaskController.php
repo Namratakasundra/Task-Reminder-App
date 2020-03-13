@@ -17,14 +17,30 @@ class TaskController extends Controller
     public function index(Request $request)
     {
         //Show all tasks from the database and return to view
-        $tasks = Task::with(['category','priority']);
+        $tasks = Task::with(['category','priority'])->sortable();
         $categories = Category::all();
         $priorities = Priority::all();
         $statuses = ['Pending', 'Completed', 'On Hold', 'Canceled'];
         $search = $request->query('search');
+        //To search task
         if($request->search!= null)
         {
             $tasks = $tasks->where('details','like','%'.$search.'%');
+        }
+        //To filter category
+        if($request->category_id != null)
+        {
+            $tasks= $tasks->where('category_id', $request->category_id);
+        }
+        //To filter priority 
+        if($request->priority_id != null)
+        {
+            $tasks= $tasks->where('priority_id', $request->priority_id);
+        }
+        //To filter status
+        if($request->status != null)
+        {
+            $tasks= $tasks->where('status', $request->status);
         }
         $tasks = $tasks->paginate(\Config::get('constants.pagination_size'));
         return view('pages.tasks.index', compact('tasks', 'categories', 'priorities', 'statuses'));

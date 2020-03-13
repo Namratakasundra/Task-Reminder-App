@@ -16,13 +16,20 @@ class CategoryController extends Controller
     {
         //Show all categories from the database and return to view
         $categories = Category::sortable();
+        $statuses = ['Active', 'Inactive'];
+        $request_status = $request->query('status');
         $search = $request->query('search');
         if($request->search!= null)
         {
             $categories = $categories->where('name','like','%'.$search.'%');
         }
+        //To filter status
+        if($request->status != null)
+        {
+            $categories= $categories->where('status', $request_status);
+        }
         $categories = $categories->paginate(\Config::get('constants.pagination_size'));
-        return view('pages.categories.index',['categories'=>$categories]);
+        return view('pages.categories.index',compact('categories', 'statuses', 'request_status'));
     }
 
     /**

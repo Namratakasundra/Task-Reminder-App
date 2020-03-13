@@ -66,7 +66,7 @@
                             <option disabled selected value>Select Status</option>
                             @foreach($statuses  as $status)
                                 <option value="{{ $status }}" @if(isset($user) && $user->status == $status) selected @elseif(!isset($user) && $status == 'Active') selected @else @endif>{{ $status }}
-                            </option>
+                                </option>
                             @endforeach
                         </select>
                     @if ($errors->has('status'))

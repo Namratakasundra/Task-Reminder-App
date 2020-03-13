@@ -16,24 +16,21 @@
     </form>
   </div>
 
-  <div class="filter-icon">
-    <i class="fas fa-filter"></i>
-  </div>
-
   {{-- Filtering with category --}}
   <div class="filter">  
-  <select class="form-control" id="category" name="category">
-    <option disabled selected value >By Category</option>
-    @foreach($categories as $category)
-      <option value="{{ $category->id }}" @if(isset($task) && $task->category_id == $category->id) selected @endif>{{ $category->name }}
-      </option>
-    @endforeach
-  </select>
+  <form action="/tasks" method="GET">
+    <select class="form-control" id="category_id" name="category_id">
+      <option disabled selected value >By Category</option>
+      @foreach($categories as $category)
+        <option value="{{ $category->id }}" @if(isset($task) && $task->category_id == $category->id) selected @endif>{{ $category->name }}
+        </option>
+      @endforeach
+    </select>
   </div>
 
   {{-- For filtering with priority --}}
   <div class="filter">  
-  <select class="form-control" id="priority" name="priority">
+  <select class="form-control" id="priority_id" name="priority_id">
     <option disabled selected value >By Priority</option>
     @foreach($priorities as $priority)
       <option value="{{ $priority->id }}" @if(isset($task) && $task->priority_id == $priority->id) selected @endif>{{ $priority->name }}
@@ -53,12 +50,22 @@
   </select>
   </div>
 
+  {{-- To show Filter icon --}}
+  <div class="filter-icon">
+  <div class="form-group">
+    <button class="btn btn-success" id="filter" name="filter" type="submit" style="float : left;" aria-hidden="true"><i class="fas fa-filter"></i>
+    </button>
+  </div>
+  </div>
+  </form>
+
   {{-- For creating new records --}}
   <div class="button">
   <div class="form-group" style= "float : right;">
     <a class="btn btn-success" href="{{ route('tasks.create') }}" > <i class="icon ion-md-add"></i></a>     
   </div>
   </div> 
+
 </div>{{-- Row-index end --}}
     
   <div class="card">

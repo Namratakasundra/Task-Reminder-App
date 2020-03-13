@@ -16,6 +16,27 @@
     </form>
   </div>
 
+  {{-- Filtering with status --}}
+  <div class="filter">  
+    <form action="/user" method="GET">
+      <select class="form-control" id="status" name="status">
+        <option disabled selected value >By Status</option>
+        @foreach($statuses  as $status)
+        <option value="{{ $status }}" @if(isset($user) && $user->status == $status) selected @elseif(!isset($user) && $status == 'Active') selected @else @endif>{{ $status }}
+        </option>
+        @endforeach
+      </select>
+  </div>
+      {{-- To show Filter icon --}}
+      <div class="filter-icon">
+      <div class="form-group">
+        <button class="btn btn-success" id="filter" name="filter" type="submit" style="float : left;" aria-hidden="true"><i class="fas fa-filter"></i>
+        </button>
+      </div>
+      </div>
+    </form>
+  
+
   {{-- For creating new records --}}
   <div class="button">
   <div class="form-group" style= "float : right;">

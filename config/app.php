@@ -168,6 +168,8 @@ return [
         Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
         //For Image intervation
         Intervention\Image\ImageServiceProvider::class,
+        //For yajra filtering
+        Yajra\DataTables\DataTablesServiceProvider::class,
         
 
         /*
@@ -238,6 +240,8 @@ return [
         'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
         //For Image intervation
         'Image' => Intervention\Image\Facades\Image::class,
+        //For yajra filtering
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 
     ],
 

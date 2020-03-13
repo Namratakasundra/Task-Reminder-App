@@ -22,5 +22,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 <script src="/assets/js/select2.js"></script>
 
+{{-- For Yajra filtering --}}
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="/assets/js/filter.js"></script>
 
 
