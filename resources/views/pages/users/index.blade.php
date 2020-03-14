@@ -22,10 +22,10 @@
       <select class="form-control" id="status" name="status">
         <option disabled selected value >By Status</option>
         @foreach($statuses as $status)
-            <option value="{{ $status }}" @if(isset($request_status) && $request_status == $status) selected
-              @endif>{{ $status }}
-            </option>
-            @endforeach
+          <option value="{{ $status }}" @if(isset($request_status) && $request_status == $status) selected
+            @endif>{{ $status }}
+          </option>
+        @endforeach
       </select>
   </div>
       {{-- To show Filter icon --}}
@@ -47,7 +47,7 @@
   {{-- For creating new records --}}
   <div class="button">
   <div class="form-group" style= "float : right;">
-    <a class="btn btn-success" href="{{ route('users.create') }}" > <i class="icon ion-md-add"></i></a>     
+    <a class="btn btn-primary" href="{{ route('users.create') }}" > <i class="icon ion-md-add"></i></a>     
   </div>
   </div>
 </div>{{-- row-index end --}}

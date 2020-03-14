@@ -7,25 +7,14 @@
           <a href="{{ route('tasks.index') }}" class="df-logo">Task<span>Reminder</span></a>
           <a id="mainMenuClose" href=""><i data-feather="x"></i></a>
         </div><!-- navbar-menu-header -->
+        
         <ul class="nav navbar-menu">
-
           <li class="nav-item active"><a href="{{ route('users.index') }}" class="nav-link"><i data-feather="box"></i>Users</a></li>
-          <li class="nav-item active"><a href="{{ route('categories.index') }}" class="nav-link"><i data-feather="archive"></i>Categoires</a></li>
+          <li class="nav-item active"><a href="{{ route('categories.index') }}" class="nav-link"><i data-feather="box"></i>Categoires</a></li>
           <li class="nav-item active"><a href="{{ route('priorities.index') }}" class="nav-link"><i data-feather="box"></i>Priorities</a></li>
-          <li class="nav-item active"><a href="{{ route('tasks.index') }}" class="nav-link"><i data-feather="archive"></i>Tasks</a></li>
+          <li class="nav-item active"><a href="{{ route('tasks.index') }}" class="nav-link"><i data-feather="box"></i>Tasks</a></li>
         </ul>
-
-        {{-- For login User --}}
-        {{-- <ul class="nav navbar">
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-          </li>
-          @if (Route::has('register'))
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-          </li>
-          @endif
-        </ul> --}}
+      </div><!-- nav-wrapper -->
 
         <div class="navbar-right">
             <div class="dropdown dropdown-profile">
@@ -53,5 +42,5 @@
           </div><!-- dropdown -->
       </div><!-- navbar-right -->
 
-      </div><!-- nav-wrapper -->
+      
      

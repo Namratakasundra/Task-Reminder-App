@@ -21,6 +21,9 @@ class TaskController extends Controller
         $categories = Category::all();
         $priorities = Priority::all();
         $statuses = ['Pending', 'Completed', 'On Hold', 'Canceled'];
+        $request_status = $request->query('status');
+        $request_category = $request->query('category_id');
+        $request_priority = $request->query('priority_id');
         $search = $request->query('search');
         //To search task
         if($request->search!= null)
@@ -30,20 +33,20 @@ class TaskController extends Controller
         //To filter category
         if($request->category_id != null)
         {
-            $tasks= $tasks->where('category_id', $request->category_id);
+            $tasks= $tasks->where('category_id', $request_category);
         }
         //To filter priority 
         if($request->priority_id != null)
         {
-            $tasks= $tasks->where('priority_id', $request->priority_id);
+            $tasks= $tasks->where('priority_id', $request_priority);
         }
         //To filter status
         if($request->status != null)
         {
-            $tasks= $tasks->where('status', $request->status);
+            $tasks= $tasks->where('status', $request_status);
         }
         $tasks = $tasks->paginate(\Config::get('constants.pagination_size'));
-        return view('pages.tasks.index', compact('tasks', 'categories', 'priorities', 'statuses'));
+        return view('pages.tasks.index', compact('tasks', 'categories', 'priorities', 'statuses', 'request_category', 'request_priority', 'request_status'));
     }
 
     /**

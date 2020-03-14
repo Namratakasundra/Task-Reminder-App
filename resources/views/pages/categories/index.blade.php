@@ -46,7 +46,7 @@
     {{-- For creating new records --}}
     <div class="button">
         <div class="form-group" style="float : right;">
-            <a class="btn btn-success" href="{{ route('categories.create') }}"> <i class="icon ion-md-add"></i></a>
+            <a class="btn btn-primary" href="{{ route('categories.create') }}"> <i class="icon ion-md-add"></i></a>
         </div>
     </div>
 </div>

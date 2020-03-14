@@ -22,7 +22,7 @@
     <select class="form-control" id="category_id" name="category_id">
       <option disabled selected value >By Category</option>
       @foreach($categories as $category)
-        <option value="{{ $category->id }}" @if(isset($task) && $task->category_id == $category->id) selected @endif>{{ $category->name }}
+        <option value="{{ $category->id }}" @if($request_category == $category->id) selected @endif>{{ $category->name }}
         </option>
       @endforeach
     </select>
@@ -31,9 +31,9 @@
   {{-- For filtering with priority --}}
   <div class="filter">  
   <select class="form-control" id="priority_id" name="priority_id">
-    <option disabled selected value >By Priority</option>
+    <option disabled selected value >By Priority</option> 
     @foreach($priorities as $priority)
-      <option value="{{ $priority->id }}" @if(isset($task) && $task->priority_id == $priority->id) selected @endif>{{ $priority->name }}
+      <option value="{{ $priority->id }}" @if($request_priority == $priority->id) selected @endif>{{ $priority->name }}
       </option>
     @endforeach 
   </select>
@@ -43,8 +43,9 @@
   <div class="filter">  
   <select class="form-control" id="status" name="status">
     <option disabled selected value >By Status</option>
-    @foreach($statuses  as $status)
-      <option value="{{ $status }}" @if(isset($task) && $task->status == $status) selected @elseif(!isset($task) && $status == 'Active') selected @else @endif>{{ $status }}
+    @foreach($statuses as $status)
+      <option value="{{ $status }}" @if(isset($request_status) && $request_status == $status) selected
+        @endif>{{ $status }}
       </option>
     @endforeach
   </select>
@@ -69,7 +70,7 @@
   {{-- For creating new records --}}
   <div class="button">
   <div class="form-group" style= "float : right;">
-    <a class="btn btn-primary " href="{{ route('tasks.create') }}" > <i class="icon ion-md-add"></i></a>     
+    <a class="btn btn-primary" href="{{ route('tasks.create') }}" > <i class="icon ion-md-add"></i></a>     
   </div>
   </div> 
 
