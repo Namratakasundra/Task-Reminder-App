@@ -3,11 +3,11 @@
 <script src="/lib/feather-icons/feather.min.js"></script>
 <script src="/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script src="/assets/js/dashforge.js"></script>
-  <script>
+  {{-- <script>
     $(function(){
       'use strict'
     });
-  </script>
+  </script> --}}
 
 <!-- toaster scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
