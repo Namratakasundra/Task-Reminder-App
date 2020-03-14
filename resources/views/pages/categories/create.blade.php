@@ -2,7 +2,6 @@
 @section('title','Create Category')
 @section('content')
   
-
     <form  action="{{ isset($category) ? route('categories.update', ['id' => $category->id]) : route('categories.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
         <div class="card">
@@ -34,12 +33,11 @@
                         @endif
                 </div>
             </div>
-                        
      
                 <div class="form-group text-right">
                 <div class="button">
                     <a href="/categories" class="btn btn-warning mg-r-1">Cancel</a>
-                    <button type="submit" class="btn btn-success">@if (isset($category->name))       
+                    <button type="submit" class="btn btn-success">@if(isset($category->name))       
                         Update
                         @else 
                         Save

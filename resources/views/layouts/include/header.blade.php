@@ -26,5 +26,32 @@
           </li>
           @endif
         </ul> --}}
+
+        <div class="navbar-right">
+            <div class="dropdown dropdown-profile">
+              <a href="" class="dropdown-link" data-toggle="dropdown" data-display="static">
+                  <div class="avatar avatar-sm"><img
+                          src="/storage/users/{{ Auth::user()->id }}/profile_picture/{{ Auth::user()->profile_picture}}" 
+                          class="rounded-circle" alt=""></div>
+              </a><!-- dropdown-link -->
+              <div class="dropdown-menu dropdown-menu-right tx-13">
+                  <div class="avatar avatar-lg mg-b-15"><img
+                          src="/storage/users/{{ Auth::user()->id }}/profile_picture/{{ Auth::user()->profile_picture}}" 
+                          class="rounded-circle" alt=""></div>
+                  <h6 class="tx-semibold mg-b-5">{{ Auth::user()->name }}</h6>
+                  <p class="mg-b-25 tx-12 tx-color-03">Administrator</p>
+                  <a href="page-profile-view.html" class="dropdown-item"><i data-feather="user"></i> View Profile</a>
+                  <a href="page-profile-view.html" class="dropdown-item"><i data-feather="user"></i> Edit Profile</a>
+                  <div class="dropdown-divider"></div>
+                  <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();"><i data-feather="log-out"></i>Logout
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
+              </div><!-- dropdown-menu -->
+          </div><!-- dropdown -->
+      </div><!-- navbar-right -->
+
       </div><!-- nav-wrapper -->
      

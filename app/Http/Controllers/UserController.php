@@ -68,7 +68,7 @@ class UserController extends Controller
             //input method is used to get the value of input with its name specified
             $user->name = $request->input('name');
             $user->email = $request->input('email');
-            $user->password = $request->input('password');
+            $user->password = bcrypt($request->input('password'));
             $user->status = $request->input('status');
             $user->save(); 
             if($request->hasfile('profile_picture'))

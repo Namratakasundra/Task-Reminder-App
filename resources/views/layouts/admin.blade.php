@@ -19,7 +19,7 @@
                 
                 
                 <!-- breadcrumb-->
-                {{-- @include('layouts.include.breadcrumb') --}}
+                @include('layouts.include.breadcrumb')
                 
                 @yield('content')   
             </div><!-- container -->

@@ -39,8 +39,7 @@
     {{-- To show Reset icon --}}
     <div class="filter-icon">
         <div class="form-group">
-            <button class="btn btn-secondary" action="/priorities"><i class="fas fa-redo"></i>
-            </button>
+            <a class="btn btn-secondary" href="{{ route('priorities.index') }}"> <i class="fas fa-redo"></i></a>
         </div>
     </div>
     </form>
