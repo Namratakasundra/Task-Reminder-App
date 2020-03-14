@@ -9,7 +9,7 @@
             <div class="input-group">
                 <input class="form-control" id="search" value placeholder="Search Name" name="search" type="search">
                 <div class="input-group-btn">
-                    <button type="submit" class="btn btn-warning"><i class="fa fa-search"
+                  <button type="submit" class="btn btn-primary"><i class="fa fa-search"
                             aria-hidden="true"></i></button>
                 </div>
             </div>
@@ -30,11 +30,17 @@
     </div>
     {{-- To show Filter icon --}}
     <div class="filter-icon">
-    <div class="form-group">
-        <button class="btn btn-secondary" id="filter" name="filter" type="submit" style="float : left;"
-            aria-hidden="true"><i class="fas fa-filter"></i>
-        </button>
+        <div class="form-group">
+            <button class="btn btn-secondary" id="filter" name="filter" type="submit" style="float : left;" aria-hidden="true"><i class="fas fa-filter"></i>
+            </button>
+        </div>
     </div>
+    {{-- To show Reset icon --}}
+    <div class="filter-icon">
+        <div class="form-group">
+            <button class="btn btn-secondary" action="/categories"><i class="fas fa-redo"></i>
+            </button>
+        </div>
     </div>
     </form>
 

@@ -21,6 +21,7 @@ class UserController extends Controller
         //Show all users from the database and return to view
         $users = User::sortable();
         $statuses = ['Pending', 'Active', 'Inactive', 'Rejected', 'Blocked'];
+        $request_status = $request->query('status');
         $search = $request->query('search');
         if($request->search!= null)
         {
@@ -29,10 +30,10 @@ class UserController extends Controller
         //To filter status
         if($request->status != null)
         {
-            $users= $users->where('status', $request->status);
+            $users= $users->where('status', $request_status);
         }
         $users = $users->paginate(\Config::get('constants.pagination_size'));
-        return view('pages.users.index',compact('users', 'statuses'));
+        return view('pages.users.index',compact('users', 'statuses', 'request_status'));
     }
 
     /**

@@ -10,7 +10,7 @@
       <div class="input-group">
         <input class="form-control" id="search" value placeholder="Search your task here" name="search" type="search" style="background-color: #f4f7fa;">
         <div class="input-group-btn">
-          <button type="submit" class="btn btn-warning"><i class="fa fa-search" aria-hidden="true"></i></button>
+          <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
         </div>
       </div>
     </form>
@@ -57,12 +57,20 @@
     </button>
   </div>
   </div>
+
+  {{-- To show Reset icon --}}
+  <div class="filter-icon">
+    <div class="form-group">
+      <button class="btn btn-secondary" action="/tasks"><i class="fas fa-redo"></i>
+      </button>
+    </div>
+  </div>
   </form>
 
   {{-- For creating new records --}}
   <div class="button">
   <div class="form-group" style= "float : right;">
-    <a class="btn btn-success" href="{{ route('tasks.create') }}" > <i class="icon ion-md-add"></i></a>     
+    <a class="btn btn-primary " href="{{ route('tasks.create') }}" > <i class="icon ion-md-add"></i></a>     
   </div>
   </div> 
 

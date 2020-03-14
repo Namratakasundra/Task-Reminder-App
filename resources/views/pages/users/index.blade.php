@@ -10,7 +10,7 @@
       <div class="input-group">
         <input class="form-control" id="search" value placeholder="Search Name" name="search" type="search">
         <div class="input-group-btn">
-          <button type="submit" class="btn btn-warning"><i class="fa fa-search" aria-hidden="true"></i></button>
+          <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
         </div>
       </div>
     </form>
@@ -21,10 +21,11 @@
     <form action="/user" method="GET">
       <select class="form-control" id="status" name="status">
         <option disabled selected value >By Status</option>
-        @foreach($statuses  as $status)
-        <option value="{{ $status }}" @if(isset($user) && $user->status == $status) selected @elseif(!isset($user) && $status == 'Active') selected @else @endif>{{ $status }}
-        </option>
-        @endforeach
+        @foreach($statuses as $status)
+            <option value="{{ $status }}" @if(isset($request_status) && $request_status == $status) selected
+              @endif>{{ $status }}
+            </option>
+            @endforeach
       </select>
   </div>
       {{-- To show Filter icon --}}
@@ -33,6 +34,13 @@
         <button class="btn btn-secondary" id="filter" name="filter" type="submit" style="float : left;" aria-hidden="true"><i class="fas fa-filter"></i>
         </button>
       </div>
+      </div>
+      {{-- To show Reset icon --}}
+      <div class="filter-icon">
+        <div class="form-group">
+          <button class="btn btn-secondary" action="/user"><i class="fas fa-redo"></i>
+          </button>
+        </div>
       </div>
     </form>
   
