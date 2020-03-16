@@ -1,6 +1,18 @@
 @extends('layouts.admin')
-@section('breadcrumb-link','Create Category')
 @section('content')
+
+<h4>@if (isset($category->name))
+    @php($title = 'Edit Category')
+    @else
+    @php($title = 'Create Category')
+    @endif
+</h4>
+@section('breadcrumb-link')
+		<li class="breadcrumb-item active" aria-current="page">
+			<a href="{{ route('categories.index') }}">Categories</a>
+		</li>    
+		<li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
+@endsection
   
     <form  action="{{ isset($category) ? route('categories.update', ['id' => $category->id]) : route('categories.store') }}" method="POST" enctype="multipart/form-data">
     @csrf

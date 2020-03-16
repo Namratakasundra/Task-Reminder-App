@@ -1,8 +1,19 @@
 @extends('layouts.admin')
-@section('breadcrumb-link','Create Priority')
 @section('content')
-  
 
+<h4>@if (isset($priority->name))
+    @php($title = 'Edit Priority')
+    @else
+    @php($title = 'Create Priority')
+    @endif
+</h4>
+@section('breadcrumb-link')
+		<li class="breadcrumb-item active" aria-current="page">
+			<a href="{{ route('priorities.index') }}">Priorities</a>
+		</li>    
+		<li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
+@endsection
+  
     <form  action="{{ isset($priority) ? route('priorities.update', ['id' => $priority->id]) : route('priorities.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
         <div class="card">

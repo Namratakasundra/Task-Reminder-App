@@ -1,6 +1,11 @@
 @extends('layouts.admin')
-@section('breadcrumb-link','Tasks')
 @section('content')
+
+@section('breadcrumb-link')
+		<li class="breadcrumb-item active" aria-current="page">
+			Tasks
+		</li>    
+@endsection
 
 <div class="row-index">
   

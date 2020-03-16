@@ -1,6 +1,18 @@
 @extends('layouts.admin')
-@section('breadcrumb-link','Create Task')
 @section('content')
+
+<h4>@if (isset($task->details))
+    @php($title = 'Edit Task')
+    @else
+    @php($title = 'Create Task')
+    @endif
+</h4>
+@section('breadcrumb-link')
+		<li class="breadcrumb-item active" aria-current="page">
+			<a href="{{ route('tasks.index') }}">Tasks</a>
+		</li>    
+		<li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
+@endsection
 
 
 <form action="{{ isset($task) ? route('tasks.update', ['id' => $task->id]) : route('tasks.store') }}" method="POST"

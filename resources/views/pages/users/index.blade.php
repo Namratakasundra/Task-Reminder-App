@@ -1,7 +1,13 @@
 @extends('layouts.admin')
-@section('breadcrumb-link','Users')
 @section('content')
 
+{{-- @push('User Index', YieldTitle($title)) --}}
+
+@section('breadcrumb-link')
+		<li class="breadcrumb-item active" aria-current="page">
+			Users
+		</li>
+@endsection
 
 <div class="row-index">       
   {{-- For searching --}}

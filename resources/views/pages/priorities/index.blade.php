@@ -1,6 +1,11 @@
 @extends('layouts.admin')
-@section('breadcrumb-link','Priorities')
 @section('content')
+
+@section('breadcrumb-link')
+		<li class="breadcrumb-item active" aria-current="page">
+			Priorities
+		</li>    
+@endsection
 
 <div class="row-index">
     {{-- For searching --}}

@@ -1,7 +1,19 @@
 @extends('layouts.admin')
-@section('breadcrumb-link','Create User')
 @section('content')
-  
+
+<h4>@if (isset($user->name))
+    @php($title = 'Edit User')
+    @else
+    @php($title = 'Create User')
+    @endif
+</h4>
+@section('breadcrumb-link')
+		<li class="breadcrumb-item active" aria-current="page">
+			<a href="{{ route('users.index') }}">Users</a>
+		</li>    
+		<li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
+@endsection
+
 <script src="/lib/jquery/jquery.min.js"></script>
 
 {{-- <ul>

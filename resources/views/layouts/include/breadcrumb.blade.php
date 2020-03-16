@@ -9,16 +9,12 @@
 
 <div class="d-sm-flex align-items-center justify-content-between breadcrumbs">
         <div>
-        <nav aria-label="breadcrumb">
+            <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-                <li class="breadcrumb-item"><a href="\home">Dashboard</a></li>
-                <li class="breadcrumb-item active">@yield('breadcrumb-link')</li>
-                {{-- <li class="breadcrumb-item active"><a href="" aria-current="page">@yield('breadcrumb-title')</a></li> --}}
+                    <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
+                    @yield('breadcrumb-link')
                 </ol>
-        </nav>
-        <h4 class="mg-b-0 tx-spacing--1">@yield('breadcrumb-title')</h4>
-        </div>
-        <div class="d-none d-md-block">
-        @yield('breadcrumb-btn')
+            </nav>
+            <h4 class="mg-b-0 tx-spacing--1">@yield('breadcrumb-title')</h4>
         </div>
 </div>
