@@ -56,7 +56,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'name' => 'required|max:100',
+            'name' => 'required|max:100|regex:/(^([a-zA-z]+)(\d+)?$)/u',
             'email' => 'required|email|unique:users,email',
             'password' =>'required|min:6',
             'profile_picture' => 'image|mimes:jpeg,png,jpg,gif,svg',

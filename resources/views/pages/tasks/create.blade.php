@@ -36,6 +36,11 @@
                                     </option>
                                     @endforeach
                                 </select>
+                                @if ($errors->has('category_id'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('category_id') }}</strong>
+                                </span>
+                                @endif
                             </div>
                         </div>
 
@@ -52,6 +57,11 @@
                                     </option>
                                     @endforeach
                                 </select>
+                                @if ($errors->has('priority_id'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('priority_id') }}</strong>
+                                </span>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -65,7 +75,7 @@
                                 <option disabled selected value>Select Status</option>
                                 @foreach($statuses as $status)
                                 <option value="{{ $status }}" @if(isset($task) && $task->status == $status) selected
-                                    @elseif(!isset($task) && $status == 'Active') selected @else @endif>{{ $status }}
+                                    @elseif(!isset($task) && $status == 'Pending') selected @else @endif>{{ $status }}
                                 </option>
                                 @endforeach
                             </select>
