@@ -1,5 +1,7 @@
 @extends('layouts.admin')
-@section('breadcrumb','Category Index')
+@section('breadcrumb-link','Categories')
+
+{{-- @title('','') --}}
 @section('content')
 
 <div class="row-index">

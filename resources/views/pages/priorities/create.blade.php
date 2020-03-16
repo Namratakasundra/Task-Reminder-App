@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Create Priority')
+@section('breadcrumb-link','Create Priority')
 @section('content')
   
 

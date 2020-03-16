@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Create User')
+@section('breadcrumb-link','Create User')
 @section('content')
   
 <script src="/lib/jquery/jquery.min.js"></script>

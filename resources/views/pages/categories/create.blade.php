@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Create Category')
+@section('breadcrumb-link','Create Category')
 @section('content')
   
     <form  action="{{ isset($category) ? route('categories.update', ['id' => $category->id]) : route('categories.store') }}" method="POST" enctype="multipart/form-data">

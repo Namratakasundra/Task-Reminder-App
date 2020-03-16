@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Show User')
+@section('breadcrumb-link','Show User')
 @section('content')
 
 <div class="card">

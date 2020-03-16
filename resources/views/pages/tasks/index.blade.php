@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Task Index')
+@section('breadcrumb-link','Tasks')
 @section('content')
 
 <div class="row-index">
