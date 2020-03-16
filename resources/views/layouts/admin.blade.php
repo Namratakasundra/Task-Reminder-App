@@ -4,7 +4,7 @@
 <head>
     @include('layouts.include.head')
 
-    <title>@stack('title')</title>
+    <title>@yield('title')</title>
 </head>
 
 <body>

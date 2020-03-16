@@ -24,8 +24,8 @@
     <meta name="description" content="Task Reminder App">
     <meta name="author" content="ThemePixels">
     
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
+    <!-- Logo -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/logo.png">
     <title>Task Reminder App</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     

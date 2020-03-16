@@ -3,6 +3,9 @@
 
 {{-- @push('User Index', YieldTitle($title)) --}}
 
+<title>@yield('title')</title>
+<meta name="users" content="@yield('users')">
+
 @section('breadcrumb-link')
 		<li class="breadcrumb-item active" aria-current="page">
 			Users
