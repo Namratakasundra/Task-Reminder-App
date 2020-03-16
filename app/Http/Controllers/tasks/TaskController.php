@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\tasks;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Task;
 use App\Category;
 use App\Priority;

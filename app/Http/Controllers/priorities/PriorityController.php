@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\priorities;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Priority;
 
 class PriorityController extends Controller
