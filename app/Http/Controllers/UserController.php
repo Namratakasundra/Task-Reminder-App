@@ -88,13 +88,7 @@ class UserController extends Controller
                 $path = 'users/' . $user->id . '/' .'profile_picture'. '/';
                 $app_path = storage_path($public_storage_path . $path);
 
-                if (!file_exists($app_path)) {
-                    \File::makeDirectory($app_path, 0777, true);
-                } else {
-                    if ($delete_directory) {
-                        \File::deleteDirectory($app_path, true);
-                    }
-                }
+                
                 file_put_contents($app_path .$filename, $data);
 
                 $sizes = [64, 128, 256, 512];
@@ -172,7 +166,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        $user->password = bcrypt($request->input('password'));;
         $user->status = $request->input('status');
         $user->save(); //persist the data
         if($request->hasfile('profile_picture'))
