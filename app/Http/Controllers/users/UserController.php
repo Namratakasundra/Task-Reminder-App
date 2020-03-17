@@ -91,7 +91,9 @@ class UserController extends Controller
 
                 if (!file_exists($app_path)) {
                     \File::makeDirectory($app_path, 0777, true);
-                } else {
+                } 
+                else 
+                {
                     if ($delete_directory) {
                         \File::deleteDirectory($app_path, true);
                     }
@@ -206,7 +208,9 @@ class UserController extends Controller
             $app_path = storage_path($public_storage_path . $path);
             if (!file_exists($app_path)) {
                 \File::makeDirectory($app_path, 0777, true);
-            } else {
+            } 
+            else 
+            {
                 if ($delete_directory) {
                     \File::deleteDirectory($app_path, true);
                 }
