@@ -2,7 +2,7 @@
 @section('content')
 
 @php($title = 'User Index')
-@push('User Index', yieldTitle($title))
+@push(yieldTitle($title), 'User Index')
 
 @section('breadcrumb-link')
 		<li class="breadcrumb-item active" aria-current="page">

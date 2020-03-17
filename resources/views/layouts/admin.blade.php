@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <title>@yield('title')</title>
     @include('layouts.include.head')
+    <title>@stack('title')</title>
 </head>
 
 <body>
