@@ -35,7 +35,7 @@
         <p class="mg-b-25 tx-12 tx-color-03">Administrator</p>
         <a href="{{route('users.show',['id'=>Auth::user()->id])}}" class="dropdown-item"><i data-feather="user"></i> View Profile</a>
         <a href="{{route('users.edit',['id'=>Auth::user()->id])}}" class="dropdown-item"><i data-feather="user"></i> Edit Profile</a>
-        <a href="{{route('auth.passwords.reset',['id'=>Auth::user()->id])}}" class="dropdown-item"><i data-feather="user"></i> Change Password</a>
+        <a href="{{route('users.edit',['id'=>Auth::user()->id])}}" class="dropdown-item"><i data-feather="user"></i> Change Password</a>
         <div class="dropdown-divider"></div>
         <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
       document.getElementById('logout-form').submit();"><i data-feather="log-out"></i>Logout

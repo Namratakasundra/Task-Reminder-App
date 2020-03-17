@@ -2,9 +2,8 @@
 <html lang="en">
 
 <head>
-    @include('layouts.include.head')
-
     <title>@yield('title')</title>
+    @include('layouts.include.head')
 </head>
 
 <body>
