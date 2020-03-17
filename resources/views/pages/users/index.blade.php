@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 @section('content')
-
+{{-- 
 @php($title = 'User Index')
-@push(yieldTitle($title), 'User Index')
+@push(yieldTitle($title), 'User Index') --}}
 
 @section('breadcrumb-link')
 		<li class="breadcrumb-item active" aria-current="page">
@@ -13,10 +13,10 @@
 <div class="row-index">       
   {{-- For searching --}}
   <div class="search" style= "float : left;">
-    <form action="/user" method="get">
+    <form action="{{route('users.index')}}" method="get">
       <div class="input-group">
         <input class="form-control" id="search" value placeholder="Search Name" name="search" type="search">
-        <div class="input-group-btn">
+        <div class="search-button">
           <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
         </div>
       </div>
@@ -25,7 +25,7 @@
 
   {{-- Filtering with status --}}
   <div class="filter">  
-    <form action="/user" method="GET">
+    <form action="{{route('users.index')}}" method="GET">
       <select class="form-control" id="status" name="status">
         <option disabled selected value >By Status</option>
         @foreach($statuses as $status)
@@ -58,10 +58,8 @@
   </div>
   </div>
 </div>{{-- row-index end --}}
-      
-        <div class="card">
-        <div class="card-body">
-          <div class="bs-example container-fluid" data-example-id="striped-table">
+ 
+        <div class="bs-example container-fluid-1" data-example-id="striped-table">
           <table class="table table-striped table-bordered table-hover">
               <thead>
                 <tr>
@@ -96,11 +94,9 @@
                   </tr>
                 @endforeach
             </tbody>
-            
           </table>
         </div>
-      </div><!-- card-body -->
-      </div><!-- card -->
+      
   
   </div>
 

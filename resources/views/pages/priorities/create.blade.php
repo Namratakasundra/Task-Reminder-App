@@ -83,7 +83,7 @@
                        
                 <div class="form-group text-right">
                 <div class="button">
-                    <a href="/priorities" class="btn btn-warning mg-r-1">Cancel</a>
+                    <a href="{{route('priorities.index')}}" class="btn btn-warning mg-r-1">Cancel</a>
                     <button type="submit" class="btn btn-success">@if (isset($priority->name))       
                         Update
                         @else 

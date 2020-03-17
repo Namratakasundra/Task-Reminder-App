@@ -3,6 +3,11 @@
     background-color: snow;
 }
 
+.container-fluid-1{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 .content {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -11,13 +16,19 @@
 .row-index{
     display: flex;
     margin-right: 10px;
-    margin-left: -15px;
+    margin-left: -20px;
 }
 
 .search{
+    /* box-sizing: border-box; */
     justify-content: left;
     width: 800px;
     margin-left: 20px;
+}
+
+.search-button{
+    margin-left: 5px;
+    margin-right: 40px;
 }
 
 .filter-icon{
@@ -40,10 +51,21 @@
     font-size: 16px;
     padding-block-start: 4px;
 }
+.select2-selection__arrow {
+    margin-block-start: 5px;
+}
 
 .button{
     width: 100%;
-    margin-right: 10px;
+    margin-right: -9px;
+}
+
+.button-show{
+    padding-block-start: 15px;
+}
+
+.table-tr-pad{
+    padding-top: 17px;
 }
 
 .breadcrumbs{

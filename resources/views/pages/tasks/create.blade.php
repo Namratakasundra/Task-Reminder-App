@@ -101,7 +101,7 @@
 
                     <div class="form-group text-right">
                         <div class="button">
-                            <a href="/tasks" class="btn btn-warning mg-r-1">Cancel</a>
+                            <a href="{{route('tasks.index')}}" class="btn btn-warning mg-r-1">Cancel</a>
                             <button type="submit" class="btn btn-success">@if (isset($user->name))
                                 Update
                                 @else

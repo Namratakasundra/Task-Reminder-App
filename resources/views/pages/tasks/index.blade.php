@@ -11,10 +11,10 @@
   
   {{-- For searching --}}
   <div class="search" style= "float : left;">
-    <form action="/tasks" method="get">
+    <form action="{{route('tasks.index')}}" method="get">
       <div class="input-group">
         <input class="form-control" id="search" value placeholder="Search your task here" name="search" type="search" style="background-color: #f4f7fa;">
-        <div class="input-group-btn">
+        <div class="search-button">
           <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
         </div>
       </div>
@@ -23,7 +23,7 @@
 
   {{-- Filtering with category --}}
   <div class="filter">  
-  <form action="/tasks" method="GET">
+  <form action="{{route('tasks.index')}}" method="GET">
     <select class="form-control" id="category_id" name="category_id">
       <option disabled selected value >By Category</option>
       @foreach($categories as $category)
@@ -80,10 +80,8 @@
   </div> 
 
 </div>{{-- Row-index end --}}
-    
-  <div class="card">
-    <div class="card-body">
-      <div class="bs-example container-fluid" data-example-id="striped-table">
+  
+      <div class="bs-example container-fluid-1" data-example-id="striped-table">
         <table class="table table-striped table-bordered table-hover">
           <thead>
             <tr>
@@ -97,7 +95,7 @@
           </thead>
           <tbody>
             @foreach($tasks as $task)
-              <tr class = "text-center">
+              <tr class = "text-center table-tr-pad">
                 <td>{{ $task->id }}</td>
                 <td style="text-align:left;">{{ $task->details }}</td>
                 <td>{{ $task->category->name }}</td>
@@ -118,9 +116,7 @@
             @endforeach
           </tbody>
         </table>
-      </div> <!-- container-fluid -->
-    </div><!-- card-body -->
-  </div><!-- card -->
+      </div> <!-- container-fluid-1 -->
   
   <!-- For Pagination -->
   <div class="row">

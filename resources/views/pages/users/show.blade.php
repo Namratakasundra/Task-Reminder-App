@@ -49,7 +49,7 @@
                         
     <div class="form-group text-right">
     <div class="button">
-        <a href="/user" class="btn btn-warning mg-r-1">Okay</a>
+        <a href="{{route('users.index')}}" class="btn btn-warning mg-r-1">Okay</a>
     </div>
     </div>
 
