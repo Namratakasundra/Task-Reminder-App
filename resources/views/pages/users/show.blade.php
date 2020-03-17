@@ -1,6 +1,13 @@
 @extends('layouts.admin')
-@section('breadcrumb-link','Show User')
 @section('content')
+
+@php($title = 'Show User')
+@section('breadcrumb-link')
+		<li class="breadcrumb-item active" aria-current="page">
+			<a href="{{ route('users.index') }}">Users</a>
+		</li>    
+		<li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
+@endsection
 
 <div class="card">
 <div class="card-body">

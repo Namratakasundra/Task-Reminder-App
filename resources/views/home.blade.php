@@ -1,6 +1,12 @@
 @extends('layouts.admin')
-@section('breadcrumb-link','Home')
 @section('content')
+
+@section('breadcrumb-link')
+		<li class="breadcrumb-item active" aria-current="page">
+			Home
+		</li>    
+@endsection
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
