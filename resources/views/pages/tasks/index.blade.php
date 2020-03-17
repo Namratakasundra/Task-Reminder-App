@@ -105,9 +105,9 @@
                 <td>{{ $task->priority->name }}</td> 
                 <td>{{ $task->status }}</td>
                 <td>
-                  <a class = "btn" href="{{route('tasks.show',['id'=>$task->id])}}" >
+                  {{-- <a class = "btn" href="{{route('tasks.show',['id'=>$task->id])}}" >
                     <i class="fa fa-th-list xlarge"  style="color:RoyalBlue;" aria-hidden="true"></i>
-                  </a>
+                  </a> --}}
                   <a class = "btn" href="{{route('tasks.edit',['id'=>$task->id])}}" >
                     <i class="far fa-edit" style="color:Green;" aria-hidden="true"></i>
                   </a>

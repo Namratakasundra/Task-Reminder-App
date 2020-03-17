@@ -6,6 +6,7 @@
 .container-fluid-1{
     padding-left: 0px;
     padding-right: 0px;
+    background-color: snow;
 }
 
 .content {
@@ -20,7 +21,6 @@
 }
 
 .search{
-    /* box-sizing: border-box; */
     justify-content: left;
     width: 800px;
     margin-left: 20px;
@@ -60,10 +60,6 @@
     margin-right: -9px;
 }
 
-.button-show{
-    padding-block-start: 15px;
-}
-
 .table-tr-pad{
     padding-top: 17px;
 }
@@ -71,4 +67,3 @@
 .breadcrumbs{
     margin-bottom: 10px;
 }
-

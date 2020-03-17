@@ -24,14 +24,14 @@
         <div class="container-fluid">
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-5">
                 <div class="form-group">
                     <label for="name"><strong>Name : <span class="tx-danger">*</span></strong></label>
                     <input type="text" name = "name" id = "name" class="form-control" required placeholder="Your name" value="{{isset($category) ? $category->name : old('name') }}" >
                 </div>
                 </div>
  
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-5">
                     <label for="status"><strong>Status : <span class="tx-danger">*</span></strong></label>
                         <select class="form-control category-status-select{{ $errors->has('status') ? ' is-invalid' : '' }}" id="status" name="status" required>
                             <option disabled selected value>Select Status</option>

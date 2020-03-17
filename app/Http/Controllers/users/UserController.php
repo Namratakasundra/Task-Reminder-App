@@ -89,6 +89,13 @@ class UserController extends Controller
                 $path = 'users/' . $user->id . '/' .'profile_picture'. '/';
                 $app_path = storage_path($public_storage_path . $path);
 
+                if (!file_exists($app_path)) {
+                    \File::makeDirectory($app_path, 0777, true);
+                } else {
+                    if ($delete_directory) {
+                        \File::deleteDirectory($app_path, true);
+                    }
+                }
                 
                 file_put_contents($app_path .$filename, $data);
 

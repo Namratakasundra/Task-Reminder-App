@@ -24,20 +24,11 @@
   <div class="dropdown dropdown-profile">
     <a href="" class="dropdown-link" data-toggle="dropdown" data-display="static">
         <div class="avatar avatar-sm">
-            @if(isset($user->profile_picture))
+            @if(isset(Auth::user()->profile_picture))
                  <img src="/storage/users/{{ Auth::user()->id }}/profile_picture/{{ Auth::user()->profile_picture}}" class="rounded-circle" alt="" style="border:5px;">
             @else
                 <img src="/assets/img/blank_profile.png" class="rounded-circle" alt="">
             @endif
-            {{-- @if(isset(Auth::user()->profile_picture) && (!Auth::user()->profile_picture))
-                <img src="/storage/users/{{ Auth::user()->id }}/profile_picture/{{ Auth::user()->profile_picture}}" class="rounded-circle" alt="" style="border:5px;">
-                @else
-                @if(isset(Auth::user()->profile_picture))
-                    <img src="/storage/users/{{ Auth::user()->id }}/profile_picture/{{ Auth::user()->profile_picture}}" class="rounded-circle" alt="" style="border:5px;">
-                @else
-                    <img src="/assets/img/blank_profile.png" class="rounded-circle" alt="">
-                @endif
-            @endif --}}
         </div>
     </a><!-- dropdown-link -->
     <div class="dropdown-menu dropdown-menu-right tx-13">
@@ -52,7 +43,7 @@
         <p class="mg-b-25 tx-12 tx-color-03">Administrator</p>
         <a href="{{route('users.show',['id'=>Auth::user()->id])}}" class="dropdown-item"><i data-feather="user"></i> View Profile</a>
         <a href="{{route('users.edit',['id'=>Auth::user()->id])}}" class="dropdown-item"><i data-feather="user"></i> Edit Profile</a>
-        <a href="{{route('users.edit',['id'=>Auth::user()->id])}}" class="dropdown-item"><i data-feather="user"></i> Change Password</a>
+        <a href="{{route('password.update',['id'=>Auth::user()->id])}}" class="dropdown-item"><i data-feather="user"></i> Change Password</a>
         <div class="dropdown-divider"></div>
         <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
       document.getElementById('logout-form').submit();"><i data-feather="log-out"></i>Logout
