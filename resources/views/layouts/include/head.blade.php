@@ -26,7 +26,7 @@
     
     <!-- Logo -->
     <link rel="shortcut icon" type="image/x-icon" href="/assets/img/logo.png">
-    <title>Task Reminder App</title>
+    <title>@stack('title')</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     
     <!-- vendor css -->
@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="/assets/css/dashforge.css">
     <link rel="stylesheet" href="/assets/css/dashforge.demo.css">
     <link rel='stylesheet' href='/custom.css' />
+    
     
     <!-- Toaster -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">

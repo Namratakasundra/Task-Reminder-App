@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 @section('content')
-{{-- 
+
 @php($title = 'User Index')
-@push(yieldTitle($title), 'User Index') --}}
+@push('title', yieldTitle($title))
 
 @section('breadcrumb-link')
 		<li class="breadcrumb-item active" aria-current="page">

@@ -7,6 +7,8 @@
     @php($title = 'Create User')
     @endif
 </h4>
+@push('title', yieldTitle($title))
+
 @section('breadcrumb-link')
 		<li class="breadcrumb-item active" aria-current="page">
 			<a href="{{ route('users.index') }}">Users</a>

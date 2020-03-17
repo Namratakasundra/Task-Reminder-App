@@ -3,7 +3,7 @@
 
 <head>
     @include('layouts.include.head')
-    <title>@stack('title')</title>
+   
 </head>
 
 <body>

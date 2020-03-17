@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 @section('content')
 
+@php($title = 'Priority Index')
+@push('title', yieldTitle($title))
+
 @section('breadcrumb-link')
 		<li class="breadcrumb-item active" aria-current="page">
 			Priorities

@@ -24,11 +24,20 @@
   <div class="dropdown dropdown-profile">
     <a href="" class="dropdown-link" data-toggle="dropdown" data-display="static">
         <div class="avatar avatar-sm">
-            @if(isset(Auth::user()->profile_picture))
+            @if(isset($user->profile_picture))
                  <img src="/storage/users/{{ Auth::user()->id }}/profile_picture/{{ Auth::user()->profile_picture}}" class="rounded-circle" alt="" style="border:5px;">
             @else
                 <img src="/assets/img/blank_profile.png" class="rounded-circle" alt="">
             @endif
+            {{-- @if(isset(Auth::user()->profile_picture) && (!Auth::user()->profile_picture))
+                <img src="/storage/users/{{ Auth::user()->id }}/profile_picture/{{ Auth::user()->profile_picture}}" class="rounded-circle" alt="" style="border:5px;">
+                @else
+                @if(isset(Auth::user()->profile_picture))
+                    <img src="/storage/users/{{ Auth::user()->id }}/profile_picture/{{ Auth::user()->profile_picture}}" class="rounded-circle" alt="" style="border:5px;">
+                @else
+                    <img src="/assets/img/blank_profile.png" class="rounded-circle" alt="">
+                @endif
+            @endif --}}
         </div>
     </a><!-- dropdown-link -->
     <div class="dropdown-menu dropdown-menu-right tx-13">

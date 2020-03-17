@@ -2,6 +2,8 @@
 @section('content')
 
 @php($title = 'Show User')
+@push('title', yieldTitle($title))
+
 @section('breadcrumb-link')
 		<li class="breadcrumb-item active" aria-current="page">
 			<a href="{{ route('users.index') }}">Users</a>
