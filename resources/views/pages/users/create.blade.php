@@ -67,23 +67,23 @@
 
                     {{-- @if(isset($user->id))
                     <a action="{{ isset($user) ? route('users.update', ['id' => $user->id]) : route('users.store') }}">
-                        @else --}}
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="password"><strong>Password : <span
-                                                class="tx-danger">*</span></strong></label>
-                                    <input type="password" name="password" id="password"
-                                        class="form-control @error('password') is-invalid @enderror"
-                                        placeholder="Your password" value="">
-                                    @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
+                    @else --}}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="password"><strong>Password : <span
+                                            class="tx-danger">*</span></strong></label>
+                                <input type="password" name="password" id="password"
+                                    class="form-control @error('password') is-invalid @enderror"
+                                    placeholder="Your password" value="">
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
+                    </div>
                     {{-- </a>
                     @endif --}}
 
@@ -112,19 +112,19 @@
                         <div class="col-md-4" style="padding-top:20px;">
                             <div class="form-group">
                                 <label for="profile_picture"><strong>Upload your profile : </strong></label>
-                                    <input type="file" name="profile_picture" id="profile_picture" class="form-control">
+                                <input type="file" name="profile_picture" id="profile_picture" class="form-control">
                                 <br>
                                 @if (isset($user->profile_picture))
                                 {{-- <img src="/storage/users/{{ $user->id }}/profile_picture/{{ $user->profile_picture}}"
                                 height="120px" width="120px"> --}}
                                 @else
-                                    <p>No image found</p>
+                                <p>No image found</p>
                                 @endif
-                                    <input type="hidden" id="profile_picture_data64" name="profile_picture_data64">
+                                <input type="hidden" id="profile_picture_data64" name="profile_picture_data64">
                                 @if (isset($user->profile_picture))
-                                    <span>{{ $user->profile_picture }}</span>
+                                <span>{{ $user->profile_picture }}</span>
                                 @else
-                                    <p></p>
+                                <p></p>
                                 @endif
                             </div>
                         </div>
