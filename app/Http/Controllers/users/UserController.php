@@ -34,10 +34,9 @@ class UserController extends Controller
             $users= $users->where('status', $request_status);
         }
         $users = $users->paginate(\Config::get('constants.pagination_size'));
-        return view('pages.users.index',compact('users', 'statuses', 'request_status'));
-
+        
         if($request->ajax()){
-            return response()->json();
+            return $users;
         }
         return response('pages.users.index',compact('users', 'statuses', 'request_status'));
     }

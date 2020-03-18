@@ -21,7 +21,7 @@ Route::group(["middleware"=>'auth'],function(){
 
     Route::get('/home', 'HomeController@index')->name('home');
 
-    //User CRUD
+    //Users CRUD
     Route::get('/user', 'users\UserController@index')->name('users.index');
     Route::get('users/show/id={id}', 'users\UserController@show')->name('users.show');
     Route::get('users/create','users\UserController@create')->name('users.create');

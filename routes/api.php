@@ -17,6 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//Users CRUD
 Route::get('/users','users\UserController@index');
 Route::get('users/show/id={id}', 'users\UserController@show');
 Route::get('users/create','users\UserController@create');
