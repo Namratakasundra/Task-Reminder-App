@@ -47,6 +47,14 @@ class TaskController extends Controller
             $tasks= $tasks->where('status', $request_status);
         }
         $tasks = $tasks->paginate(\Config::get('constants.pagination_size'));
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $tasks
+            ];
+        }
         return view('pages.tasks.index', compact('tasks', 'categories', 'priorities', 'statuses', 'request_category', 'request_priority', 'request_status'));
     }
 
@@ -55,12 +63,21 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        $tasks = new Task();
         $categories = Category::all();
         $priorities = Priority::all();
         $statuses = ['Pending', 'Completed', 'On Hold', 'Canceled'];
-        return view('pages.tasks.create', compact('categories', 'priorities', 'statuses'));
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $tasks
+            ];
+        }
+        return view('pages.tasks.create', compact('tasks', 'categories', 'priorities', 'statuses'));
     }
 
     /**
@@ -85,6 +102,14 @@ class TaskController extends Controller
         {
             dd($e);
         }
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $tasks
+            ];
+        }
         return redirect()->route('tasks.index');
     }
 
@@ -94,9 +119,17 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $task = Task::find($id);
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $tasks
+            ];
+        }
         return view('pages.tasks.show',compact('task'));
     }
 
@@ -106,13 +139,22 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        $task = Task::find($id);
+        $task = Task::find($id); //To find for edit Task 
+        $tasks = Task::find($id); //To find Task in json data
         $categories = Category::all();
         $priorities = Priority::all();
         $statuses = ['Pending', 'Completed', 'On Hold', 'Canceled'];
-        return view('pages.tasks.create',compact('task', 'priorities', 'categories', 'statuses'));
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $tasks
+            ];
+        }
+        return view('pages.tasks.create',compact('task', 'priorities', 'categories', 'statuses', 'tasks'));
     }
 
     /**
@@ -139,6 +181,14 @@ class TaskController extends Controller
         {
             dd($e);
         }
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $tasks
+            ];
+        }
         return redirect()->route('tasks.index');
     }
 
@@ -148,13 +198,21 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //Retrieve the Task
         $task = Task::find($id);
         //delete
         $task->delete();
         \Toastr::success('Task Deleted successfully', 'Delete', ["positionClass" => "toast-top-right"]);
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $tasks
+            ];
+        }
         return redirect()->route('tasks.index');
     }
 }

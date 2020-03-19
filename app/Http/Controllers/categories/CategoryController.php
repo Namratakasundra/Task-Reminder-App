@@ -30,6 +30,14 @@ class CategoryController extends Controller
             $categories= $categories->where('status', $request_status);
         }
         $categories = $categories->paginate(\Config::get('constants.pagination_size'));
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $categories
+            ];
+        }
         return view('pages.categories.index', compact('categories', 'statuses', 'request_status'));
     }
 
@@ -38,10 +46,19 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $statuses = ['Active', 'Inactive'];
-        return view('pages.categories.create',compact('statuses'));
+        $categories = new Category();
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $categories
+            ];
+        }
+        return view('pages.categories.create',compact('statuses', 'categories'));
     }
 
     /**
@@ -66,6 +83,14 @@ class CategoryController extends Controller
         {
             dd($e);
         }
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $categories
+            ];
+        }
         return redirect()->route('categories.index');
     }
 
@@ -75,9 +100,17 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $category = Category::find($id);
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $categories
+            ];
+        }
         return view('pages.categories.show',compact('category'));
     }
 
@@ -87,12 +120,21 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         //Find the category
-        $category = Category::find($id);
+        $category = Category::find($id);//To find for edit Category 
+        $categories = Category::find($id);//To find Category in json data
         $statuses  = ['Active', 'Inactive'];
-        return view('pages.categories.create',['category'=> $category], ['statuses'=> $statuses]);
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $categories
+            ];
+        }
+        return view('pages.categories.create', ['category'=> $category], ['statuses'=> $statuses], ['categories'=> $categories]);
     }
 
     /**
@@ -117,6 +159,14 @@ class CategoryController extends Controller
         {
             dd($e);
         }
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $categories
+            ];
+        }
         return redirect()->route('categories.index');
     }
 
@@ -126,13 +176,21 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //Retrieve the category
         $category = Category::find($id);
         //delete
         $category->delete();
         \Toastr::success('Category Deleted successfully', 'Delete', ["positionClass" => "toast-top-right"]);
+        
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $categories
+            ];
+        }
         return redirect()->route('categories.index');
     }
 }

@@ -66,7 +66,7 @@
         <thead>
             <tr>
                 <th style="text-align:center;color:#0168fa;">Id</th>
-                <th style="text-align:center;">@sortablelink('name','Priority Name')</th>
+                <th style="text-align:center;">@sortablelink('name','Name')</th>
                 <th style="text-align:center;">@sortablelink('type','Type')</th>
                 <th style="text-align:center;">@sortablelink('time','Time')</th>
                 <th style="text-align:center;">@sortablelink('status','Status')</th>

@@ -35,10 +35,15 @@ class UserController extends Controller
         }
         $users = $users->paginate(\Config::get('constants.pagination_size'));
         
-        if($request->ajax()){
-            return $users;
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $users
+            ];
         }
-        return response('pages.users.index',compact('users', 'statuses', 'request_status'));
+        return view('pages.users.index', compact('users', 'statuses', 'request_status'));
+        
     }
 
     /**
@@ -46,10 +51,19 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $statuses = ['Pending', 'Active', 'Inactive', 'Rejected', 'Blocked'];
-        return view('pages.users.create',compact('statuses'));
+        $users = new User();
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $users
+            ];
+        }
+        return view('pages.users.create',compact('statuses', 'users'));
     }
 
     /**
@@ -129,6 +143,14 @@ class UserController extends Controller
         {
             dd($e);
         } 
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $users
+            ];
+        }
         return redirect()->route('users.index');
     }
 
@@ -141,6 +163,14 @@ class UserController extends Controller
     public function show(Request $request, $id)
     {
         $user = User::find($id);
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $users
+            ];
+        }
         return view('pages.users.show',compact('user'));
     }
 
@@ -150,12 +180,21 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         //Find the user
-        $user = User::find($id);
+        $user = User::find($id); //To find for edit user
+        $users = User::find($id); //To find user in json data
         $statuses  = ['Pending', 'Active', 'Inactive', 'Rejected', 'Blocked'];
-        return view('pages.users.create',['user'=> $user], ['statuses'=> $statuses]);
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $users
+            ];
+        }
+        return view('pages.users.create', ['user'=> $user], ['statuses'=> $statuses], ['users'=> $users]);
     }
 
     /**
@@ -244,7 +283,15 @@ class UserController extends Controller
         catch (\Exception $e) 
         {
             dd($e);
-        }   
+        }  
+        
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $users
+            ];
+        }
         return redirect()->route('users.index');
     }
 
@@ -254,13 +301,21 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //Retrieve the user
         $user = User::find($id);
         //delete
         $user->delete();
         \Toastr::success('User Deleted successfully', 'Delete', ["positionClass" => "toast-top-right"]);
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $users
+            ];
+        }
         return redirect()->route('users.index');
     }
 }

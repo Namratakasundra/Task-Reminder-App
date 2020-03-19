@@ -30,6 +30,14 @@ class PriorityController extends Controller
             $priorities= $priorities->where('status', $request_status);
         }
         $priorities = $priorities->paginate(\Config::get('constants.pagination_size'));
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $priorities
+            ];
+        }
         return view('pages.priorities.index',compact('priorities', 'statuses', 'request_status'));
     }
 
@@ -38,11 +46,20 @@ class PriorityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $types = ['Custom','Timebased'];
         $statuses = ['Active', 'Inactive'];
-        return view('pages.priorities.create', ['types'=>$types], ['statuses'=>$statuses]);
+        $priorities = new Priority();
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $priorities
+            ];
+        }
+        return view('pages.priorities.create', ['types'=>$types], ['statuses'=>$statuses], ['priorities'=>$priorities]);
     }
 
     /**
@@ -69,6 +86,14 @@ class PriorityController extends Controller
         {
             dd($e);
         }
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $priorities
+            ];
+        }
         return redirect()->route('priorities.index');
     }
 
@@ -78,9 +103,17 @@ class PriorityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $priority = Priority::find($id);
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $priorities
+            ];
+        }
         return view('pages.priorities.show',compact('priority'));
     }
 
@@ -90,13 +123,22 @@ class PriorityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         //Find the Priority
-        $priority = Priority::find($id);
+        $priority = Priority::find($id);//To find for edit Priority 
+        $priorities = Priority::find($id);//To find Priority in json data
         $types = ['Custom','Timebased'];
         $statuses = ['Active', 'Inactive'];
-        return view('pages.priorities.create',compact('priority', 'types', 'statuses'));
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $priorities
+            ];
+        }
+        return view('pages.priorities.create',compact('priority', 'types', 'statuses', 'priorities'));
     }
 
     /**
@@ -123,6 +165,14 @@ class PriorityController extends Controller
         {
             dd($e);
         }
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $priorities
+            ];
+        }
         return redirect()->route('priorities.index');
     }
 
@@ -132,13 +182,21 @@ class PriorityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //Retrieve the priority
         $priority = Priority::find($id);
         //delete
         $priority->delete();
         \Toastr::success('Priority Deleted successfully', 'Delete', ["positionClass" => "toast-top-right"]);
+
+        if($request->is('api/*')) 
+        {
+            return [
+                'status' => true,
+                'data' => $priorities
+            ];
+        }
         return redirect()->route('priorities.index');
     }
 }
