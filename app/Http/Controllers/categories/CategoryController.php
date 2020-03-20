@@ -88,7 +88,7 @@ class CategoryController extends Controller
         {
             return [
                 'status' => true,
-                'data' => $categories
+                'data' => $category
             ];
         }
         return redirect()->route('categories.index');
@@ -108,7 +108,7 @@ class CategoryController extends Controller
         {
             return [
                 'status' => true,
-                'data' => $categories
+                'data' => $category
             ];
         }
         return view('pages.categories.show',compact('category'));
@@ -123,18 +123,17 @@ class CategoryController extends Controller
     public function edit(Request $request, $id)
     {
         //Find the category
-        $category = Category::find($id);//To find for edit Category 
-        $categories = Category::find($id);//To find Category in json data
+        $category = Category::find($id);
         $statuses  = ['Active', 'Inactive'];
 
         if($request->is('api/*')) 
         {
             return [
                 'status' => true,
-                'data' => $categories
+                'data' => $category
             ];
         }
-        return view('pages.categories.create', ['category'=> $category], ['statuses'=> $statuses], ['categories'=> $categories]);
+        return view('pages.categories.create', ['category'=> $category], ['statuses'=> $statuses]);
     }
 
     /**
@@ -164,7 +163,7 @@ class CategoryController extends Controller
         {
             return [
                 'status' => true,
-                'data' => $categories
+                'data' => $category
             ];
         }
         return redirect()->route('categories.index');

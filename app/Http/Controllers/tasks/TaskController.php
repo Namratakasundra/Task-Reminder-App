@@ -107,7 +107,7 @@ class TaskController extends Controller
         {
             return [
                 'status' => true,
-                'data' => $tasks
+                'data' => $task
             ];
         }
         return redirect()->route('tasks.index');
@@ -186,7 +186,7 @@ class TaskController extends Controller
         {
             return [
                 'status' => true,
-                'data' => $tasks
+                'data' => $task
             ];
         }
         return redirect()->route('tasks.index');

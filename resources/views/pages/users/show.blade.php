@@ -20,11 +20,10 @@
                     <div class="form-group">
                         <strong>Profile Picture : </strong>
                         <br>
-                        @if ($user->profile_picture)
-                        <img src="/storage/users/{{ $user->id }}/profile_picture/{{ $user->profile_picture}}"
-                            height="120px" width="120px" class="rounded-circle">
+                        @if(isset($user->profile_picture))
+                            <img src="/storage/users/{{ $user->id }}/profile_picture/{{ $user->profile_picture}}" class="rounded-circle profile-show" alt="">
                         @else
-                        <p>No image found</p>
+                            <img src="/assets/img/blank_profile.png" class="rounded-circle profile-show" alt="">
                         @endif
                     </div>
                 </div>

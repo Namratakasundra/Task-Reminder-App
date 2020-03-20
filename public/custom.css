@@ -67,3 +67,8 @@
 .breadcrumbs{
     margin-bottom: 10px;
 }
+
+.profile-show{
+   height: 120px;
+   width: 120px;
+}

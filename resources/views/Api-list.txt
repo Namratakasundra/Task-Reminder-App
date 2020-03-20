@@ -1,0 +1,44 @@
+==> For Users
+
+1. user-index
+--> http://localhost:8000/api/users
+2. user-create
+--> http://localhost:8000/api/users/create
+3. user-edit
+--> http://localhost:8000/api/users/id=3/edit
+4. user-update
+--> http://localhost:8000/api/users/id=3/update
+
+
+==> For Category
+
+1. category-index
+--> http://localhost:8000/api/categories
+2. category-create
+--> http://localhost:8000/api/categories/create
+3. category-edit
+--> http://localhost:8000/api/categories/id=2/edit
+4. category-update
+--> http://localhost:8000/api/categories/id=2/update
+
+==> For Priority
+
+1. Priority-index
+--> http://localhost:8000/api/priorities
+2. Priority-create
+--> http://localhost:8000/api/priorities/create
+3. Priority-edit
+--> http://localhost:8000/api/priorities/id=3/edit
+4. Priority-update
+--> http://localhost:8000/api/priorities/id=3/update
+
+==> For Task
+
+1. task-index
+--> http://localhost:8000/api/tasks
+2. task-create
+--> http://localhost:8000/api/tasks/create
+3. task-edit
+--> http://localhost:8000/api/tasks/4/edit
+4. task-update
+--> http://localhost:8000/api/tasks/2/update

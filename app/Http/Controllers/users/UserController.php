@@ -148,7 +148,7 @@ class UserController extends Controller
         {
             return [
                 'status' => true,
-                'data' => $users
+                'data' => $user
             ];
         }
         return redirect()->route('users.index');
@@ -168,7 +168,7 @@ class UserController extends Controller
         {
             return [
                 'status' => true,
-                'data' => $users
+                'data' => $user
             ];
         }
         return view('pages.users.show',compact('user'));
@@ -183,18 +183,17 @@ class UserController extends Controller
     public function edit(Request $request, $id)
     {
         //Find the user
-        $user = User::find($id); //To find for edit user
-        $users = User::find($id); //To find user in json data
+        $user = User::find($id); 
         $statuses  = ['Pending', 'Active', 'Inactive', 'Rejected', 'Blocked'];
 
         if($request->is('api/*')) 
         {
             return [
                 'status' => true,
-                'data' => $users
+                'data' => $user
             ];
         }
-        return view('pages.users.create', ['user'=> $user], ['statuses'=> $statuses], ['users'=> $users]);
+        return view('pages.users.create', ['user'=> $user], ['statuses'=> $statuses]);
     }
 
     /**
@@ -289,7 +288,7 @@ class UserController extends Controller
         {
             return [
                 'status' => true,
-                'data' => $users
+                'data' => $user
             ];
         }
         return redirect()->route('users.index');

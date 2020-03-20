@@ -81,8 +81,12 @@
                 <td style="text-align:left;">{{ $user->email }}</td>
                 <td>{{ $user->status }}</td>
                 <td>
-                    <img src="/storage/users/{{ $user->id }}/profile_picture/{{ $user->profile_picture}}" height="60px"
-                        width="60px" class="rounded-circle">
+                    @if(isset($user->profile_picture))
+                        <img src="/storage/users/{{ $user->id }}/profile_picture/{{ $user->profile_picture}}" class="rounded-circle" height="60px" width="60px" alt="">
+                    @else
+                        <img src="/assets/img/blank_profile.png" class="rounded-circle" height="60px" width="60px" alt="">
+                    @endif
+                </td>
                 <td>
                     <a class="btn" href="{{route('users.show',['id'=>$user->id])}}">
                         <i class="fa fa-th-list xlarge" style="color:RoyalBlue;" aria-hidden="true"></i>

@@ -50,16 +50,16 @@ class PriorityController extends Controller
     {
         $types = ['Custom','Timebased'];
         $statuses = ['Active', 'Inactive'];
-        $priorities = new Priority();
+        $priority = new Priority();
 
         if($request->is('api/*')) 
         {
             return [
                 'status' => true,
-                'data' => $priorities
+                'data' => $priority
             ];
         }
-        return view('pages.priorities.create', ['types'=>$types], ['statuses'=>$statuses], ['priorities'=>$priorities]);
+        return view('pages.priorities.create', ['types'=>$types], ['statuses'=>$statuses], ['priority'=>$priority]);
     }
 
     /**
@@ -91,7 +91,7 @@ class PriorityController extends Controller
         {
             return [
                 'status' => true,
-                'data' => $priorities
+                'data' => $priority
             ];
         }
         return redirect()->route('priorities.index');
@@ -126,8 +126,7 @@ class PriorityController extends Controller
     public function edit(Request $request, $id)
     {
         //Find the Priority
-        $priority = Priority::find($id);//To find for edit Priority 
-        $priorities = Priority::find($id);//To find Priority in json data
+        $priority = Priority::find($id);
         $types = ['Custom','Timebased'];
         $statuses = ['Active', 'Inactive'];
 
@@ -135,10 +134,10 @@ class PriorityController extends Controller
         {
             return [
                 'status' => true,
-                'data' => $priorities
+                'data' => $priority
             ];
         }
-        return view('pages.priorities.create',compact('priority', 'types', 'statuses', 'priorities'));
+        return view('pages.priorities.create',compact('priority', 'types', 'statuses'));
     }
 
     /**
@@ -170,7 +169,7 @@ class PriorityController extends Controller
         {
             return [
                 'status' => true,
-                'data' => $priorities
+                'data' => $priority
             ];
         }
         return redirect()->route('priorities.index');
