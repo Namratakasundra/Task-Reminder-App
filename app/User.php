@@ -16,7 +16,7 @@ class User extends Authenticatable
     
     protected $table = 'users';
     protected $softDelete = true;
-    protected $fillable = ['name', 'email', 'password', 'status', 'profile_picture'];
+    protected $fillable = ['name', 'email', 'password', 'confirm_password', 'status', 'profile_picture'];
    
     protected $hidden = [
         'password', 'remember_token',

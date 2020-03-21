@@ -78,6 +78,7 @@ class UserController extends Controller
             'name' => 'required|max:100|regex:/(^([a-zA-z]+)(\d+)?$)/u',
             'email' => 'required|email|unique:users,email',
             'password' =>'required|min:6',
+            'confirm_password' =>'required_with:password|min:6|same:password',
             'profile_picture' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
@@ -88,6 +89,7 @@ class UserController extends Controller
             $user->name = $request->input('name');
             $user->email = $request->input('email');
             $user->password = bcrypt($request->input('password'));
+            $user->confirm_password = bcrypt($request->input('confirm_password'));
             $user->status = $request->input('status');
             $user->save(); 
             if($request->hasfile('profile_picture'))
@@ -154,6 +156,11 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
+    public function password(Request $request, $id)
+    {
+        $user = User::find($id);
+        return view('pages.users.password');
+    }
     /**
      * Display the specified resource.
      *
@@ -209,6 +216,7 @@ class UserController extends Controller
             'name' => 'required|max:100',
             'email' => 'required|email',
             'password' =>'required|min:6',
+            'confirm_password' =>'required_with:password|min:6|same:password',
             'profile_picture' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
@@ -218,7 +226,8 @@ class UserController extends Controller
         $user = User::find($id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->password = bcrypt($request->input('password'));;
+        $user->password = bcrypt($request->input('password'));
+        $user->confirm_password = bcrypt($request->input('confirm_password'));
         $user->status = $request->input('status');
         $user->save(); //persist the data
         if($request->hasfile('profile_picture'))

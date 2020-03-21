@@ -16,6 +16,7 @@ class UsersTableSeeder extends Seeder
         	'name' => 'Namrata kasundra', 
         	'email' => 'namu@gmail.com',
             'password' => bcrypt('123456'),
+            'confirm_password' => bcrypt('123456'),
             'status' => 'Active',
         ]);
 
@@ -23,6 +24,7 @@ class UsersTableSeeder extends Seeder
         	'name' => 'Bunny Jivani', 
         	'email' => 'bunny@gmail.com',
             'password' => bcrypt('123456'),
+            'confirm_password' => bcrypt('123456'),
             'status' => 'Inactive',
         ]);
 
@@ -30,6 +32,7 @@ class UsersTableSeeder extends Seeder
         	'name' => 'Shruti Patel', 
         	'email' => 'shruti@gmail.com',
             'password' => bcrypt('123456'),
+            'confirm_password' => bcrypt('123456'),
             'status' => 'Rejected',
         ]);
 
@@ -37,6 +40,7 @@ class UsersTableSeeder extends Seeder
         	'name' => 'Chintu Patel', 
         	'email' => 'chintu@gmail.com',
             'password' => bcrypt('123456'),
+            'confirm_password' => bcrypt('123456'),
             'status' => 'Pending',
         ]);
 
@@ -44,6 +48,7 @@ class UsersTableSeeder extends Seeder
         	'name' => 'Beena Patel', 
         	'email' => 'beena@gmail.com',
             'password' => bcrypt('123456'),
+            'confirm_password' => bcrypt('123456'),
             'status' => 'Blocked',
         ]);
     }
