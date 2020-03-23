@@ -30,7 +30,7 @@ Route::group(["middleware"=>'auth'],function(){
     Route::post('/users/id={id}/update', 'users\UserController@update')->name('users.update');
     Route::get('/users/id={id}/delete', 'users\UserController@destroy')->name('users.destroy');
     Route::get('/users/id={id}/change/password', 'users\UserController@password')->name('users.password');
-    //Route::post('/users/id={id}/change/password', 'users\UserController@password')->name('users.password');
+    Route::post('/users/id={id}/change/password', 'users\UserController@savepassword')->name('users.savepassword');
 
     //Categories CRUD
     Route::get('/categories', 'categories\CategoryController@index')->name('categories.index');

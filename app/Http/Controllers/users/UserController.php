@@ -179,6 +179,12 @@ class UserController extends Controller
 
     public function password(Request $request, $id)
     {
+        $user = User::find($id);
+        return view('pages.users.password',compact('user'));
+    }
+
+    public function savepassword(Request $request, $id)
+    {
         try 
         {
             request()->validate([
@@ -190,15 +196,14 @@ class UserController extends Controller
             $user->password = bcrypt($request->input('password'));
             $user->confirm_password = bcrypt($request->input('confirm_password'));
             $user ->save();    
-            \Toastr::success('Password successfully changed', 'Create', ["positionClass" => "toast-top-right"]);        
+            \Toastr::success('Password successfully changed', 'Password change', ["positionClass" => "toast-top-right"]);        
         } 
         catch (Exception $e) 
         {
             report($e);
             return false;
         }
-        //return redirect()->route('users.index');
-        return view('pages.users.password',compact('user'));
+        return redirect()->route('users.index');
     }
 
     /**

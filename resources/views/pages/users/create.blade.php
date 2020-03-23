@@ -81,7 +81,7 @@
                                             <i class="far fa-eye" onmouseover="mouseoverPass();" onmouseout="mouseoutPass();"></i>
                                         </span>
                                     </div>
-                                    
+
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -91,8 +91,11 @@
                         </div>
                     </div>
                     {{-- </a>
-                    @endif --}}
+                    @endif
 
+                    @if(isset($user->id))
+                    <a action="{{ isset($user) ? route('users.update', ['id' => $user->id]) : route('users.store') }}">
+                    @else --}}
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -110,6 +113,8 @@
                             </div>
                         </div>
                     </div>
+                    {{-- </a>
+                    @endif --}}
 
                     <div class="row">
                         <div class="form-group col-md-6">

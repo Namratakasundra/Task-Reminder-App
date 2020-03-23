@@ -11,7 +11,7 @@
 <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
 @endsection
 
-<form action="{{route('users.password', ['id' => $user->id])}}" method = "post">
+<form action="{{route('users.savepassword', ['id' => $user->id])}}" method = "post">
     @csrf
     <div class="card">
         <div class="card-header">
