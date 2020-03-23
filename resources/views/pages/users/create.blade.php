@@ -73,9 +73,15 @@
                             <div class="form-group">
                                 <label for="password"><strong>Password : <span
                                             class="tx-danger">*</span></strong></label>
-                                <input type="password" name="password" id="password"
-                                    class="form-control @error('password') is-invalid @enderror"
-                                    placeholder="Your password" value="">
+                                    <div class="password-div">
+                                        <input type="password" name="password" id="password"
+                                            class="form-control @error('password') is-invalid @enderror"
+                                            placeholder="Your password" value="">
+                                        <span class="show-password">
+                                            <i class="far fa-eye" onmouseover="mouseoverPass();" onmouseout="mouseoutPass();"></i>
+                                        </span>
+                                    </div>
+                                    
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

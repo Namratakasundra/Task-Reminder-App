@@ -29,7 +29,8 @@ Route::group(["middleware"=>'auth'],function(){
     Route::get('/users/id={id}/edit', 'users\UserController@edit')->name('users.edit');
     Route::post('/users/id={id}/update', 'users\UserController@update')->name('users.update');
     Route::get('/users/id={id}/delete', 'users\UserController@destroy')->name('users.destroy');
-    Route::get('/users/id={id}/change-password', 'users\UserController@edit')->name('users.password');
+    Route::get('/users/id={id}/change/password', 'users\UserController@password')->name('users.password');
+    //Route::post('/users/id={id}/change/password', 'users\UserController@password')->name('users.password');
 
     //Categories CRUD
     Route::get('/categories', 'categories\CategoryController@index')->name('categories.index');

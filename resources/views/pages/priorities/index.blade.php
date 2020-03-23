@@ -15,7 +15,7 @@
     <div class="search" style="float : left;">
         <form action="{{route('priorities.index')}}" method="get">
             <div class="input-group">
-                <input class="form-control" id="search" value placeholder="Search Name" name="search" type="search">
+                <input class="form-control" id="search" value placeholder="Search Priority" name="search" type="search">
                 <div class="search-button">
                     <button type="submit" class="btn btn-primary"><i class="fa fa-search"
                             aria-hidden="true"></i></button>

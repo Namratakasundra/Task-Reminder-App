@@ -11,27 +11,31 @@
 <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
 @endsection
 
-@section('breadcrumb-title')
-<li class="breadcrumb-item active" aria-current="page">
-    Change your password
-</li>
-@endsection
-
-<form action="{{route('users.store')}}" method = "post">
+<form action="{{route('users.password', ['id' => $user->id])}}" method = "post">
     @csrf
     <div class="card">
+        <div class="card-header">
+            <div class="card-header__title-wrap float-left">
+                <h5>Change your password</h5>
+            </div>
+        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <div class="container-fluid">
-
+        
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="password"><strong>Password : <span
                                             class="tx-danger">*</span></strong></label>
-                                <input type="password" name="password" id="password"
-                                    class="form-control @error('password') is-invalid @enderror"
-                                    placeholder="Your password" value="">
+
+                                <div class="password-div">
+                                    <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Your password" value="">
+                                    <span class="show-password">
+                                        <i class="far fa-eye" onmouseover="mouseoverPass();" onmouseout="mouseoutPass();"></i>
+                                    </span>
+                                </div>
+
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

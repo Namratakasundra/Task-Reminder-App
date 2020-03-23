@@ -25,3 +25,6 @@
 {{-- For Yajra filtering --}}
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="/assets/js/filter.js"></script>
+
+{{-- For Show password --}}
+<script src="/assets/js/show-password.js"></script>

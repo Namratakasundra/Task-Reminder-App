@@ -156,11 +156,7 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
-    public function password(Request $request, $id)
-    {
-        $user = User::find($id);
-        return view('pages.users.password');
-    }
+    
     /**
      * Display the specified resource.
      *
@@ -179,6 +175,30 @@ class UserController extends Controller
             ];
         }
         return view('pages.users.show',compact('user'));
+    }
+
+    public function password(Request $request, $id)
+    {
+        try 
+        {
+            request()->validate([
+                'password' =>'required|min:6',
+                'confirm_password' =>'required_with:password|min:6|same:password',
+            ]);
+            
+            $user = User::find($id);
+            $user->password = bcrypt($request->input('password'));
+            $user->confirm_password = bcrypt($request->input('confirm_password'));
+            $user ->save();    
+            \Toastr::success('Password successfully changed', 'Create', ["positionClass" => "toast-top-right"]);        
+        } 
+        catch (Exception $e) 
+        {
+            report($e);
+            return false;
+        }
+        //return redirect()->route('users.index');
+        return view('pages.users.password',compact('user'));
     }
 
     /**
@@ -202,6 +222,8 @@ class UserController extends Controller
         }
         return view('pages.users.create', ['user'=> $user], ['statuses'=> $statuses]);
     }
+
+    
 
     /**
      * Update the specified resource in storage.
