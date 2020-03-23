@@ -103,7 +103,7 @@
                                             class="tx-danger">*</span></strong></label>
                                 <input type="password" name="confirm_password" id="confirm_password"
                                     class="form-control @error('confirm_password') is-invalid @enderror"
-                                    placeholder="Rewrite Your password" value="">
+                                    placeholder="Rewrite Your password" value="" autocomplete="new-password">
 
                                 @error('confirm_password')
                                 <span class="invalid-feedback" role="alert">

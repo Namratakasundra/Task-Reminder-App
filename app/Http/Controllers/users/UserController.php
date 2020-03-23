@@ -75,7 +75,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'name' => 'required|max:100|regex:/(^([a-zA-z]+)(\d+)?$)/u',
+            'name' => 'required|max:100|regex:/(^[a-zA-Z]+(\s[a-zA-Z]+)?$)/u',
             'email' => 'required|email|unique:users,email',
             'password' =>'required|min:6',
             'confirm_password' =>'required_with:password|min:6|same:password',
