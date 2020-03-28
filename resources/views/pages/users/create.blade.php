@@ -65,11 +65,11 @@
                         </div>
                     </div>
 
-                    {{-- @if(isset($user->id))
-                    <a action="{{ isset($user) ? route('users.update', ['id' => $user->id]) : route('users.store') }}">
-                    @else --}}
+                    @if(isset($user->id))
+                        <a action="{{ isset($user) ? route('users.update', ['id'=> $user->id]) : route('users.store') }}">
+                    @else
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label for="password"><strong>Password : <span
                                             class="tx-danger">*</span></strong></label>
@@ -88,16 +88,9 @@
                                 </span>
                                 @enderror
                             </div>
-                        </div>
-                    </div>
-                    {{-- </a>
-                    @endif
-
-                    @if(isset($user->id))
-                    <a action="{{ isset($user) ? route('users.update', ['id' => $user->id]) : route('users.store') }}">
-                    @else --}}
-                    <div class="row">
-                        <div class="col-md-6">
+                        </div>                    
+                    
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label for="confirm_password"><strong>Confirm  Password : <span
                                             class="tx-danger">*</span></strong></label>
@@ -113,8 +106,8 @@
                             </div>
                         </div>
                     </div>
-                    {{-- </a>
-                    @endif --}}
+                        </a>
+                    @endif
 
                     <div class="row">
                         <div class="form-group col-md-6">

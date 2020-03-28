@@ -242,8 +242,6 @@ class UserController extends Controller
         request()->validate([
             'name' => 'required|max:100',
             'email' => 'required|email',
-            'password' =>'required|min:6',
-            'confirm_password' =>'required_with:password|min:6|same:password',
             'profile_picture' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 

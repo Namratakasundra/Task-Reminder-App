@@ -19,8 +19,6 @@ Auth::routes();
 Route::redirect('/','/login');
 Route::group(["middleware"=>'auth'],function(){
 
-    Route::group(["middleware"=>'task'],function(){
-
     Route::get('/home', 'HomeController@index')->name('home');
 
         //Users CRUD
@@ -60,7 +58,5 @@ Route::group(["middleware"=>'auth'],function(){
         Route::get('/tasks/{id}/edit', 'tasks\TaskController@edit')->name('tasks.edit');
         Route::post('/tasks/{id}/update', 'tasks\TaskController@update')->name('tasks.update');
         Route::get('/tasks/{id}/delete', 'tasks\TaskController@destroy')->name('tasks.destroy');
-
-    });
 
 });
