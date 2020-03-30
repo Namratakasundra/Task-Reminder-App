@@ -38,9 +38,16 @@ class ChangeTasksStatus extends Command
      *
      * @return mixed
      */
-    public function handle(Request $request)
+    public function handle()
     {
-        $tasks = Task::all();
+        // $tasks = Task::all();
+        //$tasks = \DB::Table('tasks')->select('priority_id')->where('priority_id',2)->get();
+        $tasks = \DB::table('tasks')->where('priority_id', 2)->get();
+        
+        // $incomes_chart = DB::table('incomes')
+        //             ->select(DB::raw('sum(amount) as y'),DB::raw('MONTHNAME(date) as label'),DB::raw('MONTH(date) as month'))
+        //             ->groupBy(DB::raw('MONTHNAME(date)'),DB::raw('MONTH(date)'))->orderBy('month')->get();
+
         dd($tasks);
     }
 }
