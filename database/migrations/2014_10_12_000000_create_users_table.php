@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('confirm_password')->bcrypt()->same('password');
             $table->enum('status', ['Pending', 'Active', 'Inactive', 'Rejected', 'Blocked'])->default('Active');
             $table->string('profile_picture')->nullable();
-            $table->softDeletes();  // This will add a deleted_at field
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

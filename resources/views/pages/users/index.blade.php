@@ -94,7 +94,7 @@
                     <a class="btn" href="{{route('users.edit',['id'=>$user->id])}}">
                         <i class="far fa-edit" style="color:Green;" aria-hidden="true"></i>
                     </a>
-                    <a class="btn" onclick="return confirm('Are you sure?')"
+                    <a class="btn" onclick="return confirm('Are you sure???')"
                         href="{{route('users.destroy',['id'=>$user->id])}}">
                         <i class="fa fa-trash" style="color:Red;" aria-hidden="true"></i>
                     </a>

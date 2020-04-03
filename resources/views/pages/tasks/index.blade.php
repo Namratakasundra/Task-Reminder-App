@@ -116,7 +116,7 @@
                     <a class="btn" href="{{route('tasks.edit',['id'=>$task->id])}}">
                         <i class="far fa-edit" style="color:Green;" aria-hidden="true"></i>
                     </a>
-                    <a class="btn" href="{{route('tasks.destroy',['id'=>$task->id])}}">
+                    <a class="btn" onclick="return confirm('Are you sure???')" href="{{route('tasks.destroy',['id'=>$task->id])}}">
                         <i class="fa fa-trash" style="color:Red;" aria-hidden="true"></i>
                     </a>
                 </td>

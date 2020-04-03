@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use App\Task;
 use App\Category;
 use App\Priority;
+use Carbon\Carbon;
 
 class ChangeTasksStatus extends Command
 {
@@ -41,13 +42,14 @@ class ChangeTasksStatus extends Command
     public function handle()
     {
         // $tasks = Task::all();
-        //$tasks = \DB::Table('tasks')->select('priority_id')->where('priority_id',2)->get();
-        $tasks = \DB::table('tasks')->where('priority_id', 2)->get();
-        
-        // $incomes_chart = DB::table('incomes')
-        //             ->select(DB::raw('sum(amount) as y'),DB::raw('MONTHNAME(date) as label'),DB::raw('MONTH(date) as month'))
-        //             ->groupBy(DB::raw('MONTHNAME(date)'),DB::raw('MONTH(date)'))->orderBy('month')->get();
 
-        dd($tasks);
+        //Get task which priority is high
+        $tasks = \DB::table('tasks')->where('priority_id', 2)->get();
+
+        // $time_formatted = new Carbon();
+        // $time = $time_formatted->startTime()->format('%H:%I:%S');
+        // $time_end = $time_formatted->finishTime()->format('%H:%I:%S');
+        
+        //dd($tasks);
     }
 }

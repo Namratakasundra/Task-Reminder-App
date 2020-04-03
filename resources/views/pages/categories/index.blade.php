@@ -83,7 +83,7 @@
                     <a class="btn" href="{{route('categories.edit',['id'=>$category->id])}}">
                         <i class="far fa-edit" style="color:Green;" aria-hidden="true"></i>
                     </a>
-                    <a class="btn" href="{{route('categories.destroy',['id'=>$category->id])}}">
+                    <a class="btn" onclick="return confirm('Are you sure???')" href="{{route('categories.destroy',['id'=>$category->id])}}">
                         <i class="fa fa-trash" style="color:Red;" aria-hidden="true"></i>
                     </a>
                 </td>

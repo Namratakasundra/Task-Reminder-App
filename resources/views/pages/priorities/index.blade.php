@@ -88,7 +88,7 @@
                     <a class="btn" href="{{route('priorities.edit',['id'=>$priority->id])}}">
                         <i class="far fa-edit" style="color:Green;" aria-hidden="true"></i>
                     </a>
-                    <a class="btn" href="{{route('priorities.destroy',['id'=>$priority->id])}}">
+                    <a class="btn" onclick="return confirm('Are you sure???')" href="{{route('priorities.destroy',['id'=>$priority->id])}}">
                         <i class="fa fa-trash" style="color:Red;" aria-hidden="true"></i>
                     </a>
                 </td>
