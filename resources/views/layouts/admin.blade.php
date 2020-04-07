@@ -7,25 +7,20 @@
 </head>
 
 <body>
-
     <header class="navbar navbar-header navbar-header-fixed">
         @include('layouts.include.header')
     </header><!-- navbar -->
 
-    {{-- Sidebar --}}
-    {{-- @include('layouts.include.sidebar') --}}
-
-    <div class="body">
-        <div class="container-fluid">
-            <div class="content">
+    <div class="content content-fixed pd-20">
+        <div class="container-fluid pd-x-0 pd-lg-x-10 pd-xl-x-0">
+            <div class="mg-b-20 clearfix">
+                <!-- breadcrumb-->
+                @include('layouts.include.breadcrumb')
             </div>
-
-            <!-- breadcrumb-->
-            @include('layouts.include.breadcrumb')
-
+            
             @yield('content')
-        </div><!-- container -->
-    </div><!-- content -->
+        </div>
+    </div>
 
     <!-- script -->
     @include('layouts.include.script')

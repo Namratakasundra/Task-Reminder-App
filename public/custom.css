@@ -1,15 +1,10 @@
-
-/* .card-body {
-    background-color:#F8FAFC;
-} */
-.body{
-    background-color:#F8FAFC;
+body {
+    background: #f9f9f9;
 }
 
 .container-fluid-1{
     padding-left: 0px;
     padding-right: 0px;
-    /* background-color: snow; */
 }
 
 .content {
