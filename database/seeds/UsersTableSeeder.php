@@ -14,42 +14,30 @@ class UsersTableSeeder extends Seeder
     {
         $user = User::create([
         	'name' => 'Namrata kasundra', 
-        	'email' => 'namu@gmail.com',
-            'password' => bcrypt('123456'),
-            'confirm_password' => bcrypt('123456'),
+        	'email' => 'namratakasundra4@gmail.com',
+            'password' => bcrypt('Uay7DZs523zZ5RGZ'),
             'status' => 'Active',
         ]);
 
         $user = User::create([
-        	'name' => 'Bunny Jivani', 
-        	'email' => 'bunny@gmail.com',
-            'password' => bcrypt('123456'),
-            'confirm_password' => bcrypt('123456'),
-            'status' => 'Inactive',
+        	'name' => 'Priyanka Mehta', 
+        	'email' => 'priyankamehta12797@gmail.com ',
+            'password' => bcrypt('jHUYbaYSW2Av4CSk'),
+            'status' => 'Active',
         ]);
 
         $user = User::create([
-        	'name' => 'Shruti Patel', 
-        	'email' => 'shruti@gmail.com',
-            'password' => bcrypt('123456'),
-            'confirm_password' => bcrypt('123456'),
-            'status' => 'Rejected',
+        	'name' => 'Jhalak Javiya', 
+        	'email' => 'jhalakjaviya@gmail.com',
+            'password' => bcrypt('zncjK9Qax3CMFVtt'),
+            'status' => 'Active',
         ]);
 
         $user = User::create([
-        	'name' => 'Chintu Patel', 
-        	'email' => 'chintu@gmail.com',
-            'password' => bcrypt('123456'),
-            'confirm_password' => bcrypt('123456'),
-            'status' => 'Pending',
-        ]);
-
-        $user = User::create([
-        	'name' => 'Beena Patel', 
-        	'email' => 'beena@gmail.com',
-            'password' => bcrypt('123456'),
-            'confirm_password' => bcrypt('123456'),
-            'status' => 'Blocked',
+        	'name' => 'Kapeel Patel', 
+        	'email' => 'matrixmob@gmail.com',
+            'password' => bcrypt('KzCL3cgU8p78Kvxz'),
+            'status' => 'Active',
         ]);
     }
 }

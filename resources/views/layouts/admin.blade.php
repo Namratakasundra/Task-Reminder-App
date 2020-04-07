@@ -31,9 +31,9 @@
     @include('layouts.include.script')
 
     <!-- content-footer -->
-    <footer class="content-footer">
+    {{-- <footer class="content-footer">
         @include('layouts.include.footer')
-    </footer>
+    </footer> --}}
 
 </body>
 

@@ -14,30 +14,26 @@ class PrioritiesTableSeeder extends Seeder
     {
         $priority = Priority::create([
         	'name' => 'Urgent', 
-            'type' => 'Custom',
-            'time' => '20',
+            'time' => '24',
             'status' => 'Active',
         ]);
 
         $priority = Priority::create([
         	'name' => 'High', 
-            'type' => 'Timebased',
-            'time' => '24',
-            'status' => 'Inactive',
+            'time' => '48',
+            'status' => 'Active',
         ]);
 
         $priority = Priority::create([
         	'name' => 'Medium', 
-            'type' => 'Custom',
-            'time' => '36',
+            'time' => '96',
             'status' => 'Active',
         ]);
 
         $priority = Priority::create([
         	'name' => 'Low', 
-            'type' => 'Timebased',
-            'time' => '40',
-            'status' => 'Inactive',
+            'time' => '168',
+            'status' => 'Active',
         ]);
     }
 }

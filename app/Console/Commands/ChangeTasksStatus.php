@@ -15,7 +15,7 @@ class ChangeTasksStatus extends Command
      *
      * @var string
      */
-    protected $signature = 'ChangeTasksStatus:status';
+    protected $signature = 'task:status';
 
     /**
      * The console command description.
@@ -41,7 +41,7 @@ class ChangeTasksStatus extends Command
      */
     public function handle()
     {
-        // $tasks = Task::all();
+        $tasks = Task::all();
 
         //Get task which priority is high
         $tasks = \DB::table('tasks')->where('priority_id', 2)->get();
@@ -50,6 +50,6 @@ class ChangeTasksStatus extends Command
         // $time = $time_formatted->startTime()->format('%H:%I:%S');
         // $time_end = $time_formatted->finishTime()->format('%H:%I:%S');
         
-        //dd($tasks);
+        dd($tasks);
     }
 }

@@ -19,7 +19,7 @@ class CategoriesTableSeeder extends Seeder
 
         $category = Category::create([
         	'name' => 'Office', 
-        	'status' => 'Inactive',
+        	'status' => 'Active',
         ]);
 
         $category = Category::create([
@@ -29,7 +29,7 @@ class CategoriesTableSeeder extends Seeder
 
         $category = Category::create([
         	'name' => 'Work', 
-        	'status' => 'Inactive',
+        	'status' => 'Active',
         ]);
     }
 }

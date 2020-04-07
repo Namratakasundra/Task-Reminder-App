@@ -15,12 +15,11 @@ class CreatePrioritiesTable extends Migration
     {
         Schema::create('priorities', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 100);
-            $table->enum('type', ['Custom','Timebased']);
-            $table->integer('time')->nullable();
-            $table->enum('status', ['Active', 'Inactive']);
-            $table->softDeletes(); 
+            $table->string('name', 100)->unique();
+            $table->integer('time');
+            $table->enum('status', ['Active', 'Inactive'])->default('Active');
             $table->timestamps();
+            $table->softDeletes(); 
         });
     }
 

@@ -18,9 +18,9 @@ class CreateTasksTable extends Migration
             $table->text('details', 500);
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('priority_id');
-            $table->enum('status', ['Pending', 'Completed', 'On Hold', 'Canceled']);
-            $table->softDeletes(); 
+            $table->enum('status', ['Pending', 'Completed', 'On Hold', 'Canceled'])->default('Pending');
             $table->timestamps();
+            $table->softDeletes(); 
 
             $table->foreign('category_id')
                 ->references('id')->on('categories')

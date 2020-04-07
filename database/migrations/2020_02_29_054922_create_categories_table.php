@@ -15,10 +15,10 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 100);
-            $table->enum('status', ['Active', 'Inactive']);
-            $table->softDeletes();  
+            $table->string('name', 100)->unique();
+            $table->enum('status', ['Active', 'Inactive'])->default('Active');
             $table->timestamps();
+            $table->softDeletes(); 
         });
     }
 

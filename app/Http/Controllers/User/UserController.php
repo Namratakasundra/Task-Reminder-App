@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\users;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -89,7 +89,6 @@ class UserController extends Controller
             $user->name = $request->input('name');
             $user->email = $request->input('email');
             $user->password = bcrypt($request->input('password'));
-            $user->confirm_password = bcrypt($request->input('confirm_password'));
             $user->status = $request->input('status');
             $user->save(); 
             if($request->hasfile('profile_picture'))
@@ -252,7 +251,6 @@ class UserController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
-        $user->confirm_password = bcrypt($request->input('confirm_password'));
         $user->status = $request->input('status');
         $user->save(); //persist the data
         if($request->hasfile('profile_picture'))
