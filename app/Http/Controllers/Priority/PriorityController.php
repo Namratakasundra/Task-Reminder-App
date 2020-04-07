@@ -48,7 +48,6 @@ class PriorityController extends Controller
      */
     public function create(Request $request)
     {
-        $types = ['Custom','Timebased'];
         $statuses = ['Active', 'Inactive'];
         $priority = new Priority();
 
@@ -59,7 +58,7 @@ class PriorityController extends Controller
                 'data' => $priority
             ];
         }
-        return view('pages.priorities.create', ['types'=>$types], ['statuses'=>$statuses], ['priority'=>$priority]);
+        return view('pages.priorities.create', ['statuses'=>$statuses], ['priority'=>$priority]);
     }
 
     /**
@@ -76,7 +75,6 @@ class PriorityController extends Controller
             //input method is used to get the value of input with its
             //name specified
             $priority->name = $request->input('name');
-            $priority->type = $request->input('type');
             $priority->time = $request->input('time');
             $priority->status = $request->input('status');
             $priority->save(); //persist the data 
@@ -127,7 +125,6 @@ class PriorityController extends Controller
     {
         //Find the Priority
         $priority = Priority::find($id);
-        $types = ['Custom','Timebased'];
         $statuses = ['Active', 'Inactive'];
 
         if($request->is('api/*')) 
@@ -137,7 +134,7 @@ class PriorityController extends Controller
                 'data' => $priority
             ];
         }
-        return view('pages.priorities.create',compact('priority', 'types', 'statuses'));
+        return view('pages.priorities.create',compact('priority', 'statuses'));
     }
 
     /**
@@ -154,7 +151,6 @@ class PriorityController extends Controller
            //Retrieve the priority and update
             $priority = Priority::find($id);
             $priority->name = $request->input('name');
-            $priority->type = $request->input('type');
             $priority->time = $request->input('time');
             $priority->status = $request->input('status');
             $priority->save(); //persist the data 

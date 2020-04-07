@@ -193,7 +193,6 @@ class UserController extends Controller
             
             $user = User::find($id);
             $user->password = bcrypt($request->input('password'));
-            $user->confirm_password = bcrypt($request->input('confirm_password'));
             $user ->save();    
             \Toastr::success('Password successfully changed', 'Password change', ["positionClass" => "toast-top-right"]);        
         } 

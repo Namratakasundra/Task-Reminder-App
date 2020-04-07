@@ -67,7 +67,6 @@
             <tr>
                 <th style="text-align:center;color:#0168fa;">Id</th>
                 <th style="text-align:center;">@sortablelink('name','Name')</th>
-                <th style="text-align:center;">@sortablelink('type','Type')</th>
                 <th style="text-align:center;">@sortablelink('time','Time')</th>
                 <th style="text-align:center;">@sortablelink('status','Status')</th>
                 <th style="text-align:center;color:#0168fa;">Actions</th>
@@ -78,7 +77,6 @@
             <tr class="text-center">
                 <td>{{ $priority->id }}</td>
                 <td>{{ $priority->name }}</td>
-                <td>{{ $priority->type }}</td>
                 <td>{{ $priority->time }}</td>
                 <td>{{ $priority->status }}</td>
                 <td>

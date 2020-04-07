@@ -16,8 +16,7 @@
 <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
 @endsection
 
-<form action="{{ isset($priority) ? route('priorities.update', ['id' => $priority->id]) : route('priorities.store') }}"
-    method="POST" enctype="multipart/form-data">
+<form action="{{ isset($priority) ? route('priorities.update', ['id' => $priority->id]) : route('priorities.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="card">
         <div class="card-body">
@@ -44,26 +43,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-md-3">
-                            <label for="type"><strong>Type : <span class="tx-danger">*</span></strong></label>
-                            <select
-                                class="form-control priority-type-select{{ $errors->has('type') ? ' is-invalid' : '' }}"
-                                id="type" name="type" required>
-                                <option disabled selected value>Select Type</option>
-                                @foreach($types as $type)
-                                <option value="{{ $type }}" @if(isset($priority) && $priority->type == $type) selected
-                                    @elseif(!isset($priority) && $type == 'Timebased') selected @else @endif>{{ $type }}
-                                </option>
-                                @endforeach
-                            </select>
-                            @if ($errors->has('type'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('type') }}</strong>
-                            </span>
-                            @endif
-                        </div>
-
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="time"><strong>Time : <span class="tx-danger">*</span></strong></label>
                                 <input type="number" name="time" id="time" class="form-control" required
