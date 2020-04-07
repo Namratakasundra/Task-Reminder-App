@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-@php($title = 'User Index')
+@php($title = 'Users')
 @push('title', yieldTitle($title))
 
 @section('breadcrumb-link')

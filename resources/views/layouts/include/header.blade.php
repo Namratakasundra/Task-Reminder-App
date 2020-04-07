@@ -12,7 +12,7 @@
         <li class="nav-item active"><a href="{{ route('users.index') }}" class="nav-link"><i
                     data-feather="box"></i>Users</a></li>
         <li class="nav-item active"><a href="{{ route('categories.index') }}" class="nav-link"><i
-                    data-feather="box"></i>Categoires</a></li>
+                    data-feather="box"></i>Categories</a></li>
         <li class="nav-item active"><a href="{{ route('priorities.index') }}" class="nav-link"><i
                     data-feather="box"></i>Priorities</a></li>
         <li class="nav-item active"><a href="{{ route('tasks.index') }}" class="nav-link"><i

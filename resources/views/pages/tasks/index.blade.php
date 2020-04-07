@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-@php($title = 'Task Index')
+@php($title = 'Tasks')
 @push('title', yieldTitle($title))
 
 @section('breadcrumb-link')

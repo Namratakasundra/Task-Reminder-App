@@ -15,7 +15,7 @@
     {{-- Sidebar --}}
     {{-- @include('layouts.include.sidebar') --}}
 
-    <div class="">
+    <div class="body">
         <div class="container-fluid">
             <div class="content">
             </div>
