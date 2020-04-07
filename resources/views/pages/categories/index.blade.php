@@ -60,45 +60,47 @@
     </div>
 </div>
 
-<div class="bs-example container-fluid-1" data-example-id="striped-table">
-    <table class="table table-striped table-bordered table-hover">
-        <thead>
-            <tr>
-                <th style="text-align:center;">@sortablelink('id','Id')</th>
-                <th style="text-align:center;">@sortablelink('name','Name')</th>
-                <th style="text-align:center;">@sortablelink('status','Status')</th>
-                <th style="text-align:center;color:#0168fa;">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($categories as $category)
-            <tr class="text-center">
-                <td>{{ $category->id }}</td>
-                <td>{{ $category->name }}</td>
-                <td>{{ $category->status }}</td>
-                <td>
-                    {{-- <a class = "btn" href="{{route('categories.show',['id'=>$category->id])}}" >
-                    <i class="fa fa-th-list xlarge" style="color:RoyalBlue;" aria-hidden="true"></i>
-                    </a> --}}
-                    <a class="btn" href="{{route('categories.edit',['id'=>$category->id])}}">
-                        <i class="far fa-edit" style="color:Green;" aria-hidden="true"></i>
-                    </a>
-                    <a class="btn" onclick="return confirm('Are you sure???')" href="{{route('categories.destroy',['id'=>$category->id])}}">
-                        <i class="fa fa-trash" style="color:Red;" aria-hidden="true"></i>
-                    </a>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div> {{-- container-fluid-1 --}}
-
-</div>
+<div class="card">
+    <div class="card-body">
+        <div class="bs-example container-fluid-1" data-example-id="striped-table">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th style="text-align:center;">@sortablelink('id','Id')</th>
+                        <th style="text-align:center;">@sortablelink('name','Name')</th>
+                        <th style="text-align:center;">@sortablelink('status','Status')</th>
+                        <th style="text-align:center;color:#0168fa;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($categories as $category)
+                    <tr class="text-center">
+                        <td>{{ $category->id }}</td>
+                        <td>{{ $category->name }}</td>
+                        <td>{{ $category->status }}</td>
+                        <td>
+                            {{-- <a class = "btn" href="{{route('categories.show',['id'=>$category->id])}}" >
+                            <i class="fa fa-th-list xlarge" style="color:RoyalBlue;" aria-hidden="true"></i>
+                            </a> --}}
+                            <a class="btn" href="{{route('categories.edit',['id'=>$category->id])}}">
+                                <i class="far fa-edit" style="color:Green;" aria-hidden="true"></i>
+                            </a>
+                            <a class="btn" onclick="return confirm('Are you sure???')" href="{{route('categories.destroy',['id'=>$category->id])}}">
+                                <i class="fa fa-trash" style="color:Red;" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div> {{-- container-fluid-1 --}}
+    </div> {{-- card-body --}}
+</div> {{-- card --}}
 
 <!-- For Pagination -->
-<div class="row">
-    <div class="col-sm-12  pull-right">
-        <ul class="pagination justify-content-center">
+<div class="row mt-4">
+    <div class="col-sm-12 pull-right">
+        <ul class="pagination">
             {!! $categories->appends(\Request::except('page'))->render() !!}
         </ul>
     </div>

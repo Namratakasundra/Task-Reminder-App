@@ -89,47 +89,51 @@
 
 </div>{{-- Row-index end --}}
 
-<div class="bs-example container-fluid-1" data-example-id="striped-table">
-    <table class="table table-striped table-bordered table-hover">
-        <thead>
-            <tr>
-                <th style="text-align:center;">@sortablelink('id','Id')</th>
-                <th style="text-align:center;">@sortablelink('details','Details')</th>
-                <th style="text-align:center;">@sortablelink('category_id','Category')</th>
-                <th style="text-align:center;">@sortablelink('priority_id','Priority')</th>
-                <th style="text-align:center;">@sortablelink('status','Status')</th>
-                <th style="text-align:center;color:#0168fa;">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($tasks as $task)
-            <tr class="text-center table-tr-pad">
-                <td>{{ $task->id }}</td>
-                <td style="text-align:left;">{{ $task->details }}</td>
-                <td>{{ $task->category->name }}</td>
-                <td>{{ $task->priority->name }}</td>
-                <td>{{ $task->status }}</td>
-                <td>
-                    {{-- <a class = "btn" href="{{route('tasks.show',['id'=>$task->id])}}" >
-                    <i class="fa fa-th-list xlarge" style="color:RoyalBlue;" aria-hidden="true"></i>
-                    </a> --}}
-                    <a class="btn" href="{{route('tasks.edit',['id'=>$task->id])}}">
-                        <i class="far fa-edit" style="color:Green;" aria-hidden="true"></i>
-                    </a>
-                    <a class="btn" onclick="return confirm('Are you sure???')" href="{{route('tasks.destroy',['id'=>$task->id])}}">
-                        <i class="fa fa-trash" style="color:Red;" aria-hidden="true"></i>
-                    </a>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div> <!-- container-fluid-1 -->
+<div class="card">
+    <div class="card-body">
+        <div class="bs-example container-fluid-1" data-example-id="striped-table">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th style="text-align:center;">@sortablelink('id','Id')</th>
+                        <th style="text-align:center;">@sortablelink('details','Details')</th>
+                        <th style="text-align:center;">@sortablelink('category_id','Category')</th>
+                        <th style="text-align:center;">@sortablelink('priority_id','Priority')</th>
+                        <th style="text-align:center;">@sortablelink('status','Status')</th>
+                        <th style="text-align:center;color:#0168fa;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($tasks as $task)
+                    <tr class="text-center table-tr-pad">
+                        <td>{{ $task->id }}</td>
+                        <td style="text-align:left;">{{ $task->details }}</td>
+                        <td>{{ $task->category->name }}</td>
+                        <td>{{ $task->priority->name }}</td>
+                        <td>{{ $task->status }}</td>
+                        <td>
+                            {{-- <a class = "btn" href="{{route('tasks.show',['id'=>$task->id])}}" >
+                            <i class="fa fa-th-list xlarge" style="color:RoyalBlue;" aria-hidden="true"></i>
+                            </a> --}}
+                            <a class="btn" href="{{route('tasks.edit',['id'=>$task->id])}}">
+                                <i class="far fa-edit" style="color:Green;" aria-hidden="true"></i>
+                            </a>
+                            <a class="btn" onclick="return confirm('Are you sure???')" href="{{route('tasks.destroy',['id'=>$task->id])}}">
+                                <i class="fa fa-trash" style="color:Red;" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div> {{-- container-fluid-1 --}}
+    </div> {{-- card-body --}}
+</div> {{-- card --}}
 
 <!-- For Pagination -->
-<div class="row">
-    <div class="col-sm-12  pull-right">
-        <ul class="pagination justify-content-center">
+<div class="row mt-4">
+    <div class="col-sm-12 pull-right">
+        <ul class="pagination">
             {!! $tasks->appends(\Request::except('page'))->render() !!}
         </ul>
     </div>
