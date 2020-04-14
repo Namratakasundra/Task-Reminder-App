@@ -119,6 +119,7 @@ class UserController extends Controller
                 }
                 
                 file_put_contents($app_path .$filename, $data);
+                // $file->move($app_path, $filename);
 
                 $sizes = [64, 128, 256, 512];
                 foreach($sizes as $size)

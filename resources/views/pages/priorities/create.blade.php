@@ -17,6 +17,8 @@
 @endsection
 
 <form action="{{ isset($priority) ? route('priorities.update', ['id' => $priority->id]) : route('priorities.store') }}" method="POST" enctype="multipart/form-data">
+
+    {{-- <form action="{{route('priorities.store') }}" method="POST" enctype="multipart/form-data"> --}}
     @csrf
     <div class="card">
         <div class="card-body">
@@ -78,7 +80,8 @@
                     <div class="form-group text-right">
                         <div class="button">
                             <a href="{{route('priorities.index')}}" class="btn btn-warning mg-r-1">Cancel</a>
-                            <button type="submit" class="btn btn-success">@if (isset($priority->name))
+                            <button type="submit" class="btn btn-success">
+                                @if (isset($priority->name))
                                 Update
                                 @else
                                 Save

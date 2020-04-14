@@ -26,6 +26,7 @@
         </div>
         {{-- Filtering with status --}}
         <div class="filter">
+            <form action="{{route('users.index')}}" method="GET">
             <select class="form-control" id="status" name="status" style="width: 130px;">
                 <option disabled selected value>By Status</option>
                 @foreach($statuses as $status)
@@ -35,6 +36,7 @@
                 @endforeach
             </select>
         </div>
+        
         {{-- To show Filter icon --}}
         <div class="filter-icon">
             <div class="form-group">
@@ -43,6 +45,7 @@
                 </button>
             </div>
         </div>
+
         {{-- To show Reset icon --}}
         <div class="filter-icon">
             <div class="form-group">
@@ -66,7 +69,7 @@
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th style="text-align:center;color:#0168fa;">Id</th>
+                        <th style="text-align:center;">@sortablelink('id','Id')</th>
                         <th style="text-align:center;">@sortablelink('name','Name')</th>
                         <th style="text-align:center;color:#0168fa;">Email</th>
                         <th style="text-align:center;">@sortablelink('status','Status')</th>

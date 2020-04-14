@@ -4,5 +4,5 @@ return [
         'title' => 'Task Raminder App',
         'author' => 'Matrix',
     ],  
-    "pagination_size" => 2,
+    "pagination_size" => 5,
 ];

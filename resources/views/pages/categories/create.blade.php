@@ -32,6 +32,11 @@
                                     placeholder="Your name"
                                     value="{{isset($category) ? $category->name : old('name') }}">
                             </div>
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
                         <div class="form-group col-md-5">
@@ -58,7 +63,8 @@
                     <div class="form-group text-right">
                         <div class="button">
                             <a href="{{route('categories.index')}}" class="btn btn-warning mg-r-1">Cancel</a>
-                            <button type="submit" class="btn btn-success">@if(isset($category->name))
+                            <button type="submit" class="btn btn-success">
+                                @if(isset($category->name))
                                 Update
                                 @else
                                 Save

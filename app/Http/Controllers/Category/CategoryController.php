@@ -69,6 +69,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        request()->validate([
+            'name' => 'required|max:50|unique:categories,name',
+        ]);
+        
         try 
         {
             $category = new Category();
@@ -145,6 +149,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        request()->validate([
+            'name' => 'required|max:50',
+        ]);
+
         try 
         {
             //Retrieve the category and update

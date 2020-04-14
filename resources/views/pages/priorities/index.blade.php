@@ -67,9 +67,9 @@
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th style="text-align:center;color:#0168fa;">Id</th>
+                        <th style="text-align:center;">@sortablelink('id','Id')</th>
                         <th style="text-align:center;">@sortablelink('name','Name')</th>
-                        <th style="text-align:center;">@sortablelink('time','Time')</th>
+                        <th style="text-align:center;color:#0168fa;">Time</th>
                         <th style="text-align:center;">@sortablelink('status','Status')</th>
                         <th style="text-align:center;color:#0168fa;">Actions</th>
                     </tr>

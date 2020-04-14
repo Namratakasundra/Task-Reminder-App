@@ -50,7 +50,6 @@
             <a class="btn btn-secondary" href="{{ route('categories.index') }}"> <i class="fas fa-redo"></i></a>
         </div>
     </div>
-    </form>
 
     {{-- For creating new records --}}
     <div class="button">

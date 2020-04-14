@@ -26,6 +26,10 @@ class TaskController extends Controller
         $request_category = $request->query('category_id');
         $request_priority = $request->query('priority_id');
         $search = $request->query('search');
+
+        // $time= $tasks->created_at;
+        // $time = Carbon::parse($time);
+        // return $time->format('H:i:s');
         //To search task
         if($request->search!= null)
         {

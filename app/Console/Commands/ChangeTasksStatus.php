@@ -41,15 +41,15 @@ class ChangeTasksStatus extends Command
      */
     public function handle()
     {
-        $tasks = Task::all();
+        //$tasks = Task::all();
 
         //Get task which priority is high
-        $tasks = \DB::table('tasks')->where('priority_id', 2)->get();
+        //$tasks = \DB::table('tasks')->where('priority_id', 2)->get();
 
         // $time_formatted = new Carbon();
         // $time = $time_formatted->startTime()->format('%H:%I:%S');
         // $time_end = $time_formatted->finishTime()->format('%H:%I:%S');
         
-        dd($tasks);
+        //dd($tasks);
     }
 }

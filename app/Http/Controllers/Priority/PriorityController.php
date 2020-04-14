@@ -58,7 +58,7 @@ class PriorityController extends Controller
                 'data' => $priority
             ];
         }
-        return view('pages.priorities.create', ['statuses'=>$statuses], ['priority'=>$priority]);
+        return view('pages.priorities.create', compact('statuses', 'priority'));
     }
 
     /**
@@ -69,12 +69,16 @@ class PriorityController extends Controller
      */
     public function store(Request $request)
     {
-        try 
+        request()->validate([
+            'name' => 'required|max:50|regex:/(^[a-zA-Z]+(\s[a-zA-Z]+)?$)/u|unique:name',
+        ]);
+
+        try  
         {
             $priority = new Priority();
             //input method is used to get the value of input with its
             //name specified
-            $priority->name = $request->input('name');
+            $priority->name = $request->input('name'); 
             $priority->time = $request->input('time');
             $priority->status = $request->input('status');
             $priority->save(); //persist the data 
@@ -112,7 +116,7 @@ class PriorityController extends Controller
                 'data' => $priorities
             ];
         }
-        return view('pages.priorities.show',compact('priority'));
+        return view('pages.priorities.show', compact('priority'));
     }
 
     /**

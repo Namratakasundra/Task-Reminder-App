@@ -14,6 +14,9 @@ class Task extends Model
     protected $table = 'tasks';
     protected $softDelete = true;
     protected $fillable = ['details', 'category_id', 'priority_id', 'status'];
+    protected $time = [
+        'created_at'
+    ];
 
     public function category()
     {

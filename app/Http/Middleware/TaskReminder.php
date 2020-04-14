@@ -18,7 +18,6 @@ class TaskReminder
         try 
         {
             $token_check = $request["Token"];
-            //dd($token_check);
             if($token_check && ($token_check == '123456'))
             {
                 return $next($request);
@@ -28,6 +27,7 @@ class TaskReminder
         {
             $e;
         }
+
         return response([
             'status' => false,
             'message' => 'Authorization failed'

@@ -13,5 +13,5 @@ class Priority extends Model
     
     protected $table = 'priorities';
     protected $softDelete = true;
-    protected $fillable = ['name','status'];
+    protected $fillable = ['name', 'time', 'status'];
 }
