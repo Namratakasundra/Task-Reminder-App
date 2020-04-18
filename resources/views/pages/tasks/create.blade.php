@@ -16,6 +16,11 @@
 <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
 @endsection
 
+{{-- <ul>
+    @foreach ($errors->all() as $e)
+        <li> {{$e}} </li>
+@endforeach
+</ul> --}}
 
 <form action="{{ isset($task) ? route('tasks.update', ['id' => $task->id]) : route('tasks.store') }}" method="POST"
     enctype="multipart/form-data">

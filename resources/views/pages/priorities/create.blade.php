@@ -16,6 +16,12 @@
 <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
 @endsection
 
+{{-- <ul>
+    @foreach ($errors->all() as $e)
+        <li> {{$e}} </li>
+@endforeach
+</ul> --}}
+
 <form action="{{ isset($priority) ? route('priorities.update', ['id' => $priority->id]) : route('priorities.store') }}" method="POST" enctype="multipart/form-data">
 
     {{-- <form action="{{route('priorities.store') }}" method="POST" enctype="multipart/form-data"> --}}

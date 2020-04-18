@@ -56,13 +56,13 @@ class UserController extends Controller
         $statuses = ['Pending', 'Active', 'Inactive', 'Rejected', 'Blocked'];
         $users = new User();
 
-        if($request->is('api/*')) 
-        {
-            return [
-                'status' => true,
-                'data' => $users
-            ];
-        }
+        // if($request->is('api/*')) 
+        // {
+        //     return [
+        //         'status' => true,
+        //         'data' => $users
+        //     ];
+        // }
         return view('pages.users.create',compact('statuses', 'users'));
     }
 
@@ -75,11 +75,16 @@ class UserController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'name' => 'required|max:100|regex:/(^[a-zA-Z]+(\s[a-zA-Z]+)?$)/u',
-            'email' => 'required|email|unique:users,email',
-            'password' =>'required|min:6',
-            'confirm_password' =>'required_with:password|min:6|same:password',
-            'profile_picture' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'name' => ['required', 'max:100', 'regex:/(^[a-zA-Z]+(\s[a-zA-Z]+)?$)/u'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => ['required', 'string', 'min:6', 'confirmed',
+                'regex:/[a-z]/',      // must contain at least one lowercase letter
+                'regex:/[A-Z]/',      // must contain at least one uppercase letter
+                'regex:/[0-9]/',      // must contain at least one digit
+                //'regex:/[@$!%*#?&]/', // must contain a special character
+                ],
+            'confirm_password' => ['required_with:password', 'min:6', 'same:password'],
+            'profile_picture' => ['image', 'mimes:jpeg,png,jpg,gif,svg'],
         ]);
 
         try 
@@ -188,8 +193,13 @@ class UserController extends Controller
         try 
         {
             request()->validate([
-                'password' =>'required|min:6',
-                'confirm_password' =>'required_with:password|min:6|same:password',
+                'password' => ['required', 'string', 'min:6', 'confirmed',
+                'regex:/[a-z]/',      // must contain at least one lowercase letter
+                'regex:/[A-Z]/',      // must contain at least one uppercase letter
+                'regex:/[0-9]/',      // must contain at least one digit
+                //'regex:/[@$!%*#?&]/', // must contain a special character
+                ],
+                'confirm_password' => ['required_with:password', 'min:6', 'same:password'],
             ]);
             
             $user = User::find($id);
@@ -217,13 +227,13 @@ class UserController extends Controller
         $user = User::find($id); 
         $statuses  = ['Pending', 'Active', 'Inactive', 'Rejected', 'Blocked'];
 
-        if($request->is('api/*')) 
-        {
-            return [
-                'status' => true,
-                'data' => $user
-            ];
-        }
+        // if($request->is('api/*')) 
+        // {
+        //     return [
+        //         'status' => true,
+        //         'data' => $user
+        //     ];
+        // }
         return view('pages.users.create', ['user'=> $user], ['statuses'=> $statuses]);
     }
 
@@ -239,9 +249,9 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'name' => 'required|max:100',
-            'email' => 'required|email',
-            'profile_picture' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'name' => ['required', 'max:100', 'regex:/(^[a-zA-Z]+(\s[a-zA-Z]+)?$)/u'],
+            'email' => ['required', 'email'],
+            'profile_picture' => ['image', 'mimes:jpeg,png,jpg,gif,svg'],
         ]);
 
         try

@@ -51,13 +51,13 @@ class CategoryController extends Controller
         $statuses = ['Active', 'Inactive'];
         $categories = new Category();
 
-        if($request->is('api/*')) 
-        {
-            return [
-                'status' => true,
-                'data' => $categories
-            ];
-        }
+        // if($request->is('api/*')) 
+        // {
+        //     return [
+        //         'status' => true,
+        //         'data' => $categories
+        //     ];
+        // }
         return view('pages.categories.create',compact('statuses', 'categories'));
     }
 
@@ -70,7 +70,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'name' => 'required|max:50|unique:categories,name',
+            'name' => ['required', 'max:50', 'unique:categories,name'],
         ]);
         
         try 
@@ -130,13 +130,13 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $statuses  = ['Active', 'Inactive'];
 
-        if($request->is('api/*')) 
-        {
-            return [
-                'status' => true,
-                'data' => $category
-            ];
-        }
+        // if($request->is('api/*')) 
+        // {
+        //     return [
+        //         'status' => true,
+        //         'data' => $category
+        //     ];
+        // }
         return view('pages.categories.create', ['category'=> $category], ['statuses'=> $statuses]);
     }
 

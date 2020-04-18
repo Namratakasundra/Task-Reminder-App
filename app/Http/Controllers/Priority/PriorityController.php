@@ -51,13 +51,13 @@ class PriorityController extends Controller
         $statuses = ['Active', 'Inactive'];
         $priority = new Priority();
 
-        if($request->is('api/*')) 
-        {
-            return [
-                'status' => true,
-                'data' => $priority
-            ];
-        }
+        // if($request->is('api/*')) 
+        // {
+        //     return [
+        //         'status' => true,
+        //         'data' => $priority
+        //     ];
+        // }
         return view('pages.priorities.create', compact('statuses', 'priority'));
     }
 
@@ -131,13 +131,13 @@ class PriorityController extends Controller
         $priority = Priority::find($id);
         $statuses = ['Active', 'Inactive'];
 
-        if($request->is('api/*')) 
-        {
-            return [
-                'status' => true,
-                'data' => $priority
-            ];
-        }
+        // if($request->is('api/*')) 
+        // {
+        //     return [
+        //         'status' => true,
+        //         'data' => $priority
+        //     ];
+        // }
         return view('pages.priorities.create',compact('priority', 'statuses'));
     }
 

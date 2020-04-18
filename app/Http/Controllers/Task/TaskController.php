@@ -74,13 +74,13 @@ class TaskController extends Controller
         $priorities = Priority::all();
         $statuses = ['Pending', 'Completed', 'On Hold', 'Canceled'];
 
-        if($request->is('api/*')) 
-        {
-            return [
-                'status' => true,
-                'data' => $tasks
-            ];
-        }
+        // if($request->is('api/*')) 
+        // {
+        //     return [
+        //         'status' => true,
+        //         'data' => $tasks
+        //     ];
+        // }
         return view('pages.tasks.create', compact('tasks', 'categories', 'priorities', 'statuses'));
     }
 
@@ -151,13 +151,13 @@ class TaskController extends Controller
         $priorities = Priority::all();
         $statuses = ['Pending', 'Completed', 'On Hold', 'Canceled'];
 
-        if($request->is('api/*')) 
-        {
-            return [
-                'status' => true,
-                'data' => $tasks
-            ];
-        }
+        // if($request->is('api/*')) 
+        // {
+        //     return [
+        //         'status' => true,
+        //         'data' => $tasks
+        //     ];
+        // }
         return view('pages.tasks.create',compact('task', 'priorities', 'categories', 'statuses', 'tasks'));
     }
 
