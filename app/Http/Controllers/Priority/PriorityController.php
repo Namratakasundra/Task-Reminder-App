@@ -49,7 +49,6 @@ class PriorityController extends Controller
     public function create(Request $request)
     {
         $statuses = ['Active', 'Inactive'];
-        $priority = new Priority();
 
         // if($request->is('api/*')) 
         // {
@@ -58,7 +57,7 @@ class PriorityController extends Controller
         //         'data' => $priority
         //     ];
         // }
-        return view('pages.priorities.create', compact('statuses', 'priority'));
+        return view('pages.priorities.create', compact('statuses'));
     }
 
     /**
@@ -70,7 +69,7 @@ class PriorityController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'name' => 'required|max:50|regex:/(^[a-zA-Z]+(\s[a-zA-Z]+)?$)/u|unique:name',
+            'name' => 'required|max:50|regex:/(^[a-zA-Z]+(\s[a-zA-Z]+)?$)/u|unique:priorities',
         ]);
 
         try  
