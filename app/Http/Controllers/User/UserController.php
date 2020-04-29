@@ -272,7 +272,6 @@ class UserController extends Controller
         $user = User::find($id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->password = bcrypt($request->input('password'));
         $user->status = $request->input('status');
         $user->save(); //persist the data
         if($request->hasfile('profile_picture'))
