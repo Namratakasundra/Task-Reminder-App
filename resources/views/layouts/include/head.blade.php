@@ -48,3 +48,5 @@
 
     {{-- Yajra Filtering --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+
+    <link rel="stylesheet" href="{{ asset('/custom.css') }}">
