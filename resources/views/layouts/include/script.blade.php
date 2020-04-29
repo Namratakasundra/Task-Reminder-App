@@ -15,8 +15,8 @@
 {!! Toastr::message() !!}
 
 {{-- For coppie Library --}}
-<script src="http://demo.itsolutionstuff.com/plugin/croppie.js"></script>
-<script src="/assets/js/croppie.js"></script>
+<script src="{{ asset('/js/croppie.js') }}"></script>
+<script src="{{ asset('/assets/js/croppie.js') }}"></script>
 
 {{-- For Select2 dropdown --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>

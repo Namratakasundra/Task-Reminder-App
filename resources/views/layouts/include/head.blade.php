@@ -36,20 +36,15 @@
     <!-- DashForge CSS -->
     <link rel="stylesheet" href="/assets/css/dashforge.css">
     <link rel="stylesheet" href="/assets/css/dashforge.demo.css">
-    <link rel='stylesheet' href='/custom.css' />
-    
     
     <!-- Toaster -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
     {{-- Croppie --}}
-    <link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/croppie.css">
+    <link rel="stylesheet" href="{{ asset('/css/croppie.css') }}">
 
     {{-- Select2 dropdown --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 
     {{-- Yajra Filtering --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
-
-    {{-- Custom css --}}
-    <link rel="stylesheet" href="{{ ('/custom.css') }}">
