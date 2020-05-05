@@ -11,7 +11,7 @@
   </script>
 
 <!-- toaster scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="{{ asset('/js/toastr.min.js')}}"></script>
 {!! Toastr::message() !!}
 
 {{-- For coppie Library --}}
@@ -19,7 +19,7 @@
 <script src="{{ asset('/assets/js/croppie.js') }}"></script>
 
 {{-- For Select2 dropdown --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="{{ asset('/js/select2.min.js')}}"></script>
 <script src="/assets/js/select2.js"></script>
 
 {{-- For Yajra filtering --}}

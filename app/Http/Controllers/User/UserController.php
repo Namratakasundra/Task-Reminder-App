@@ -74,31 +74,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'name' => ['required', 'max:100', 'regex:/(^[a-zA-Z]+(\s[a-zA-Z]+)?$)/u'],
-            'email' => ['required', 'email', 'unique:users,email'],
-            'password' => ['required', 'string', 'min:6', 'confirmed',
-                'regex:/[a-z]/',      // must contain at least one lowercase letter
-                'regex:/[A-Z]/',      // must contain at least one uppercase letter
-                'regex:/[0-9]/',      // must contain at least one digit
-                //'regex:/[@$!%*#?&]/', // must contain a special character
-                ],
-            'confirm_password' => ['required_with:password', 'min:6', 'same:password'],
-            'profile_picture' => ['image', 'mimes:jpeg,png,jpg,gif,svg'],
-        ]);
-
-        // request()->validate([
-        //         'name' => ['required', 'alpha'],
-        //         'email' => ['required', 'string', 'email'],
-        //         'password' => ['required', 'string', 'min:6', 'confirmed',
-        //         'regex:/[a-z]/',      // must contain at least one lowercase letter
-        //         'regex:/[A-Z]/',      // must contain at least one uppercase letter
-        //         'regex:/[0-9]/',      // must contain at least one digit
-        //         // 'regex:/[@$!%*#?&]/', // must contain a special character
-        //         ],
-        //         // 'password' => 'required|min:6|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'
-        //     ]);
-
         try 
         {
             $user = new User();
@@ -204,15 +179,15 @@ class UserController extends Controller
     {
         try 
         {
-            request()->validate([
-                'password' => ['required', 'string', 'min:6', 'confirmed',
-                'regex:/[a-z]/',      // must contain at least one lowercase letter
-                'regex:/[A-Z]/',      // must contain at least one uppercase letter
-                'regex:/[0-9]/',      // must contain at least one digit
-                //'regex:/[@$!%*#?&]/', // must contain a special character
-                ],
-                'confirm_password' => ['required_with:password', 'min:6', 'same:password'],
-            ]);
+            // request()->validate([
+            //     'password' => ['required', 'string', 'min:6', 'confirmed',
+            //     'regex:/[a-z]/',      // must contain at least one lowercase letter
+            //     'regex:/[A-Z]/',      // must contain at least one uppercase letter
+            //     'regex:/[0-9]/',      // must contain at least one digit
+            //     //'regex:/[@$!%*#?&]/', // must contain a special character
+            //     ],
+            //     'confirm_password' => ['required_with:password', 'min:6', 'same:password'],
+            // ]);
             
             $user = User::find($id);
             $user->password = bcrypt($request->input('password'));
@@ -260,11 +235,11 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        request()->validate([
-            'name' => ['required', 'max:100', 'regex:/(^[a-zA-Z]+(\s[a-zA-Z]+)?$)/u'],
-            'email' => ['required', 'email'],
-            'profile_picture' => ['image', 'mimes:jpeg,png,jpg,gif,svg'],
-        ]);
+        // request()->validate([
+        //     'name' => ['required', 'max:100', 'regex:/(^[a-zA-Z]+(\s[a-zA-Z]+)?$)/u'],
+        //     'email' => ['required', 'email'],
+        //     'profile_picture' => ['image', 'mimes:jpeg,png,jpg,gif,svg'],
+        // ]);
 
         try
         {

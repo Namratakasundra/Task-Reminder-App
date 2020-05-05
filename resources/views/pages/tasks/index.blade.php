@@ -13,18 +13,17 @@
 <div class="row-index">
 
     {{-- For searching --}}
-    <div class="search" style="float : left;">
-        <form action="{{route('tasks.index')}}" method="get">
-            <div class="input-group">
-                <input class="form-control" id="search" value placeholder="Search your task here" name="search"
-                    type="search" style="background-color: #f4f7fa;">
-                <div class="search-button">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"
-                            aria-hidden="true"></i></button>
+        <div class="search" style="float : left;">
+            <form action="{{route('tasks.index')}}" method="get">
+                <div class="input-group">
+                    <input class="form-control" id="search" value placeholder="Search your task here" name="search" type="search">
+                    <div class="search-button">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"
+                                aria-hidden="true"></i></button>
+                    </div>
                 </div>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
 
     {{-- Filtering with category --}}
     <div class="filter">
