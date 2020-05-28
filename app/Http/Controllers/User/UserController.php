@@ -76,6 +76,19 @@ class UserController extends Controller
     {
         try 
         {
+            request()->validate([
+                'name' => ['required', 'max:100', 'regex:/(^[a-zA-Z]+(\s[a-zA-Z]+)?$)/u'],
+                'email' => ['required', 'email', 'unique:users,email'],
+                'password' => ['required', 'string', 'min:6', 'confirmed',
+                    'regex:/[a-z]/',      // must contain at least one lowercase letter
+                    'regex:/[A-Z]/',      // must contain at least one uppercase letter
+                    'regex:/[0-9]/',      // must contain at least one digit
+                    //'regex:/[@$!%*#?&]/', // must contain a special character
+                    ],
+                'confirm_password' => ['required_with:password', 'min:6', 'same:password'],
+                'profile_picture' => ['image', 'mimes:jpeg,png,jpg,gif,svg'],
+            ]);
+
             $user = new User();
             //input method is used to get the value of input with its name specified
             $user->name = $request->input('name');
